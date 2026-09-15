@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ClutchD Deck
 
-## Getting Started
+Standalone Next.js 14 (App Router + TypeScript + ESLint + Tailwind CSS) marketing
+deck for ClutchD — eight full-screen hash-routed screens (`#/01`…`#/08`).
 
-First, run the development server:
+## Separation from ClutchD-App
+
+This repo is **fully separate** from `ClutchD-App` (and from `clutchd-landing`):
+
+- No imports from ClutchD-App — the old Stitch exports are **structure reference
+  only** (their Barlow Condensed type and `#0B0E13` / `#F8FAFC` / `#ffb689`
+  token values are superseded by the brief and must never be used here).
+- No Capacitor, auth, or state stores — this is a static marketing deck.
+- No committed test suites (agent-executed QA only, evidence under
+  `.omo/evidence/` outside this repo).
+
+## Getting started
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Layout
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `app/page.tsx` — single `/` page hosting the hash deck.
+- `app/layout.tsx` — `next/font` slots: Big Shoulders Display (headlines),
+  IBM Plex Sans (body/UI), IBM Plex Mono (data-only).
+- `public/screens/` — vendored screenshot placeholders (grey boxes until real
+  captures are supplied; see the pre-publish swap gate in later todos).
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Work plan: `.omo/plans/clutchd-deck.md` (outside this repo).

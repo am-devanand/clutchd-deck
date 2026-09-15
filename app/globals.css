@@ -1,27 +1,491 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * ResQNow Premium Redesign (Blue Variant)
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #0f172a;
+  --paper: #ffffff;
+  --beacon: #1a5cff;
+  --beacon-hover: #0044ff;
+  --amber: #f59e0b;
+  --emerald: #10b981;
+  --steel: #94a3b8;
+  --hairline: #e2e8f0;
+
+  /* ResQNow Inspired */
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-data: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  
+  --shadow-elegant: 0 10px 30px -10px rgba(26, 92, 255, 0.4);
+  --shadow-card: 0 4px 24px -4px rgba(0, 0, 0, 0.05);
+  --shadow-card-hover: 0 10px 32px -4px rgba(0, 0, 0, 0.08);
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  --shadow-ambient: 0 0 80px rgba(26, 92, 255, 0.15);
+  
+  --gradient-primary: linear-gradient(135deg, #1A5CFF, #3B82F6);
+  --gradient-hero: linear-gradient(135deg, #1A5CFF 0%, #60A5FA 100%);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--font-sans);
+}
+
+/* Headline helper */
+.deck-headline {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  text-transform: capitalize;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+/* Data-only mono */
+.font-data {
+  font-family: var(--font-data), ui-monospace, monospace;
+}
+
+/* Visible keyboard focus everywhere */
+:focus-visible {
+  outline: 2px solid var(--beacon);
+  outline-offset: 2px;
+}
+
+/* Beacon pulse */
+@keyframes beacon-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.pulse {
+  animation: beacon-pulse 2s ease-in-out infinite;
+}
+
+/* Ambient glow */
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+@layer components {
+  /* Premium Glass Card */
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-white/60 shadow-[var(--shadow-glass)] rounded-2xl;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Deck shell (hash deck #/01..#/08): one screen per viewport, page never scrolls. */
+.deck-root {
+  height: 100svh;
+  height: 100dvh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+}
+
+.deck-sweep {
+  overflow: hidden;
+  animation: deck-sweep 600ms ease;
+}
+
+@keyframes deck-sweep {
+  from {
+    opacity: 0;
+    filter: brightness(1.6);
+  }
+  to {
+    opacity: 1;
+    filter: brightness(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deck-sweep {
+    animation: deck-fade 300ms ease;
+  }
+}
+
+@keyframes deck-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Top progress rule */
+.deckos-topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--hairline);
+  z-index: 40;
+}
+
+.deckos-progress {
+  height: 100%;
+  background: var(--gradient-primary);
+  transition: width 400ms ease;
+}
+
+/* Brand button */
+.deckos-brand {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.5rem;
+  z-index: 40;
+  font-family: var(--font-data), ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.deckos-brand span {
+  color: var(--beacon);
+}
+
+/* Right index rail */
+.deckos-rail {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.deckos-rail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0.45;
+}
+
+.deckos-rail-item.active {
+  opacity: 1;
+}
+
+.deckos-rail-item.visited {
+  opacity: 0.75;
+}
+
+.deckos-rail-num {
+  font-family: var(--font-data), ui-monospace, monospace;
+  font-size: 0.65rem;
+  color: var(--steel);
+}
+
+.deckos-rail-item.active .deckos-rail-num {
+  color: var(--beacon);
+}
+
+.deckos-rail-tick {
+  width: 1.25rem;
+  height: 2px;
+  background: var(--steel);
+}
+
+.deckos-rail-item.active .deckos-rail-tick {
+  background: var(--beacon);
+  box-shadow: 0 0 8px rgba(26, 92, 255, 0.8);
+}
+
+/* Bottom-left status */
+.deckos-statusbar {
+  position: absolute;
+  bottom: 2rem;
+  left: 1.5rem;
+  z-index: 40;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.deckos-chip {
+  font-family: var(--font-data), ui-monospace, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid var(--hairline);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.deckos-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: var(--emerald);
+}
+
+.deckos-dot.amber {
+  background: var(--amber);
+}
+
+/* End-of-sequence toast */
+.deckos-toast {
+  position: absolute;
+  bottom: 6rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(1rem);
+  z-index: 50;
+  font-family: var(--font-data), ui-monospace, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  background: var(--ink);
+  color: #fff;
+  padding: 0.6rem 1.25rem;
+  border-radius: 9999px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.deckos-toast.on {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Overview dialog */
+.deckos-overview {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.deckos-overview.on {
+  display: flex;
+}
+
+.deckos-ov-panel {
+  background: #fff;
+  border-radius: 1rem;
+  max-width: 56rem;
+  width: 100%;
+  max-height: 85dvh;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+.deckos-ov-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.deckos-ov-head h2 {
+  font-family: var(--font-data), ui-monospace, monospace;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.deckos-ov-sub {
+  font-family: var(--font-data), ui-monospace, monospace;
+  font-size: 0.65rem;
+  color: var(--steel);
+  letter-spacing: 0.1em;
+  margin-top: 0.25rem;
+}
+
+.deckos-ov-close {
+  background: transparent;
+  border: 1px solid var(--hairline);
+  border-radius: 9999px;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.deckos-ov-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: 1rem;
+}
+
+.deckos-ov-card {
+  border: 1px solid var(--hairline);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+}
+
+.deckos-ov-card.current {
+  border-color: var(--beacon);
+  box-shadow: 0 0 0 2px rgba(26, 92, 255, 0.4);
+}
+
+.deckos-ov-thumb {
+  position: relative;
+  display: block;
+}
+
+.deckos-ov-thumb img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.deckos-ov-idx {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  font-family: var(--font-data), ui-monospace, monospace;
+  font-size: 0.6rem;
+  background: rgba(15, 23, 42, 0.8);
+  color: #fff;
+  padding: 0.2rem 0.5rem;
+  border-radius: 9999px;
+}
+
+.deckos-ov-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.75rem;
+}
+
+.deckos-ov-key {
+  font-family: var(--font-data), ui-monospace, monospace;
+  font-size: 0.6rem;
+  color: var(--beacon);
+  letter-spacing: 0.1em;
+}
+
+.deckos-ov-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Boot splash */
+.deckos-boot {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  background: var(--ink);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.deckos-boot-inner {
+  text-align: center;
+  font-family: var(--font-data), ui-monospace, monospace;
+}
+
+.deckos-boot-logo {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.deckos-boot-logo span {
+  color: var(--beacon);
+}
+
+.deckos-boot-sub {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: var(--steel);
+  margin: 0.5rem 0 1.5rem;
+}
+
+.deckos-boot-bar {
+  width: 16rem;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 0 auto 1rem;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.deckos-boot-fill {
+  height: 100%;
+  background: var(--beacon);
+  transition: width 220ms linear;
+}
+
+.deckos-boot-lines {
+  font-size: 0.65rem;
+  color: var(--steel);
+  min-height: 3.5rem;
+  text-align: left;
+  width: 16rem;
+  margin: 0 auto;
+}
+
+.deckos-boot-lines .ok {
+  color: var(--emerald);
+}
+
+.deckos-boot-skip {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--steel);
+  margin-top: 1.5rem;
+  animation: beacon-pulse 2s ease-in-out infinite;
 }

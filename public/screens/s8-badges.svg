@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" role="img" aria-label="Placeholder grey box for app store badges">
+  <!-- TODO(swap): placeholder art — swap with final store badge art. -->
+  <title>Placeholder grey box for app store badges</title>
+  <rect width="1200" height="400" fill="#9aa0a6"/>
+  <rect x="24" y="24" width="1152" height="352" fill="none" stroke="#6b7280" stroke-width="4" stroke-dasharray="16 12"/>
+  <text x="600" y="200" text-anchor="middle" font-family="monospace" font-size="44" fill="#374151">S8 BADGES</text>
+  <text x="600" y="252" text-anchor="middle" font-family="monospace" font-size="24" fill="#4b5563">1200 × 400 PLACEHOLDER</text>
+</svg>

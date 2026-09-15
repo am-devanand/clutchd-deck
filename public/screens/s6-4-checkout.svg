@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" role="img" aria-label="Placeholder grey box for checkout shot">
+  <!-- TODO(swap): placeholder shot — swap with final app capture. -->
+  <title>Placeholder grey box for checkout shot</title>
+  <rect width="800" height="600" fill="#9aa0a6"/>
+  <rect x="20" y="20" width="760" height="560" fill="none" stroke="#6b7280" stroke-width="4" stroke-dasharray="16 12"/>
+  <text x="400" y="300" text-anchor="middle" font-family="monospace" font-size="36" fill="#374151">S6 4 — CHECKOUT</text>
+  <text x="400" y="344" text-anchor="middle" font-family="monospace" font-size="20" fill="#4b5563">800 × 600 PLACEHOLDER</text>
+</svg>

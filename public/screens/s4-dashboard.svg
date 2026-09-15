@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" role="img" aria-label="Placeholder grey box for roles dashboard">
+  <!-- TODO(swap): placeholder art — swap with final dashboard visual. -->
+  <title>Placeholder grey box for roles dashboard</title>
+  <rect width="1200" height="800" fill="#9aa0a6"/>
+  <rect x="24" y="24" width="1152" height="752" fill="none" stroke="#6b7280" stroke-width="4" stroke-dasharray="16 12"/>
+  <text x="600" y="400" text-anchor="middle" font-family="monospace" font-size="44" fill="#374151">S4 DASHBOARD</text>
+  <text x="600" y="452" text-anchor="middle" font-family="monospace" font-size="24" fill="#4b5563">1200 × 800 PLACEHOLDER</text>
+</svg>

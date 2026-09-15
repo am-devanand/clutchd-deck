@@ -1,0 +1,67 @@
+# DECK_OS v2.4 shell polish — evidence log
+Date (UTC): 2026-09-15
+Repo: /home/darkdevil/clutchd-deck (no commits per task)
+Source: /home/darkdevil/Documents/clutchd report/site/index.html (Arena host)
+Changed: app/components/Deck.tsx ONLY (screen bodies + globals.css untouched;
+  globals.css already carried the .deckos-* chrome, public/thumbs/ already
+  present and md5-identical to arena assets/thumbs/).
+
+## Thumbs integrity (md5, arena source == public copy)
+f50fd95a919277a52a402d2c86222d87  01.png
+6c5d6763ce40cf5cc928bb10178bbc40  02.png
+5dcec99356eb826faf3301454ab79039  03.png
+d9e88a046f0b1309ab1f2f1f8427ccbc  04.png
+40f9b6fcb2dd06f6967e357396d7d18b  05.png
+7e146a85c7b77360cf532b5412bb008e  06.png
+cd6ed5ea0195a5c3818364ef7bb32338  07.png
+5efded70332206ef94efda9c20811fb4  08.png
+
+## `npm run build` — PASS
+  ▲ Next.js 14.2.35
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/5) ...
+   Generating static pages (5/5)
+   Finalizing page optimization ...
+   Collecting build traces ...
+Route (app)                              Size     First Load JS
+┌ ○ /                                    21.3 kB         109 kB
+└ ○ /_not-found                          875 B          88.5 kB
++ First Load JS shared by all            87.6 kB
+○  (Static)  prerendered as static content
+(Fixes during build: 2x react/jsx-no-comment-textnodes — `//` text nodes in
+ brand button and toast wrapped in {"..."} braces.)
+
+## `npx tsc --noEmit` — PASS (exit 0, no output)
+
+## Delta summary (Deck.tsx only, 8 screen bodies byte-identical)
+1) Top progress rule: .deckos-topbar + .deckos-progress, width n/8*100%.
+2) Rail replaces dots: 14px tick, visited slate, active 30px blue+glow,
+   rail-num hidden on mobile (CSS), visited trail via state.
+   Bottom per-screen route-line removed (superseded by top rule).
+3) Brand button CLUTCHD // DECK_OS -> go(1), hard shadow (CSS).
+4) Statusbar bottom-left: SEC_XX // KEY chip (amber dot on 08) + hint chip
+   (CSS hides hint <860px, statusbar <520px).
+5) Overview dialog: grid_view button, O toggle, Esc/scrim close, 4->2->1
+   grid (CSS), 16/10 next/image thumbs from /thumbs/, SEC_XX + KEY + title,
+   focus lands on current card.
+6) Boot splash: DECK_OS v2.4, 3 lines @220ms, bar 0->92%->100%, click and
+   any-key skip, 6000ms hard cap, 700ms min dwell, reduced-motion aware.
+7) Wheel: boundary-aware via document.scrollingElement + 700ms cooldown;
+   F fullscreen toggle; END_OF_SEQUENCE toast + overview at #/08 forward
+   nav (arrows/advance/swipe/wheel).
+Kept: hash #/01..#/08 (hashFor/parseHash untouched), arrows/Home/End/digits,
+advance+prev, 48px swipe + [data-innerscroll] ignore, h1 focus, sweep +
+reduced-motion crossfade, page no-scroll.
+
+## Manual checklist (verify in browser: `npm run dev` -> http://localhost:3000)
+[ ] Boot splash shows DECK_OS v2.4 + 3 lines, dismisses on click/keypress
+[ ] Top blue progress bar grows 12.5% -> 100% across #/01..#/08
+[ ] Rail ticks: visited slate, active 30px blue glow; brand returns to 01
+[ ] Statusbar shows SEC_01 // COLD_OPEN ... SEC_08 // FINAL_CTA (amber)
+[ ] Grid button / O opens index with 8 thumbs; Esc / scrim / card closes
+[ ] ArrowRight/advance/swipe/wheel on 08 -> toast END_OF_SEQUENCE // DECK_INDEX
+[ ] F toggles fullscreen; wheel over scrollable inner regions does not hijack
+[ ] All 8 screens render byte-identical copy/layout vs before
