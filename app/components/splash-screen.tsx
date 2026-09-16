@@ -4,10 +4,13 @@ import { useEffect, useState } from "react";
 import Logo from "./logo";
 
 export default function SplashScreen() {
+  const [mounted, setMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+
     // Start fading out after 1.5 seconds
     const fadeTimer = setTimeout(() => {
       setIsFading(true);
@@ -24,7 +27,8 @@ export default function SplashScreen() {
     };
   }, []);
 
-  if (!isVisible) return null;
+  // Don't render anything on the server to avoid hydration mismatch
+  if (!mounted || !isVisible) return null;
 
   return (
     <div

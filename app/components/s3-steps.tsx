@@ -1,90 +1,135 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { s3 } from "../../content/screens";
+
+const STEP_COLORS: Record<string, string> = {
+  "01": "#3b82f6",
+  "02": "#6366f1",
+  "03": "#8b5cf6",
+  "04": "#a855f7",
+  "05": "#ec4899",
+};
 
 export default function S3() {
   return (
     <section
-      aria-label="Screen 3 of 8: how it works"
-      className="relative flex flex-col w-full max-w-7xl mx-auto px-6 py-32 text-slate-900 md:px-12 lg:px-16"
+      aria-label="How it Works"
+      className="relative flex h-full w-full items-center justify-center overflow-hidden bg-white"
     >
-      <div className="z-10 mx-auto w-full max-w-7xl flex-1">
-        <div className="mb-16 flex max-w-4xl flex-col text-center mx-auto items-center">
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#1A5CFF] mb-4">
-            How it works
-          </p>
-          <h2
-            id="screen-heading-3"
-            tabIndex={-1}
-            className="deck-headline text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl lg:text-6xl text-balance"
-          >
-            {s3.headline[0]} {s3.headline[1]}
+      <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-[400px] w-[800px] rounded-full bg-blue-50/50 blur-[100px]" />
+
+      <div className="z-10 mx-auto w-full max-w-7xl px-6 md:px-12 lg:px-16 flex flex-col justify-center gap-12">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-blue-600">How it works</p>
+          <h2 className="text-4xl font-black tracking-tight text-slate-900 md:text-5xl lg:text-6xl">
+            Five Steps.{" "}
+            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              Start to Finish.
+            </span>
           </h2>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-500 text-balance">
+          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600">
             {s3.sub}
           </p>
+        </motion.div>
+
+        {/* Steps */}
+        <div className="relative">
+          {/* Connecting line */}
+          <div className="absolute left-0 right-0 top-8 hidden h-px bg-slate-200 md:block" />
+
+          <div className="relative grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-5 md:gap-4">
+            {s3.steps.map((st, i) => (
+              <motion.div
+                key={st.n}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className={`group relative flex flex-col gap-4 ${st.active ? "md:-translate-y-3" : ""}`}
+              >
+                {/* Number bubble */}
+                <div className="flex items-center justify-center md:justify-start">
+                  <div
+                    className={`relative flex h-16 w-16 items-center justify-center rounded-full text-lg font-black text-white shadow-lg transition-transform group-hover:-translate-y-1 ${
+                      st.active
+                        ? "ring-4 ring-offset-4 ring-offset-white"
+                        : "bg-slate-100 text-slate-400 shadow-none ring-0 border border-slate-200"
+                    }`}
+                    style={
+                      st.active
+                        ? {
+                            background: `radial-gradient(circle at 30% 30%, ${STEP_COLORS[st.n]}ee, ${STEP_COLORS[st.n]}aa)`,
+                            boxShadow: `0 0 20px ${STEP_COLORS[st.n]}60`,
+                            ringColor: STEP_COLORS[st.n],
+                          }
+                        : {}
+                    }
+                  >
+                    {st.n}
+                    {st.active && (
+                      <span
+                        className="absolute -inset-1 rounded-full animate-ping opacity-20"
+                        style={{ background: STEP_COLORS[st.n] }}
+                      />
+                    )}
+                  </div>
+                </div>
+
+                {/* Card */}
+                <div
+                  className={`relative flex flex-col gap-2 overflow-hidden rounded-2xl border p-5 transition-all duration-300 group-hover:-translate-y-1 ${
+                    st.active
+                      ? "border-blue-200 bg-white shadow-[0_15px_30px_-10px_rgba(37,99,235,0.15)]"
+                      : "border-slate-200 bg-slate-50 hover:border-slate-300 hover:shadow-sm"
+                  }`}
+                >
+                  {st.active && (
+                    <div className="absolute left-0 top-0 h-1 w-full" style={{ background: `linear-gradient(to right, ${STEP_COLORS[st.n]}, transparent)` }} />
+                  )}
+                  <div className="flex items-center justify-between">
+                    <span className="text-base font-black tracking-tight text-slate-900">{st.title}</span>
+                    <span className={`text-xl ${st.active ? "text-blue-600" : "text-slate-400"}`} aria-hidden="true">{st.icon}</span>
+                  </div>
+                  <p className="text-xs leading-relaxed text-slate-600">{st.body}</p>
+                  <div className="mt-2 border-t border-slate-100 pt-2">
+                    <span className="font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">
+                      {st.foot}
+                      {st.footExtra && <span className="ml-2 text-blue-600">{st.footExtra}</span>}
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
-        <div className="relative w-full mt-10">
-          <div className="absolute left-0 right-0 top-[28px] z-0 hidden h-1 bg-slate-100 rounded-full md:block">
-            <div
-              className="h-full rounded-full bg-[image:var(--gradient-primary)] shadow-[var(--shadow-elegant)]"
-              style={{ width: s3.routeWidth }}
-            />
-          </div>
-          <div className="relative z-10 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-5 md:gap-4">
-            {s3.steps.map((st) =>
-              st.active ? (
-                <div key={st.n} className="relative flex flex-col md:-top-4 transition-transform hover:-translate-y-2">
-                  <div className="mb-6 flex justify-center md:justify-start items-center">
-                    <div className="flex h-14 w-14 items-center justify-center bg-[image:var(--gradient-primary)] text-lg font-bold text-white shadow-[0_10px_25px_-5px_rgba(26,92,255,0.5)] ring-[8px] ring-white rounded-full">
-                      {st.n}
-                    </div>
-                  </div>
-                  <div className="relative flex flex-col justify-between overflow-hidden rounded-2xl bg-white p-6 text-slate-900 shadow-[var(--shadow-card-hover)] ring-1 ring-slate-100 min-h-[220px]">
-                    <div className="absolute left-0 right-0 top-0 h-1.5 bg-[image:var(--gradient-primary)]" />
-                    <div>
-                      <div className="mb-4 flex items-center justify-between">
-                        <span className="text-xl font-bold tracking-tight">
-                          {st.title}
-                        </span>
-                        <span aria-hidden="true" className="text-2xl text-[#1A5CFF]">
-                          {st.icon}
-                        </span>
-                      </div>
-                      <p className="text-sm font-medium leading-relaxed text-slate-600">
-                        {st.body}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div key={st.n} className="group flex flex-col transition-all duration-300 md:-top-4">
-                  <div className="mb-6 flex justify-center md:justify-start items-center opacity-50 group-hover:opacity-100 transition-opacity">
-                    <div className="flex h-14 w-14 items-center justify-center bg-slate-50 text-lg font-bold text-slate-400 shadow-sm ring-[8px] ring-white border border-slate-200 rounded-full group-hover:border-[#1A5CFF]/30 group-hover:text-[#1A5CFF] group-hover:bg-blue-50">
-                      {st.n}
-                    </div>
-                  </div>
-                  <div className="flex flex-col justify-between rounded-2xl bg-white p-6 shadow-sm border border-slate-100 min-h-[220px] transition-all duration-300 hover:shadow-[var(--shadow-card)] hover:-translate-y-1">
-                    <div>
-                      <div className="mb-4 flex items-center justify-between">
-                        <span className="text-xl font-bold tracking-tight text-slate-800">
-                          {st.title}
-                        </span>
-                        <span aria-hidden="true" className="text-2xl text-slate-300 group-hover:text-slate-400">
-                          {st.icon}
-                        </span>
-                      </div>
-                      <p className="text-sm leading-relaxed text-slate-500">
-                        {st.body}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )
-            )}
-          </div>
-        </div>
+        {/* Bottom metrics row */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+          className="flex flex-wrap items-center justify-center gap-8 rounded-2xl border border-slate-200 bg-slate-50 px-8 py-4 shadow-sm"
+        >
+          {[
+            { label: "Avg Response", value: "14.2 MIN" },
+            { label: "Encryption", value: "AES-256" },
+            { label: "Orchestration", value: "AUTOMATED" },
+            { label: "Uptime", value: "99.9%" },
+          ].map((m) => (
+            <div key={m.label} className="flex flex-col items-center gap-1">
+              <span className="font-mono text-sm font-black text-slate-900">{m.value}</span>
+              <span className="text-[10px] uppercase tracking-widest text-slate-500">{m.label}</span>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

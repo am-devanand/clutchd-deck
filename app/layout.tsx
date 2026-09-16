@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import {
-  Inter,
-  Plus_Jakarta_Sans,
-} from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const sans = Inter({
   subsets: ["latin"],
@@ -18,22 +17,25 @@ const display = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "ClutchD — Deck",
+  title: "ClutchD — 24/7 Roadside Assistance & Rapid Dispatch",
   description:
-    "Standalone ClutchD marketing deck. Separate repo from ClutchD-App; nothing is imported from the app.",
+    "Precision roadside response mobilized instantly. Mechanic dispatch calibrated to your exact coordinates.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${display.variable} ${sans.variable} antialiased`}
+        className={`${display.variable} ${sans.variable} antialiased bg-white text-slate-900 min-h-screen flex flex-col`}
+        suppressHydrationWarning
       >
-        {children}
+        <Navbar />
+        <main className="flex-1 w-full flex flex-col">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

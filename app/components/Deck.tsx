@@ -56,6 +56,15 @@ const BOOT_LINES = [
   { text: "TELEMETRY LINK GEO-SYNC 04 ... ", ok: "LOCKED" },
 ];
 
+const NAV_LINKS = [
+  { n: 3, label: "How It Works" },
+  { n: 4, label: "Services" },
+  { n: 5, label: "Proof" },
+  { n: 6, label: "Guide" },
+  { n: 7, label: "Roadmap" },
+  { n: 8, label: "Contact" },
+];
+
 function pad(n: number): string {
   return (n < 10 ? "0" : "") + n;
 }
@@ -417,15 +426,50 @@ export default function Deck() {
         />
       </div>
 
-      {/* Brand button: return to sequence 01. */}
-      <button
-        type="button"
-        className="deckos-brand"
-        title="Return to sequence 01"
-        onClick={() => go(1)}
-      >
-        CLUTCHD <span>{"//"}</span> DECK_OS
-      </button>
+      <header className="absolute top-[3px] left-0 right-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur-md">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 md:px-12">
+          <button
+            type="button"
+            onClick={() => go(1)}
+            aria-label="ClutchD home"
+            className="flex items-center"
+          >
+            <Image
+              src="/stitch/navbar-logo.png"
+              alt="ClutchD"
+              width={180}
+              height={60}
+              priority
+              className="h-10 w-auto object-contain"
+            />
+          </button>
+          <nav
+            aria-label="Deck sections"
+            className="hidden items-center gap-7 md:flex text-sm font-medium text-slate-600"
+          >
+            {NAV_LINKS.map((l) => (
+              <button
+                key={l.n}
+                type="button"
+                onClick={() => go(l.n)}
+                aria-current={index === l.n ? "true" : undefined}
+                className={`transition-colors hover:text-[#1A5CFF] ${
+                  index === l.n ? "text-[#1A5CFF]" : ""
+                }`}
+              >
+                {l.label}
+              </button>
+            ))}
+          </nav>
+          <button
+            type="button"
+            onClick={() => go(8)}
+            className="rounded-full bg-[image:var(--gradient-primary)] px-5 py-2 text-sm font-bold text-white shadow-[var(--shadow-elegant)] transition-all hover:opacity-90"
+          >
+            Get the App
+          </button>
+        </div>
+      </header>
 
       {/* Right index rail. Current = blue + glow, visited = slate. */}
       <nav aria-label="Deck index rail" className="deckos-rail">

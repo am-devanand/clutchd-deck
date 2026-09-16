@@ -5,6 +5,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Page-by-page slide animations ── */
+@keyframes slide-in-from-bottom {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+@keyframes slide-in-from-top {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+.animate-slide-in-from-bottom {
+  animation: slide-in-from-bottom 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-slide-in-from-top {
+  animation: slide-in-from-top 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+
 /*
  * ResQNow Premium Redesign (Blue Variant)
  */
@@ -488,4 +506,9 @@ body {
   color: var(--steel);
   margin-top: 1.5rem;
   animation: beacon-pulse 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-150%); }
+  100% { transform: translateX(150%); }
 }
