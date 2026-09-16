@@ -31,8 +31,8 @@ export const s1 = {
   coords: "LAT 11.0283° N · LON 76.8961° E",
   sys: "SYS_ONLINE",
   eyebrow: "Critical Incident Protocol",
-  headline: ["Broken Down.", "2 A.M.", "Middle of", "Nowhere."],
-  sub: "It happens. Here's what happens next. Precision roadside response mobilized in silence while the highway sleeps.",
+  headline: ["Dead Battery.", "Flat Tyre.", "Long", "Night."],
+  sub: "Whatever stopped you, ClutchD gets you moving — verified mechanics, transparent estimates, 24/7 roadside response.",
   tierLabel: "RESPONSE TIER",
   tierValue: "DISPATCH_IMMEDIATE",
   satLabel: "NETWORK SATELLITE",
@@ -43,6 +43,22 @@ export const s1 = {
   packet: "PACKET ID #884-CQ",
   proceed: "PROCEED WITH SEQUENCE",
   rail: "01/08",
+  // 2026-09-16 (P2 i18n): hero CTA + stat labels + dispatch-card rows moved
+  // here from s1-cold-open.tsx so both locales translate them (messages/*/screens.json).
+  ctaPrimary: "Explore Platform",
+  ctaSecondary: "Emergency SOS",
+  stats: [
+    { v: "15 min", l: "Arrival Target" },
+    { v: "24/7", l: "Active Network" },
+    { v: "GPS", l: "Live Tracking" },
+    { v: "1", l: "City Live — Coimbatore" },
+  ],
+  cardLabel: "Live Dispatch",
+  cardRows: [
+    { label: "Locating Mechanic", value: "99.4%", pct: "99%" },
+    { label: "Network Coverage", value: "100%", pct: "100%" },
+    { label: "Dispatch Speed", value: "3 min", pct: "82%" },
+  ],
   image: {
     src: "/stitch/s1-desert.jpg",
     alt: "Cinematic wide shot of an empty asphalt two-lane desert highway stretching into total pitch black darkness at 2am",
@@ -95,12 +111,15 @@ export interface S3Step {
 }
 
 export const s3 = {
+  // P3 i18n: eyebrow + metrics moved here from s3-steps.tsx so both locales
+  // translate them.
+  eyebrow: "How it works",
   sys: "SYS_DEPLOY // REV_4.2",
   seq: "SEQUENCE INDEX // 03 — LIVE PROTOCOL",
   radar: "RADAR_ENGAGED",
   coords: "LAT: 11.0283° N   LON: 76.8961° E",
   node: "NODE 03 ACTIVE",
-  headline: ["FIVE STEPS.", "START TO FINISH."],
+  headline: ["Five Steps.", "Start to Finish."],
   sub: "From request to completed service: ClutchD matches you with verified nearby providers in minutes — you approve the estimate before the wrench lifts, and track every step live.",
   activeTag: "ACTIVE_NODE: 03 ● RADAR_ENGAGED",
   vector: "VECTOR: 11.0283° N, 76.8961° E",
@@ -156,6 +175,12 @@ export const s3 = {
   encValue: "AES-256",
   proceed: "PROCEED",
   proceedSub: "STEP 04 // LIVE DISPATCH",
+  metrics: [
+    { label: "Avg Response", value: "15 MIN TARGET" },
+    { label: "Tracking", value: "LIVE GPS" },
+    { label: "Orchestration", value: "AUTOMATED" },
+    { label: "Pilot Grid", value: "COIMBATORE" },
+  ],
   rail: "03/08",
 };
 
@@ -169,12 +194,30 @@ export interface S4Pod {
 }
 
 export const s4 = {
+  // P3 i18n: eyebrow + headline moved here from s4-roles.tsx. headline[1]
+  // gets the gradient. roleLabels maps the podsByRole EN keys to display
+  // labels (Tamil labels come from old-site audiences.*.title).
+  eyebrow: "Tailored Experience",
   section: "04 // CAPABILITIES & INTERFACES",
   realtime: "REALTIME_LINK_ACTIVE",
   specA: "[ SYSTEM SPECIFICATION ]",
   specB: "MULTI-TIER DISPATCH",
-  headline: ["BUILT FOR EVERYONE", "AT THE JOB."],
-  roles: ["Car owners", "Mechanics", "Garages", "Fleets"],
+  headline: [
+      "Built for",
+      "Everyone",
+      "at the Job."
+    ],    roles: [
+      "Car owners",
+      "Mechanics",
+      "Garages",
+      "Fleets"
+    ],
+    roleLabels: {
+      "Car owners": "Car owners",
+      "Mechanics": "Mechanics",
+      "Garages": "Garages",
+      "Fleets": "Fleets"
+    },
   podsByRole: {
     "Car owners": [
       {
@@ -311,6 +354,8 @@ export const s5 = {
   poolLabel: "EARLY NETWORK:",
   poolStart: 120, // Verified mechanics (illustrative)
   poolSuffix: "VERIFIED MECHANICS",
+  // P3 i18n: screen-reader honesty note (was hardcoded in s5-proof.tsx).
+  srNote: "Figures on this screen are illustrative launch figures pending real network data.",
   stats: [
     { v: "120", u: "+", label: "Verified Mechanics — Illustrative", bar: "80%" },
     { v: "35", u: "+", label: "Partner Garages — Illustrative", bar: "55%" },
@@ -353,8 +398,9 @@ export const s6 = {
   sysref: "SYS_REF: ARCH_GALLERY_V6",
   frame: "INDEXED_DECK // FRAME 06",
   live: "LIVE OPS",
-  eyebrow: "INTERFACE SPECIFICATION // REALTIME WORKFLOW",
-  headline: "SEE IT BEFORE YOU NEED IT.",
+  eyebrow: "Experience",
+  // [0] plain · [1] gradient
+  headline: ["See It Before You", "Need It."],
   sub: "Drivers, mechanics, garages, fleets, parts, payments and service history on one system — so the vehicle's story never starts over.",
   phones: [
     {
@@ -449,8 +495,8 @@ export const s7 = {
   phase: "PHASE PROTOCOL // 07.ROADMAP",
   spec: "SPEC_VER: 4.8.2 // TRAJECTORY_STABLE",
   coord: "COORDINATE: [11.0283, 76.8961]",
-  eyebrow: "STRATEGIC CADENCE",
-  headline: "WHERE WE'RE HEADED.",
+  eyebrow: "Strategic cadence",
+  headline: ["Where We're", "Headed."],
   // 2026-09-16: grounded per docs/CLUTCHD-FACTS.md — NOW = shipped app
   // features; NEXT = in-flight contracts (warranty claims, fleet API are
   // backend NEWs); LATER = statewide-first expansion. No invented counts/dates.
@@ -480,7 +526,9 @@ export const s7 = {
       pillActive: false,
     },
   ],
-  engine: "DISPATCH ENGINE READY",
+  engine: "Dispatch Engine Ready",
+  pilotLabel: "Pilot Grid:",
+  pilotValue: "Coimbatore",
   velocity: "EST_VELOCITY: 99.4%",
   page: "PAGE 07 // DEPLOYMENT HORIZONS",
   rail: "07/08",
@@ -505,9 +553,9 @@ export const s8 = {
   pwaHref: "https://clutchd.tail14cfb9.ts.net",
   pwaTop: "INSTALLABLE PWA",
   pwaLabel: "Open Web App",
-  apkTop: "DIRECT INSTALL",
-  apkLabel: "Android APK",
-  apkSoon: "SOON",
+  apkTop: "DIRECT INSTALL",    apkLabel: "Android APK",
+    apkSoon: "SOON",
+    apkAria: "Android APK coming soon",
   urgent: "Need urgent assistance right now?",
   call: "Call 24/7 Emergency Dispatch",
   callHref: "tel:911",

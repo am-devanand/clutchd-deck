@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { s3 } from "../../content/screens";
+import { useTranslations } from "next-intl";
 
 const STEP_COLORS: Record<string, string> = {
   "01": "#3b82f6",
@@ -12,12 +12,18 @@ const STEP_COLORS: Record<string, string> = {
 };
 
 export default function S3() {
+  // P3 i18n: copy from messages/<locale>/screens.json (EN source: screens.ts).
+  const t = useTranslations("screens.s3");
+  const headline = t.raw("headline") as string[];
+  const steps = t.raw("steps") as { n: string; title: string; icon: string; body: string; foot: string; footExtra?: string; active?: boolean }[];
+  const metrics = t.raw("metrics") as { label: string; value: string }[];
   return (
     <section
       aria-label="How it Works"
       className="relative flex h-full w-full items-center justify-center overflow-hidden bg-white"
     >
-      <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-[400px] w-[800px] rounded-full bg-blue-50/50 blur-[100px]" />
+      {/* Gradient mesh wall */}
+      <div className="u-mesh" />
 
       <div className="z-10 mx-auto w-full max-w-7xl px-6 md:px-12 lg:px-16 flex flex-col justify-center gap-12">
         {/* Header */}
@@ -27,25 +33,25 @@ export default function S3() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-blue-600">How it works</p>
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.25em] u-grad-text">{t("eyebrow")}</p>
           <h2 className="text-4xl font-black tracking-tight text-slate-900 md:text-5xl lg:text-6xl">
-            Five Steps.{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              Start to Finish.
+            {headline[0]}{" "}
+            <span className="bg-gradient-to-r from-indigo-600 to-cyan-500 bg-clip-text text-transparent">
+              {headline[1]}
             </span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600">
-            {s3.sub}
+            {t("sub")}
           </p>
         </motion.div>
 
         {/* Steps */}
         <div className="relative">
-          {/* Connecting line */}
-          <div className="absolute left-0 right-0 top-8 hidden h-px bg-slate-200 md:block" />
+          {/* Connecting line — gradient */}
+          <div className="absolute left-0 right-0 top-8 hidden h-px bg-gradient-to-r from-transparent via-indigo-200 to-transparent md:block" />
 
           <div className="relative grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-5 md:gap-4">
-            {s3.steps.map((st, i) => (
+            {steps.map((st, i) => (
               <motion.div
                 key={st.n}
                 initial={{ opacity: 0, y: 30 }}
@@ -84,10 +90,10 @@ export default function S3() {
 
                 {/* Card */}
                 <div
-                  className={`relative flex flex-col gap-2 overflow-hidden rounded-2xl border p-5 transition-all duration-300 group-hover:-translate-y-1 ${
+                  className={`relative flex flex-col gap-2 overflow-hidden rounded-2xl p-5 transition-all duration-300 group-hover:-translate-y-1 ${
                     st.active
-                      ? "border-blue-200 bg-white shadow-[0_15px_30px_-10px_rgba(37,99,235,0.15)]"
-                      : "border-slate-200 bg-slate-50 hover:border-slate-300 hover:shadow-sm"
+                      ? "u-glass shadow-[0_15px_30px_-10px_rgba(79,70,229,0.25)]"
+                      : "border border-slate-200/70 bg-slate-50/60 backdrop-blur-sm hover:u-glass hover:shadow-md"
                   }`}
                 >
                   {st.active && (
@@ -101,7 +107,7 @@ export default function S3() {
                   <div className="mt-2 border-t border-slate-100 pt-2">
                     <span className="font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500">
                       {st.foot}
-                      {st.footExtra && <span className="ml-2 text-blue-600">{st.footExtra}</span>}
+                      {st.footExtra && <span className="ml-2 u-grad-text">{st.footExtra}</span>}
                     </span>
                   </div>
                 </div>
@@ -116,16 +122,11 @@ export default function S3() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6 }}
-          className="flex flex-wrap items-center justify-center gap-8 rounded-2xl border border-slate-200 bg-slate-50 px-8 py-4 shadow-sm"
+          className="u-glass flex flex-wrap items-center justify-center gap-8 rounded-2xl px-8 py-4"
         >
-          {[
-            { label: "Avg Response", value: "15 MIN TARGET" },
-            { label: "Tracking", value: "LIVE GPS" },
-            { label: "Orchestration", value: "AUTOMATED" },
-            { label: "Pilot Grid", value: "COIMBATORE" },
-          ].map((m) => (
+          {metrics.map((m) => (
             <div key={m.label} className="flex flex-col items-center gap-1">
-              <span className="font-mono text-sm font-black text-slate-900">{m.value}</span>
+              <span className="u-grad-text font-mono text-sm font-black">{m.value}</span>
               <span className="text-[10px] uppercase tracking-widest text-slate-500">{m.label}</span>
             </div>
           ))}

@@ -1,91 +1,98 @@
 import Link from "next/link";
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
+import { routing } from "../../i18n/routing";
+import type { Locale } from "../../i18n/routing";
 
-export default function Footer() {
+// UI REDESIGN 2026-09-16: deep-indigo footer wall with glass columns and a
+// gradient CTA band. Copy still 100% from messages/[locale]/common.json.
+export default async function Footer({
+  locale,
+}: {
+  locale?: string;
+}) {
+  const t = await getTranslations("common.footer");
+  const loc = locale ?? routing.defaultLocale;
+  const withLocale = (href: string) =>
+    `/${loc}${href === "/" ? "" : href}`;
+
+  const platformLinks = [
+    { href: "/features", label: t("platformLinks.features") },
+    { href: "/how-it-works", label: t("platformLinks.howItWorks") },
+    { href: "/for-you", label: t("platformLinks.forYou") },
+    { href: "/app", label: t("platformLinks.app") },
+  ];
+  const companyLinks = [
+    { href: "/impact", label: t("companyLinks.impact") },
+    { href: "/roadmap", label: t("companyLinks.roadmap") },
+    { href: "/download", label: t("companyLinks.download") },
+  ];
+  const legalLinks = [
+    { href: "/faq", label: t("legalLinks.faq") },
+    { href: "/privacy", label: t("legalLinks.privacy") },
+    { href: "/terms", label: t("legalLinks.terms") },
+  ];
+
   return (
-    <footer className="w-full border-t border-slate-200 bg-slate-50">
-      <div className="mx-auto max-w-7xl px-6 py-16 md:px-12 lg:px-16">
+    <footer className="u-hero-grad relative w-full overflow-hidden text-white">
+      {/* Faint grid texture */}
+      <svg className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.06]" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="foot-grid" width="36" height="36" patternUnits="userSpaceOnUse">
+            <path d="M 36 0 L 0 0 0 36" fill="none" stroke="#fff" strokeWidth="0.5" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#foot-grid)" />
+      </svg>
+
+      <div className="relative mx-auto max-w-7xl px-6 py-16 md:px-12 lg:px-16">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-5">
           <div className="md:col-span-2">
-            <Link href="/">
+            <Link href={withLocale("/")}>
               <Image
                 src="/stitch/navbar-logo.png"
                 alt="ClutchD"
                 width={160}
                 height={50}
-                className="mb-5 h-10 w-auto object-contain"
+                className="mb-5 h-10 w-auto rounded-lg bg-white/95 p-1.5 object-contain"
               />
             </Link>
-            <p className="max-w-xs text-sm leading-relaxed text-slate-500">
-              ClutchD connects drivers, mechanics, garages, fleets, parts, payments and
-              service history into one automotive ecosystem.
+            <p className="max-w-xs text-sm leading-relaxed text-indigo-100/80">
+              {t("blurb")}
             </p>
             <div className="mt-5 flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.6)] animate-pulse" />
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">
-                Live in Coimbatore
+              <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] animate-pulse" />
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-300">
+                {t("liveBadge")}
               </span>
             </div>
           </div>
 
-          <div>
-            <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-slate-400">Platform</h3>
-            <ul className="space-y-3">
-              {[
-                { href: "/features",     label: "Features" },
-                { href: "/how-it-works", label: "How it Works" },
-                { href: "/for-you",      label: "For You" },
-                { href: "/app",          label: "App Showcase" },
-              ].map(({ href, label }) => (
-                <li key={label}>
-                  <Link href={href} className="text-sm font-medium text-slate-500 hover:text-blue-600 transition-colors">
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-slate-400">Company</h3>
-            <ul className="space-y-3">
-              {[
-                { href: "/impact",    label: "Impact" },
-                { href: "/roadmap",   label: "Roadmap" },
-                { href: "/download",  label: "Get the App" },
-              ].map(({ href, label }) => (
-                <li key={label}>
-                  <Link href={href} className="text-sm font-medium text-slate-500 hover:text-blue-600 transition-colors">
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-slate-400">Legal</h3>
-            <ul className="space-y-3">
-              {[
-                { href: "/faq",     label: "FAQ" },
-                { href: "/privacy", label: "Privacy Policy" },
-                { href: "/terms",   label: "Terms of Use" },
-              ].map(({ href, label }) => (
-                <li key={label}>
-                  <Link href={href} className="text-sm font-medium text-slate-500 hover:text-blue-600 transition-colors">
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {[
+            { title: t("platform"), links: platformLinks },
+            { title: t("company"), links: companyLinks },
+            { title: t("legal"), links: legalLinks },
+          ].map(({ title, links }) => (
+            <div key={title}>
+              <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-cyan-300/80">{title}</h3>
+              <ul className="space-y-3">
+                {links.map(({ href, label }) => (
+                  <li key={href}>
+                    <Link href={withLocale(href)} className="text-sm font-medium text-indigo-100/75 transition-colors hover:text-white">
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-200 pt-8 sm:flex-row">
-          <p className="text-xs text-slate-400">
-            &copy; {new Date().getFullYear()} ClutchD. All rights reserved.
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/15 pt-8 sm:flex-row">
+          <p className="text-xs text-indigo-200/60">
+            &copy; {new Date().getFullYear()} ClutchD. {t("rights")}
           </p>
-          <span className="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-blue-500">
+          <span className="rounded-full border border-white/15 bg-white/10 px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-cyan-200 backdrop-blur">
             CLUTCH-ALPHA-884 ONLINE
           </span>
         </div>
@@ -93,3 +100,7 @@ export default function Footer() {
     </footer>
   );
 }
+
+// Re-exported so route pages can type their locale params from one place.
+export type { Locale };
+export { routing };

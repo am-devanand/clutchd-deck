@@ -2,15 +2,23 @@ import Link from "next/link";
 
 // Shared layout for imported legal pages (privacy, terms). Server component —
 // content is static and SEO-renderable. Sections: { h, body: string[] }.
+// P3 i18n: backLink/updatedLabel/copyright come from the legal.* catalog so
+// /ta renders Tamil chrome around Tamil body text.
 export default function LegalPage({
   title,
   updated,
+  updatedLabel,
   intro,
+  backLink,
+  copyright,
   sections,
 }: {
   title: string;
   updated: string;
+  updatedLabel: string;
   intro: string;
+  backLink: string;
+  copyright: string;
   sections: { h: string; body: string[] }[];
 }) {
   return (
@@ -23,12 +31,12 @@ export default function LegalPage({
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="m15 18-6-6 6-6" />
           </svg>
-          Back to ClutchD
+          {backLink}
         </Link>
 
         <h1 className="mb-2 text-4xl font-black tracking-tight text-slate-900 md:text-5xl">{title}</h1>
         <p className="mb-1 text-xs font-bold uppercase tracking-widest text-slate-400">
-          Last updated: {updated}
+          {updatedLabel}: {updated}
         </p>
         <p className="mb-10 text-sm text-slate-500">{intro}</p>
 
@@ -46,7 +54,7 @@ export default function LegalPage({
         </div>
 
         <p className="mt-12 border-t border-slate-200 pt-6 text-xs text-slate-400">
-          © {new Date().getFullYear()} ClutchD — connected automotive care, Coimbatore.
+          © {new Date().getFullYear()} {copyright}
         </p>
       </div>
     </div>

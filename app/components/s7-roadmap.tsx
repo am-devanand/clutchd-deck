@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { s7 } from "../../content/screens";
+import { useTranslations } from "next-intl";
 
 const PHASE_STYLES = [
   { badge: "bg-emerald-50 text-emerald-700 border-emerald-200", dot: "bg-emerald-500", border: "border-emerald-100", hover: "hover:border-emerald-300" },
@@ -10,12 +10,17 @@ const PHASE_STYLES = [
 ];
 
 export default function S7() {
+  // P3 i18n: copy from messages/<locale>/screens.json (EN source: screens.ts).
+  const t = useTranslations("screens.s7");
+  const headline = t.raw("headline") as string[];
+  const rows = t.raw("rows") as { phase: string; idx: string; body: string; sub: string; pill: string; pillActive: boolean }[];
   return (
     <section
       aria-label="Roadmap"
       className="relative flex h-full w-full items-center justify-center overflow-hidden bg-white px-6 md:px-12 lg:px-16"
     >
-      <div className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 h-[600px] w-[400px] translate-x-1/2 rounded-full bg-blue-50/80 blur-[100px]" />
+      {/* Gradient mesh wall */}
+      <div className="u-mesh" />
 
       <div className="z-10 mx-auto flex w-full max-w-5xl flex-col gap-12">
         {/* Header */}
@@ -25,18 +30,18 @@ export default function S7() {
           viewport={{ once: true }}
           className="max-w-2xl"
         >
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-blue-600">{s7.eyebrow}</p>
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.25em] u-grad-text">{t("eyebrow")}</p>
           <h2 className="text-4xl font-black tracking-tight text-slate-900 md:text-5xl lg:text-6xl">
-            Where We&apos;re{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              Headed.
+            {headline[0]}{" "}
+            <span className="bg-gradient-to-r from-indigo-600 to-cyan-500 bg-clip-text text-transparent">
+              {headline[1]}
             </span>
           </h2>
         </motion.div>
 
         {/* Timeline rows */}
         <div className="flex flex-col gap-5">
-          {s7.rows.map((r, i) => {
+          {rows.map((r, i) => {
             const style = PHASE_STYLES[i] ?? PHASE_STYLES[2];
             return (
               <motion.div
@@ -45,7 +50,7 @@ export default function S7() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.6 }}
                 transition={{ duration: 0.5, delay: i * 0.15 }}
-                className={`group relative overflow-hidden rounded-2xl border ${style.border} bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md ${style.hover}`}
+                className={`group relative overflow-hidden rounded-2xl u-glass u-lift p-6 transition-shadow duration-300 hover:shadow-lg`}
               >
                 {/* Left accent bar */}
                 <div className={`absolute left-0 top-0 bottom-0 w-1.5 ${style.dot} rounded-l-2xl`} />
@@ -54,7 +59,7 @@ export default function S7() {
                   {/* Phase label */}
                   <div className="md:col-span-2">
                     <span className="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">{r.idx}</span>
-                    <span className="text-3xl font-black text-slate-900 group-hover:text-blue-600 transition-colors">{r.phase}</span>
+                    <span className="u-grad-text text-3xl font-black">{r.phase}</span>
                   </div>
 
                   {/* Body */}
@@ -86,11 +91,11 @@ export default function S7() {
         >
           <div className="flex items-center gap-2.5">
             <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.5)] animate-pulse" />
-            <span className="font-mono text-xs text-emerald-600">Dispatch Engine Ready</span>
+            <span className="font-mono text-xs text-emerald-600">{t("engine")}</span>
           </div>
           <div className="flex items-center gap-2.5">
-            <span className="font-mono text-xs text-slate-500">Pilot Grid:</span>
-            <span className="font-mono text-xs font-bold text-slate-900">Coimbatore</span>
+            <span className="font-mono text-xs text-slate-500">{t("pilotLabel")}</span>
+            <span className="font-mono text-xs font-bold text-slate-900">{t("pilotValue")}</span>
           </div>
         </motion.div>
       </div>
