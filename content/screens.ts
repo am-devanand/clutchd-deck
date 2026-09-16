@@ -1,6 +1,8 @@
 // Deck content: single source of truth for all 8 hash screens (#/01..#/08).
 // Copy is verbatim from stitch-2 code.html reality. Unknowns are flagged
 // TODO(swap) — never invented. Images are local /stitch/* only (no remote URLs).
+// 2026-09-16: s4 role pods + geo coords grounded from ClutchD product docs
+// (see docs/CLUTCHD-FACTS.md). s8 store links + dispatch line still pending.
 
 export type ScreenTheme = "light" | "dark";
 
@@ -26,7 +28,7 @@ export const screens: Screen[] = [
 
 export const s1 = {
   section: "SEC_01 // COLD_ACQUISITION",
-  coords: "LAT 41.8781° N · LON 87.6298° W",
+  coords: "LAT 11.0283° N · LON 76.8961° E",
   sys: "SYS_ONLINE",
   eyebrow: "Critical Incident Protocol",
   headline: ["Broken Down.", "2 A.M.", "Middle of", "Nowhere."],
@@ -57,17 +59,18 @@ export const s2 = {
   coords: "LAT 11.0283 | LON 76.8961",
   livePill: "Now Live in Coimbatore",
   verifiedPill: "VERIFIED DISPATCH DECK",
-  eyebrow: "Breakdown protocol engaged",
-  headlineA: "That's what",
-  headlineBrand: "ClutchD",
-  headlineB: "is for.",
-  sub: "Instant roadside triage, zero hidden tariffs, and surgical mechanic dispatch calibrated directly to your precise breakdown coordinates. Composure restored in minutes.",
-  ctaPrimary: "SEE HOW IT WORKS",
-  ctaSecondary: "LIVE TELEMETRY VIEW",
+  eyebrow: "Connected automotive care",
+  headlineA: "One connected ecosystem",
+  headlineBrand: "for automotive care.",
+  headlineB: "",
+  sub: "Find verified mechanics, request roadside help, source the right parts, track work live, and keep your complete service history.",
+  ctaPrimary: "GET EARLY ACCESS",
+  ctaSecondary: "SEE HOW IT WORKS",
+  // 2026-09-16: minis imported from old-site home pillars (verbatim).
   minis: [
-    { k: "Avg Dispatch", v: "3 MIN", s: "Real-time routing" },
-    { k: "Network", v: "24/7", s: "Vetted mechanics" },
-    { k: "Coordinates", v: "GPS PIN", s: "Sub-meter accuracy" },
+    { k: "Verified Providers", v: "KYC", s: "Identity & skill checks" },
+    { k: "Transparent Estimates", v: "APPROVE", s: "Price before work starts" },
+    { k: "Secure Payments", v: "PROTECTED", s: "Stripe & Razorpay, receipt-backed" },
   ],
   footer: "FRAME // 02 — THE REVEAL",
   footerSub: "COIMBATORE RAPID DISPATCH INFRASTRUCTURE",
@@ -95,27 +98,31 @@ export const s3 = {
   sys: "SYS_DEPLOY // REV_4.2",
   seq: "SEQUENCE INDEX // 03 — LIVE PROTOCOL",
   radar: "RADAR_ENGAGED",
-  coords: "LAT: 37.7749° N   LON: 122.4194° W",
+  coords: "LAT: 11.0283° N   LON: 76.8961° E",
   node: "NODE 03 ACTIVE",
   headline: ["FIVE STEPS.", "START TO FINISH."],
-  sub: "High-precision dispatch mechanics orchestrating rapid roadside triage, proximity vector matching, verified mechanical execution, and cryptographic sign-off.",
+  sub: "From request to completed service: ClutchD matches you with verified nearby providers in minutes — you approve the estimate before the wrench lifts, and track every step live.",
   activeTag: "ACTIVE_NODE: 03 ● RADAR_ENGAGED",
-  vector: "VECTOR: 37.7749° N, 122.4194° W",
+  vector: "VECTOR: 11.0283° N, 76.8961° E",
   routeWidth: "56%",
+  // 2026-09-16: step feet grounded to the real job lifecycle (searching →
+  // accepted → en_route → in_progress → completed) and stack facts
+  // (PostGIS matching, WebSocket tracking, Stripe/Razorpay) per
+  // docs/CLUTCHD-FACTS.md. Invented timings/specs removed.
   steps: [
     {
       n: "01",
       title: "REQUEST",
       icon: "SOS",
       body: "Tap SOS or pick a calibrated service profile; outline mechanical malfunction indicators.",
-      foot: "LATENCY: <1.2s",
+      foot: "SOS // 1 TAP",
     },
     {
       n: "02",
       title: "MATCH",
       icon: "◎",
       body: "Algorithmic proximity dispatch connects localized certified specialists by diagnostic tier.",
-      foot: "RADIUS: 8.4 MI",
+      foot: "POSTGIS NEARBY MATCH",
     },
     {
       n: "03",
@@ -123,7 +130,7 @@ export const s3 = {
       icon: "➤",
       body: "Watch arrival in sub-second telemetry mapping; continuous bidirectional audio/data link.",
       foot: "STATUS: EN ROUTE",
-      footExtra: "ETA 11M",
+      footExtra: "LIVE GPS",
       active: true,
     },
     {
@@ -131,14 +138,14 @@ export const s3 = {
       title: "FIXED",
       icon: "⚒",
       body: "Standardized roadside interventions with photographic diagnostic audit checkpoints.",
-      foot: "SPEC: ISO-9001",
+      foot: "STATUS: IN PROGRESS",
     },
     {
       n: "05",
       title: "REVIEW",
       icon: "✓",
       body: "One-tap automated ledger settlement, parts warranty logging, and technician evaluation.",
-      foot: "ESCROW SECURE",
+      foot: "STRIPE / RAZORPAY",
     },
   ] as S3Step[],
   orch: "ORCHESTRATION: AUTOMATED",
@@ -191,33 +198,88 @@ export const s4 = {
       {
         code: "04 // DIAGNOSTIC_LEDGER",
         icon: "▤",
-        title: "Service history & warranty tracking",
-        body: "Immutable service records linked directly to onboard diagnostics, warranty validation, and component lifecycle curves.",
+        title: "Digital service history",
+        body: "Your vehicle's history lives on the vehicle, not in a drawer of paper invoices — with maintenance reminders before things break.",
       },
     ] as S4Pod[],
-    // TODO(swap): role content pending — brief covers Car owners only.
+    // 2026-09-16: refreshed from old-site for-providers bullets (verbatim
+    // benefit language), cross-checked against real app features.
     Mechanics: [
       {
-        code: "TODO(swap)",
-        icon: "○",
-        title: "TODO(swap): role content pending",
-        body: "TODO(swap): Mechanics pods pending — brief covers Car owners only.",
+        code: "01 // DISCOVERY",
+        icon: "☰",
+        title: "Get discovered & receive jobs",
+        body: "Verified leads reach you directly — customers already know your rating before they call.",
+      },
+      {
+        code: "02 // SCHEDULE",
+        icon: "₹",
+        title: "Manage schedules & track jobs",
+        body: "Your queue, your availability. Take the jobs that fit and follow each one from accept to complete.",
+      },
+      {
+        code: "03 // EARNINGS",
+        icon: "✓",
+        title: "Earn and track earnings",
+        body: "Every payout lands in one ledger — transparent, receipt-backed, always reconciled.",
+      },
+      {
+        code: "04 // REPUTATION",
+        icon: "➤",
+        title: "Build ratings & reputation",
+        body: "Real feedback from real jobs compounds into a reputation that grows your customer base.",
       },
     ] as S4Pod[],
     Garages: [
       {
-        code: "TODO(swap)",
-        icon: "○",
-        title: "TODO(swap): role content pending",
-        body: "TODO(swap): Garages pods pending — brief covers Car owners only.",
+        code: "01 // FRONT_DESK",
+        icon: "⚒",
+        title: "Customers, jobs & appointments",
+        body: "Estimates, approvals, payment: it all lands in one place now. Your desk stops being a filing cabinet.",
+      },
+      {
+        code: "02 // TEAM",
+        icon: "◎",
+        title: "Mechanics & team",
+        body: "Your roster under one verified garage profile, sharing one dispatch queue.",
+      },
+      {
+        code: "03 // INVENTORY",
+        icon: "▤",
+        title: "Inventory & spare parts",
+        body: "Source spares through the same platform your customers book through — one supplier relationship.",
+      },
+      {
+        code: "04 // BILLING",
+        icon: "⚒",
+        title: "Billing & revenue analytics",
+        body: "Job volume, revenue, and rating trends in one view — know what's driving the business.",
       },
     ] as S4Pod[],
     Fleets: [
       {
-        code: "TODO(swap)",
-        icon: "○",
-        title: "TODO(swap): role content pending",
-        body: "TODO(swap): Fleets pods pending — brief covers Car owners only.",
+        code: "01 // MONITOR",
+        icon: "▣",
+        title: "Monitor vehicles & health",
+        body: "Every unit's systems in one live view — from battery to brakes, downtime becomes planned, not discovered.",
+      },
+      {
+        code: "02 // SCHEDULE",
+        icon: "➤",
+        title: "Schedule maintenance",
+        body: "Per-vehicle service reminders keep the fleet ahead of breakdowns, not reacting to them.",
+      },
+      {
+        code: "03 // DRIVERS",
+        icon: "▤",
+        title: "Manage drivers",
+        body: "Raise and track service requests for any vehicle, with every job on the record.",
+      },
+      {
+        code: "04 // INTELLIGENCE",
+        icon: "◎",
+        title: "Predictive maintenance & analytics",
+        body: "Anomalies in the data flag issues early — cut downtime before it happens.",
       },
     ] as S4Pod[],
   } as Record<string, S4Pod[]>,
@@ -235,20 +297,44 @@ export const s4 = {
 
 /* ---------------- s5 proof ---------------- */
 
+// 2026-09-16: stats + testimonials imported verbatim from old-site PROOF
+// section (docs/REFERENCE-old-site.md). Figures carry the old site's own
+// "Launch figures pending: illustrative" label — honest by design.
 export const s5 = {
-  metric: "Metric Telemetry // Realtime Engine Proof",
+  metric: "Metric Telemetry // Illustrative Proof",
   sysref: "SYS_REF: CLU-8809-D5",
   active: "ACTIVE STREAM",
-  badge: "Benchmark Metric 01",
-  giant: "3 min",
-  proof: "Average time to get matched with a certified nearby mobile mechanic.",
-  poolLabel: "TELEMETRY POOL:",
-  poolStart: 142891,
-  poolSuffix: "DISPATCHES LOGGED",
+  badge: "Launch figures pending: illustrative",
+  giant: "~18 min",
+  proof:
+    "Average response time across the network. Illustrative launch figures — real numbers update as ClutchD rolls out.",
+  poolLabel: "EARLY NETWORK:",
+  poolStart: 120, // Verified mechanics (illustrative)
+  poolSuffix: "VERIFIED MECHANICS",
   stats: [
-    { v: "14.2", u: "min", label: "Average On-Site Arrival", bar: "82%" },
-    { v: "98.4", u: "%", label: "First-Call Resolution", bar: "98.4%" },
-    { v: "4.9", u: "/ 5", label: "Verified Driver Rating", bar: "96%" },
+    { v: "120", u: "+", label: "Verified Mechanics — Illustrative", bar: "80%" },
+    { v: "35", u: "+", label: "Partner Garages — Illustrative", bar: "55%" },
+    { v: "12", u: "k+", label: "Service Records — Illustrative", bar: "92%" },
+  ],
+  testimonials: [
+    {
+      quote:
+        "My bike broke down on Trichy Road: a verified mechanic was at my spot in under twenty minutes. I watched the whole thing on the live map.",
+      name: "Ravi K",
+      role: "Two-wheeler owner · Coimbatore",
+    },
+    {
+      quote:
+        "ClutchD brings me jobs I'd never reach on my own. Customers already know my rating before they call.",
+      name: "Mohammed Irfan",
+      role: "Verified mechanic · Chennai",
+    },
+    {
+      quote:
+        "Estimates, approvals, payment: it all lands in one place now. My desk stopped being a filing cabinet.",
+      name: "Deepa Nair",
+      role: "Garage operator · Kochi",
+    },
   ],
   rail: "05/08",
 };
@@ -269,7 +355,7 @@ export const s6 = {
   live: "LIVE OPS",
   eyebrow: "INTERFACE SPECIFICATION // REALTIME WORKFLOW",
   headline: "SEE IT BEFORE YOU NEED IT.",
-  sub: "A unified system connecting drivers, emergency mechanics, parts suppliers, and fleet intelligence.",
+  sub: "Drivers, mechanics, garages, fleets, parts, payments and service history on one system — so the vehicle's story never starts over.",
   phones: [
     {
       code: "01 — AUTH_SYS",
@@ -299,7 +385,7 @@ export const s6 = {
       code: "03 — MARKETPLACE",
       meta: "03 — Marketplace",
       title: "Parts & Accessories",
-      body: "Browse verified spare parts and accessories with instant stock availability and seamless checkout.",
+      body: "Pick your make, model, and year — only see parts that actually fit, compare prices across verified suppliers, and order.",
       img: {
         src: "/stitch/media_1789467499491.jpg",
         alt: "Marketplace Screen",
@@ -344,10 +430,12 @@ export const s6 = {
       },
     },
   ] as S6Phone[],
+  // 2026-09-16: grounded per docs/CLUTCHD-FACTS.md — capability claims only,
+  // no invented volumes or percentages.
   metrics: [
-    { k: "NETWORK_DISPATCH", v: "< 14 MIN", s: "AVG TRIAGE RESPONSE" },
-    { k: "OEM_SUPPLY_VERIFIED", v: "12,400+", s: "CATEGORIZED SKUS" },
-    { k: "TRIAGE_PRECISION", v: "99.4%", s: "FIRST-PASS RESOLUTION" },
+    { k: "DISPATCH", v: "AUTOMATED", s: "POSTGIS NEARBY MATCHING" },
+    { k: "MARKETPLACE", v: "PARTS + FITMENT", s: "VEHICLE-MATCHED CATALOG" },
+    { k: "TRACKING", v: "LIVE GPS", s: "WEBSOCKET TELEMETRY" },
     { k: "COVERAGE_LOCALE", v: "COIMBATORE", s: "LIVE PILOT ZONE" },
   ],
   proceed: "PROCEED TO SLIDE 07",
@@ -360,32 +448,35 @@ export const s6 = {
 export const s7 = {
   phase: "PHASE PROTOCOL // 07.ROADMAP",
   spec: "SPEC_VER: 4.8.2 // TRAJECTORY_STABLE",
-  coord: "COORDINATE: [37.7749,-122.4194]",
+  coord: "COORDINATE: [11.0283, 76.8961]",
   eyebrow: "STRATEGIC CADENCE",
   headline: "WHERE WE'RE HEADED.",
+  // 2026-09-16: grounded per docs/CLUTCHD-FACTS.md — NOW = shipped app
+  // features; NEXT = in-flight contracts (warranty claims, fleet API are
+  // backend NEWs); LATER = statewide-first expansion. No invented counts/dates.
   rows: [
     {
       phase: "NOW",
       idx: "/ 01",
-      body: "Verified mechanics and garages you can already book across active service sectors.",
-      sub: "REAL-TIME DISPATCH VALIDATED ON 1,400+ UNITS",
+      body: "Verified mechanics, roadside help, parts, payments and service history — one ecosystem, live in Coimbatore.",
+      sub: "LIVE DISPATCH, GPS TRACKING & PARTS MARKETPLACE",
       pill: "ACTIVE DEPLOY",
       pillActive: true,
     },
     {
       phase: "NEXT",
       idx: "/ 02",
-      body: "Warranty protection on every part you buy, automatic diagnostic OBD-II sync, and full fleet contracts for commercial operations.",
-      sub: "TELEMETRY PLUG & PLAY CAN-BUS PROTOCOL",
-      pill: "Q3–Q4 2025",
+      body: "Warranty protection on every part you buy, deeper vehicle diagnostics, and full fleet contracts for commercial operations.",
+      sub: "WARRANTY CLAIMS PIPELINE / FLEET API",
+      pill: "IN DEVELOPMENT",
       pillActive: false,
     },
     {
       phase: "LATER",
       idx: "/ 03",
-      body: "Multi-city expansion across 50+ tier-1 corridors, driver subscription perks, and multi-language roadside triage.",
-      sub: "INTERSTATE LOGISTICS INFRASTRUCTURE & CORRIDORS",
-      pill: "GLOBAL ARCH",
+      body: "Statewide expansion across Tamil Nadu, driver subscription perks, and multi-language roadside triage.",
+      sub: "STATEWIDE COVERAGE, THEN INTERSTATE CORRIDORS",
+      pill: "HORIZON",
       pillActive: false,
     },
   ],
@@ -404,35 +495,45 @@ export const s8 = {
   headlineA: "NEXT BREAKDOWN,",
   headlineB: "YOU'RE ALREADY",
   headlineC: "COVERED.",
-  sub: "Autonomous mechanic telemetry instantly paired to your coordinate within 180 seconds. Eliminate wait distress through dedicated roadside infrastructure.",
+  sub: "Dispatch telemetry pairs to your coordinate the moment you request help. No call centers, no hold music — engineered for minutes, not hours.",
   cta: "GET THE APP",
-  // TODO(swap): app store links pending — rendered as buttons, no dead hrefs.
-  storeIos: "Download on the App Store",
-  storeAndroid: "Get it on Google Play",
+  // 2026-09-16: CTA reworked to APK/PWA per docs/CLUTCHD-FACTS.md — ClutchD
+  // ships as a Capacitor Android APK + installable PWA (no store listings yet).
+  // TODO(swap): apkLabel badge is non-linking until a public APK URL exists;
+  // TODO(swap): swap pwaHref to the production domain (clutchd.com) when live.
+  // TODO(swap): callHref "tel:911" below is a stand-in for the real dispatch line.
+  pwaHref: "https://clutchd.tail14cfb9.ts.net",
+  pwaTop: "INSTALLABLE PWA",
+  pwaLabel: "Open Web App",
+  apkTop: "DIRECT INSTALL",
+  apkLabel: "Android APK",
+  apkSoon: "SOON",
   urgent: "Need urgent assistance right now?",
   call: "Call 24/7 Emergency Dispatch",
   callHref: "tel:911",
   or: "OR",
   sms: "TEXT SOS",
   smsHref: "sms:SOS",
+  // 2026-09-16: cards reframed per docs/CLUTCHD-FACTS.md — pilot facts and
+  // design targets only; invented fleet/arrival/coverage stats removed.
   cards: [
     {
-      k: "FLEET READOUT",
-      v: "1,842",
-      u: "Units Active",
-      f: "● Dynamic Positioning: Locked",
+      k: "PILOT GRID",
+      v: "1",
+      u: "City Live",
+      f: "● Coimbatore — statewide next",
     },
     {
-      k: "MEAN TIME TO ARRIVAL",
-      v: "11.4",
-      u: "MINUTES",
-      f: "Metro Sector Accuracy 99.1%",
+      k: "TIME TO ARRIVAL",
+      v: "15",
+      u: "MIN TARGET",
+      f: "● Design target — pilot calibration",
     },
     {
-      k: "COVERAGE INTEGRITY",
-      v: "100%",
-      u: "ALL HIGHWAYS",
-      f: "Interstate & Suburban Corridors",
+      k: "DISPATCH DESK",
+      v: "24/7",
+      u: "",
+      f: "● SOS and dispatch, always on",
     },
   ],
   dispatch: "DISPATCH LINE: ACTIVE",

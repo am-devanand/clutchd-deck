@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import S2 from "../components/s2-reveal";
+
+export const metadata: Metadata = {
+  title: "Features — ClutchD",
+  description:
+    "Verified mechanics, transparent estimates, secure payments, parts marketplace and digital service history — one connected ecosystem.",
+};
 
 export default function Page() {
   return (

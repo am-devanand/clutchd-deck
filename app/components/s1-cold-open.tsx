@@ -1,12 +1,29 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { s1 } from "../../content/screens";
 
-const ThreeHero = dynamic(() => import("./ThreeHero"), { ssr: false });
+// 3D dispatch-core hero (three.js / R3F). Client-only (SSR skips WebGL),
+// lazy-loaded so the bundle never blocks first paint, and hidden when the
+// user prefers reduced motion (ambient animation would violate it).
+const ThreeHero = dynamic(() => import("./ThreeHero"), {
+  ssr: false,
+  loading: () => null,
+});
 
 export default function S1() {
+  // Ambient 3D respects prefers-reduced-motion.
+  const [reducedMotion, setReducedMotion] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mq.matches);
+    const onChange = () => setReducedMotion(mq.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
   return (
     <section
       aria-label="Hero"
@@ -16,6 +33,8 @@ export default function S1() {
       {/* Subtle blue radial glow top-right */}
       <div className="pointer-events-none absolute right-0 top-0 h-[600px] w-[600px] translate-x-1/3 -translate-y-1/4 rounded-full bg-blue-100/60 blur-[120px]" />
       <div className="pointer-events-none absolute left-0 bottom-0 h-[400px] w-[400px] -translate-x-1/3 translate-y-1/4 rounded-full bg-indigo-50/80 blur-[100px]" />
+      {/* 3D dispatch core (behind content, above glows) */}
+      {!reducedMotion && <ThreeHero />}
       {/* Light dot-grid pattern */}
       <svg className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.035]" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -98,10 +117,11 @@ export default function S1() {
             className="mt-14 flex flex-wrap gap-10 border-t border-slate-100 pt-8"
           >
             {[
-              { v: "3 min",  l: "Avg Dispatch" },
+              // 2026-09-16: grounded per docs/CLUTCHD-FACTS.md — no invented metrics.
+              { v: "15 min", l: "Arrival Target" },
               { v: "24/7",   l: "Active Network" },
-              { v: "98.4%",  l: "Resolution Rate" },
-              { v: "1,400+", l: "Active Units" },
+              { v: "GPS",    l: "Live Tracking" },
+              { v: "1",      l: "City Live — Coimbatore" },
             ].map((s) => (
               <div key={s.l} className="flex flex-col gap-0.5">
                 <span className="text-2xl font-black text-slate-900">{s.v}</span>

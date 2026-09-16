@@ -70,7 +70,9 @@ export default function S8() {
           className="flex flex-col items-center gap-6"
         >
           <a
-            href="#"
+            href={s8.pwaHref}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group relative overflow-hidden rounded-full bg-blue-600 px-12 py-4 text-base font-black tracking-wide text-white shadow-[0_15px_30px_-10px_rgba(37,99,235,0.4)] transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_40px_-10px_rgba(37,99,235,0.5)] active:scale-95"
           >
             <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
@@ -80,29 +82,43 @@ export default function S8() {
             </span>
           </a>
 
-          {/* Store buttons */}
+          {/* APK / PWA channels — no store listings yet (docs/CLUTCHD-FACTS.md) */}
           <div className="flex flex-wrap items-center justify-center gap-3">
-            {[
-              {
-                icon: <svg className="h-7 w-7 fill-current" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.61-.75 1.04-1.8.92-2.87-.9.04-2 .6-2.63 1.34-.56.64-1.04 1.71-.92 2.74 1 .08 2.02-.46 2.63-1.21Z" /></svg>,
-                top: "Download on the", bottom: "App Store",
-              },
-              {
-                icon: <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M3.609 1.814L13.793 12 3.61 22.186c-.39-.374-.61-.92-.61-1.558V3.372c0-.638.22-1.184.609-1.558zm11.242 11.244L4.773 23.136c.264.084.55.097.838.016.355-.098 7.37-4.225 10.375-5.946l-1.135-4.148zm0-2.116l1.135-4.148L5.611.848C5.323.767 5.037.78 4.773.864l10.078 10.078zm1.057 1.058l3.167 1.815c1.03.59 1.03 1.559 0 2.15l-3.167 1.815-1.164-2.89 1.164-2.89z" /></svg>,
-                top: "Get it on", bottom: "Google Play",
-              },
-            ].map((btn) => (
-              <button
-                key={btn.bottom}
-                className="group flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-5 py-3 text-slate-900 shadow-sm transition-all hover:border-blue-300 hover:bg-slate-50 hover:-translate-y-0.5 hover:shadow-md"
-              >
-                <span className="text-slate-600 group-hover:text-blue-600 transition-colors">{btn.icon}</span>
-                <span className="flex flex-col text-left">
-                  <span className="text-[0.55rem] font-bold uppercase leading-none tracking-wider text-slate-500">{btn.top}</span>
-                  <span className="text-sm font-bold leading-tight">{btn.bottom}</span>
+            <a
+              href={s8.pwaHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-5 py-3 text-slate-900 shadow-sm transition-all hover:border-blue-300 hover:bg-slate-50 hover:-translate-y-0.5 hover:shadow-md"
+            >
+              <span className="text-slate-600 group-hover:text-blue-600 transition-colors">
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25Z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M14.25 15.75h6m-6 3h3" />
+                </svg>
+              </span>
+              <span className="flex flex-col text-left">
+                <span className="text-[0.55rem] font-bold uppercase leading-none tracking-wider text-slate-500">{s8.pwaTop}</span>
+                <span className="text-sm font-bold leading-tight">{s8.pwaLabel}</span>
+              </span>
+            </a>
+            <button
+              type="button"
+              aria-label="Android APK coming soon"
+              className="group flex cursor-not-allowed items-center gap-3 rounded-xl border border-slate-200 bg-white px-5 py-3 text-slate-400 shadow-sm"
+            >
+              <span className="transition-colors">
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+                </svg>
+              </span>
+              <span className="flex flex-col text-left">
+                <span className="text-[0.55rem] font-bold uppercase leading-none tracking-wider">{s8.apkTop}</span>
+                <span className="flex items-center gap-2 text-sm font-bold leading-tight">
+                  {s8.apkLabel}
+                  <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[0.55rem] font-bold uppercase tracking-wider">{s8.apkSoon}</span>
                 </span>
-              </button>
-            ))}
+              </span>
+            </button>
           </div>
         </motion.div>
 

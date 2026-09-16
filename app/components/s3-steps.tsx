@@ -67,8 +67,8 @@ export default function S3() {
                         ? {
                             background: `radial-gradient(circle at 30% 30%, ${STEP_COLORS[st.n]}ee, ${STEP_COLORS[st.n]}aa)`,
                             boxShadow: `0 0 20px ${STEP_COLORS[st.n]}60`,
-                            ringColor: STEP_COLORS[st.n],
-                          }
+                            "--tw-ring-color": STEP_COLORS[st.n],
+                          } as React.CSSProperties
                         : {}
                     }
                   >
@@ -119,10 +119,10 @@ export default function S3() {
           className="flex flex-wrap items-center justify-center gap-8 rounded-2xl border border-slate-200 bg-slate-50 px-8 py-4 shadow-sm"
         >
           {[
-            { label: "Avg Response", value: "14.2 MIN" },
-            { label: "Encryption", value: "AES-256" },
+            { label: "Avg Response", value: "15 MIN TARGET" },
+            { label: "Tracking", value: "LIVE GPS" },
             { label: "Orchestration", value: "AUTOMATED" },
-            { label: "Uptime", value: "99.9%" },
+            { label: "Pilot Grid", value: "COIMBATORE" },
           ].map((m) => (
             <div key={m.label} className="flex flex-col items-center gap-1">
               <span className="font-mono text-sm font-black text-slate-900">{m.value}</span>

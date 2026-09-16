@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import S8 from "../components/s8-final";
+
+export const metadata: Metadata = {
+  title: "Early access — ClutchD",
+  description:
+    "ClutchD is rolling out in Coimbatore — be among the first to try one connected ecosystem for automotive care.",
+};
 
 export default function Page() {
   return (

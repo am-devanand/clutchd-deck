@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="w-full border-t border-slate-200 bg-slate-50">
       <div className="mx-auto max-w-7xl px-6 py-16 md:px-12 lg:px-16">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-5">
           <div className="md:col-span-2">
             <Link href="/">
               <Image
@@ -17,8 +17,8 @@ export default function Footer() {
               />
             </Link>
             <p className="max-w-xs text-sm leading-relaxed text-slate-500">
-              24/7 Roadside Assistance and Rapid Dispatch Platform.
-              Precision mechanics at your exact coordinates.
+              ClutchD connects drivers, mechanics, garages, fleets, parts, payments and
+              service history into one automotive ecosystem.
             </p>
             <div className="mt-5 flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.6)] animate-pulse" />
@@ -53,7 +53,23 @@ export default function Footer() {
                 { href: "/impact",    label: "Impact" },
                 { href: "/roadmap",   label: "Roadmap" },
                 { href: "/download",  label: "Get the App" },
-                { href: "#",          label: "Privacy Policy" },
+              ].map(({ href, label }) => (
+                <li key={label}>
+                  <Link href={href} className="text-sm font-medium text-slate-500 hover:text-blue-600 transition-colors">
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-slate-400">Legal</h3>
+            <ul className="space-y-3">
+              {[
+                { href: "/faq",     label: "FAQ" },
+                { href: "/privacy", label: "Privacy Policy" },
+                { href: "/terms",   label: "Terms of Use" },
               ].map(({ href, label }) => (
                 <li key={label}>
                   <Link href={href} className="text-sm font-medium text-slate-500 hover:text-blue-600 transition-colors">

@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { href: "/impact",       label: "Impact" },
   { href: "/app",          label: "App" },
   { href: "/roadmap",      label: "Roadmap" },
+  { href: "/faq",          label: "FAQ" },
 ];
 
 export default function Navbar() {

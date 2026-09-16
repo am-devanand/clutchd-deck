@@ -17,9 +17,9 @@ const display = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "ClutchD — 24/7 Roadside Assistance & Rapid Dispatch",
+  title: "ClutchD — Connected Automotive Care",
   description:
-    "Precision roadside response mobilized instantly. Mechanic dispatch calibrated to your exact coordinates.",
+    "On-demand verified mechanics, roadside help, parts marketplace, real-time tracking and digital service history: one connected automotive ecosystem, live in Coimbatore.",
 };
 
 export default function RootLayout({

@@ -89,8 +89,8 @@ export default function S7() {
             <span className="font-mono text-xs text-emerald-600">Dispatch Engine Ready</span>
           </div>
           <div className="flex items-center gap-2.5">
-            <span className="font-mono text-xs text-slate-500">Est. Velocity:</span>
-            <span className="font-mono text-xs font-bold text-slate-900">99.4%</span>
+            <span className="font-mono text-xs text-slate-500">Pilot Grid:</span>
+            <span className="font-mono text-xs font-bold text-slate-900">Coimbatore</span>
           </div>
         </motion.div>
       </div>

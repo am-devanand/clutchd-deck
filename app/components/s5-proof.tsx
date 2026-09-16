@@ -1,21 +1,15 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { motion } from "framer-motion";
 import { s5 } from "../../content/screens";
 
+// 2026-09-16: renders old-site PROOF content — illustrative network stats +
+// three verbatim testimonials (docs/REFERENCE-old-site.md). The former
+// auto-incrementing "telemetry pool" counter was removed: a ticking supply
+// number would misrepresent the network. Count renders static.
 export default function S5() {
-  const [count, setCount] = useState(s5.poolStart);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
-
-  useEffect(() => {
-    if (!isInView) return;
-    const id = setInterval(() => {
-      setCount((c) => c + Math.floor(Math.random() * 3) + 1);
-    }, 3400);
-    return () => clearInterval(id);
-  }, [isInView]);
 
   return (
     <section
@@ -29,16 +23,15 @@ export default function S5() {
       </div>
 
       <div className="z-10 mx-auto flex w-full max-w-5xl flex-col items-center text-center">
-        
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-blue-200 bg-blue-50 px-4 py-2"
+          className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-amber-200 bg-amber-50 px-4 py-2"
         >
-          <span className="animate-pulse text-sm">⚡</span>
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600">{s5.badge}</span>
+          <span className="h-2 w-2 rounded-full bg-amber-500" />
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-amber-700">{s5.badge}</span>
         </motion.div>
 
         {/* Giant number */}
@@ -49,7 +42,7 @@ export default function S5() {
           transition={{ duration: 1, type: "spring", bounce: 0.2 }}
           className="relative"
         >
-          <h2 className="font-black uppercase leading-none tracking-tighter text-slate-900 text-[100px] sm:text-[140px] lg:text-[180px]">
+          <h2 className="font-black uppercase leading-none tracking-tighter text-slate-900 text-[90px] sm:text-[130px] lg:text-[160px]">
             {s5.giant.split(" ")[0]}{" "}
             <span className="bg-gradient-to-br from-blue-600 to-indigo-600 bg-clip-text text-transparent drop-shadow-sm">
               {s5.giant.split(" ")[1]}
@@ -62,28 +55,28 @@ export default function S5() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="mt-8 max-w-xl text-base leading-relaxed text-slate-600"
+          className="mt-6 max-w-xl text-base leading-relaxed text-slate-600"
         >
           {s5.proof}
         </motion.p>
 
-        {/* Live counter */}
+        {/* Early network pill (static) */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="mt-6 flex items-center gap-3 rounded-full border border-slate-200 bg-white px-6 py-3 shadow-sm"
+          className="mt-5 flex items-center gap-3 rounded-full border border-slate-200 bg-white px-6 py-3 shadow-sm"
         >
-          <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.5)] animate-pulse" />
+          <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.5)]" />
           <span className="text-xs font-medium text-slate-500">{s5.poolLabel}</span>
-          <span className="font-mono text-base font-black text-slate-900">{count.toLocaleString("en-US")}</span>
+          <span className="font-mono text-base font-black text-slate-900">{s5.poolStart}</span>
           <span className="text-xs font-medium text-slate-500">{s5.poolSuffix}</span>
         </motion.div>
       </div>
 
       {/* Stat cards */}
-      <div className="z-10 mt-14 grid w-full max-w-5xl grid-cols-1 gap-5 sm:grid-cols-3">
+      <div className="z-10 mt-12 grid w-full max-w-5xl grid-cols-1 gap-5 sm:grid-cols-3">
         {s5.stats.map((st, i) => (
           <motion.div
             key={st.label}
@@ -112,6 +105,32 @@ export default function S5() {
           </motion.div>
         ))}
       </div>
+
+      {/* Testimonials — imported verbatim from old-site PROOF */}
+      <div className="z-10 mt-12 grid w-full max-w-5xl grid-cols-1 gap-5 md:grid-cols-3">
+        {s5.testimonials.map((t, i) => (
+          <motion.figure
+            key={t.name}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.8 + i * 0.15 }}
+            className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-slate-50/80 p-6 text-left shadow-sm transition-all hover:-translate-y-1 hover:border-blue-200 hover:shadow-md"
+          >
+            <blockquote className="mb-5 text-sm leading-relaxed text-slate-700">
+              <span aria-hidden="true" className="mr-1 text-lg font-black text-blue-600">&ldquo;</span>
+              {t.quote}
+            </blockquote>
+            <figcaption className="border-t border-slate-200 pt-4">
+              <span className="block text-sm font-bold text-slate-900">{t.name}</span>
+              <span className="block text-xs text-slate-500">{t.role}</span>
+            </figcaption>
+          </motion.figure>
+        ))}
+      </div>
+
+      {/* Screen-reader note: {!isInView && "stats illustrative"} */}
+      <span className="sr-only">Figures on this screen are illustrative launch figures pending real network data.</span>
     </section>
   );
 }

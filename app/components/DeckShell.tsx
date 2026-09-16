@@ -87,7 +87,8 @@ export default function DeckShell() {
       const dy = touchStartY.current - e.changedTouches[0].clientY;
       const dx = touchStartX.current! - e.changedTouches[0].clientX;
       if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 50) {
-        dy > 0 ? next() : prev();
+        if (dy > 0) next();
+        else prev();
       }
       touchStartY.current = null;
       touchStartX.current = null;

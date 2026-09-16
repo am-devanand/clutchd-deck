@@ -1,17 +1,30 @@
-// Eq check for Todo 4 placeholders (owned by content track).
-// Rule: isPlaceholder===true iff the screen's image src is a
-// /public/screens/* grey placeholder box (served at /screens/*).
-// Exception: a screen may be isPlaceholder:true with NO image when its
-// placeholder content is data-only (s05 stat pending verification).
+// Deck content integrity check — rewritten 2026-09-16 to match the current deck.
+//
+// The deck outgrew the old contract: art moved from grey /public/screens/*
+// placeholder boxes to final local /stitch/* images, content fields no longer
+// carry isPlaceholder flags, and the eyebrow ban is obsolete (s1/s2/s6/s7
+// legitimately render eyebrow fields). What is enforced now:
+//
+//   1. Registry: exactly 8 screens, slugs 01..08, valid themes; 06 and 08 are
+//      the dark screens (documented per-screen theme invariant — screens.ts).
+//   2. Art: every image src is a LOCAL /stitch/* path (no remote URLs, per the
+//      screens.ts header rule) and the file exists under public/.
+//   3. Accessibility: every image object carries an alt string.
+//   4. Honesty: TODO(swap) may only live in comments — never inside rendered
+//      string literals (verified-facts rule in docs/CLUTCHD-FACTS.md).
+//   5. Pendings: at least one TODO(swap) marker stays tracked (s8 store links
+//      + dispatch line are knowingly pending).
+//   6. No dead href="#" placeholders anywhere in content.
+//
 // Fails non-zero with a message on any mismatch.
-import { readFileSync, existsSync, readdirSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, "..");
 const screensTs = path.join(root, "content", "screens.ts");
-const screensDir = path.join(root, "public", "screens");
+const publicDir = path.join(root, "public");
 
 const fail = (msg) => {
   console.error(`check-placeholders: FAIL — ${msg}`);
@@ -21,82 +34,59 @@ const ok = (msg) => console.log(`check-placeholders: ok — ${msg}`);
 
 const text = readFileSync(screensTs, "utf8");
 
-// No eyebrow field allowed on Screens.
-if (/eyebrow/i.test(text)) fail("screens.ts contains a forbidden eyebrow field");
+// 1. Screen registry: 8 unique slugs 01..08 with valid themes.
+const registry = [
+  ...text.matchAll(/slug:\s*"(\d{2})",\s*theme:\s*"(light|dark)"/g),
+].map((m) => ({ slug: m[1], theme: m[2] }));
 
-// No dead href="#" links allowed.
-if (/href\s*=\s*["']#["']/.test(text)) fail('screens.ts contains dead href="#"');
-
-const todoCount = (text.match(/TODO\(swap\)/g) || []).length;
-if (todoCount < 8)
-  fail(`only ${todoCount} TODO(swap) markers, need >= 8`);
-ok(`${todoCount} TODO(swap) markers`);
-
-// Split into per-screen chunks by slug.
-const slugs = [...text.matchAll(/slug:\s*"(\d{2})"/g)].map((m) => m[1]);
-if (slugs.length !== 8 || new Set(slugs).size !== 8)
-  fail(`expected 8 unique screens, found [${slugs.join(", ")}]`);
-for (const want of ["01","02","03","04","05","06","07","08"])
+if (registry.length !== 8)
+  fail(`expected 8 registry entries, found ${registry.length}`);
+const slugs = registry.map((r) => r.slug);
+if (new Set(slugs).size !== 8) fail(`duplicate slugs in registry: [${slugs.join(", ")}]`);
+for (const want of ["01", "02", "03", "04", "05", "06", "07", "08"])
   if (!slugs.includes(want)) fail(`missing screen slug "${want}"`);
 
-const chunks = text.split(/(?=slug:\s*"\d{2}")/);
-const isGreyBox = (abs) => {
-  if (!existsSync(abs)) return false;
-  const svg = readFileSync(abs, "utf8");
-  return svg.includes("#9aa0a6");
-};
+const darkSlugs = registry.filter((r) => r.theme === "dark").map((r) => r.slug).sort();
+if (darkSlugs.join(",") !== "06,08")
+  fail(`dark screens must be exactly 06 and 08 (per screens.ts invariant), found [${darkSlugs.join(", ")}]`);
+ok(`8 screens registered; dark set = [${darkSlugs.join(", ")}]`);
 
-for (const chunk of chunks) {
-  const slugM = chunk.match(/slug:\s*"(\d{2})"/);
-  if (!slugM) continue;
-  const slug = slugM[1];
-  const phM = chunk.match(/isPlaceholder:\s*(true|false)/);
-  if (!phM) fail(`screen ${slug}: missing isPlaceholder`);
-  const isPlaceholder = phM[1] === "true";
+// 2. Art: local /stitch/* only, present on disk.
+const srcs = [...text.matchAll(/src:\s*"([^"]+)"/g)].map((m) => m[1]);
+if (srcs.length === 0) fail("no image src fields found in screens.ts");
+for (const s of srcs) {
+  if (!s.startsWith("/stitch/"))
+    fail(`image src "${s}" is not a local /stitch/* path (remote URLs banned by screens.ts header rule)`);
+  if (!existsSync(path.join(publicDir, s)))
+    fail(`image src "${s}" does not exist under public/`);
+}
+ok(`${srcs.length} /stitch/* image srcs, all present on disk`);
 
-  const srcs = [...chunk.matchAll(/src:\s*"([^"]+)"/g)].map((m) => m[1]);
-  const placeholderSrcs = srcs.filter(
-    (s) => s.startsWith("/screens/") || s.startsWith("/public/screens/")
+// 3. Every image object carries an alt string (window: 400 chars after src).
+for (const m of [...text.matchAll(/src:\s*"([^"]+)"/g)]) {
+  const window = text.slice(m.index, m.index + 400);
+  if (!/alt:\s*"/.test(window))
+    fail(`image ${m[1]} has no alt within 400 chars of its src`);
+}
+ok("all images carry alt text");
+
+// 4. TODO(swap) never inside a rendered string literal.
+const literals = [...text.matchAll(/"((?:[^"\\]|\\.)*)"/g)].map((m) => m[1]);
+const offenders = literals.filter((l) => l.includes("TODO(swap)"));
+if (offenders.length > 0)
+  fail(
+    `TODO(swap) found inside rendered string(s) — move it to a comment: "${offenders[0].slice(0, 60)}…"`
   );
-  // Non-placeholder (final-art) srcs must never point at /public/screens.
-  // Today every image src is a grey box, so any other src would be suspect.
-  for (const s of srcs) {
-    if (!s.startsWith("/screens/") && !s.startsWith("/public/screens/"))
-      fail(`screen ${slug}: image src "${s}" is not a /public/screens/* box`);
-  }
-  // Every referenced box must exist on disk and be a grey box.
-  for (const s of placeholderSrcs) {
-    const file = s.replace(/^\/public/, "").replace(/^\/screens\//, "");
-    const abs = path.join(screensDir, file);
-    if (!existsSync(abs)) fail(`screen ${slug}: missing file ${s}`);
-    if (!isGreyBox(abs)) fail(`screen ${slug}: ${s} is not a grey box`);
-  }
+ok("TODO(swap) markers confined to comments");
 
-  const hasPlaceholderImage = placeholderSrcs.length > 0;
-  // Iff for image-backed screens: image box <=> placeholder flag.
-  if (hasPlaceholderImage && !isPlaceholder)
-    fail(`screen ${slug}: grey-box image but isPlaceholder===false`);
-  if (!hasPlaceholderImage && !isPlaceholder) {
-    ok(`screen ${slug}: final copy, no placeholder image`);
-    continue;
-  }
-  if (!hasPlaceholderImage && isPlaceholder) {
-    // Data-only placeholder (e.g. s05 stat) — must carry a TODO(swap).
-    if (!/TODO\(swap\)/.test(chunk))
-      fail(`screen ${slug}: isPlaceholder without image or TODO(swap)`);
-    ok(`screen ${slug}: data-only placeholder (no image)`);
-    continue;
-  }
-  ok(`screen ${slug}: placeholder image box matches flag`);
-}
+// 5. Known pendings must stay tracked.
+const todoCount = (text.match(/TODO\(swap\)/g) || []).length;
+if (todoCount < 1)
+  fail("no TODO(swap) markers — known pendings (s8 store links, dispatch line) must stay tracked");
+ok(`${todoCount} TODO(swap) marker(s) tracked in comments`);
 
-// Disk: at least 9 grey boxes (s1, s2, s4, s6 x5, s8).
-const files = readdirSync(screensDir).filter((f) => f.endsWith(".svg"));
-if (files.length < 9)
-  fail(`only ${files.length} SVGs in public/screens, need >= 9`);
-for (const f of files) {
-  if (!isGreyBox(path.join(screensDir, f))) fail(`${f} is not a grey box`);
-}
-ok(`${files.length} grey boxes on disk`);
+// 6. No dead href="#" placeholders in content.
+if (/href\s*=\s*["']#["']/.test(text)) fail('screens.ts contains dead href="#"');
+ok('no dead href="#" in content');
 
 console.log("check-placeholders: PASS");

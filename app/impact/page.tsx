@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import S5 from "../components/s5-proof";
+
+export const metadata: Metadata = {
+  title: "Proof — ClutchD",
+  description:
+    "People on the road, in their own words: drivers, mechanics and garages on the ClutchD network.",
+};
 
 export default function Page() {
   return (

@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import S4 from "../components/s4-roles";
+
+export const metadata: Metadata = {
+  title: "For providers — ClutchD",
+  description:
+    "Built for everyone who keeps vehicles moving: drivers, mechanics, garages and fleets — one verified network.",
+};
 
 export default function Page() {
   return (
