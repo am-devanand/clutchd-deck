@@ -1,0 +1,31 @@
+{
+  "eyebrow": "Support",
+  "title": "Questions, <gradient>answered.</gradient>",
+  "lede": "Everything you need to know about how ClutchD works before you book.",
+  "items": [
+    {
+      "question": "How does ClutchD matching work?",
+      "answer": "ClutchD finds verified nearby providers for your request, and you can track the match in real time."
+    },
+    {
+      "question": "How do estimates and pricing work?",
+      "answer": "You see the price before work starts and approve the estimate before the wrench lifts."
+    },
+    {
+      "question": "How are providers verified?",
+      "answer": "Every mechanic and garage passes identity and skill verification (KYC) before joining the network."
+    },
+    {
+      "question": "Where is ClutchD available?",
+      "answer": "Currently rolling out in Coimbatore, with more cities planned."
+    },
+    {
+      "question": "What payment methods are supported?",
+      "answer": "Pay securely through the platform with Stripe and Razorpay."
+    },
+    {
+      "question": "What does \"Preview\" mean?",
+      "answer": "Some screens and figures on this page are illustrative previews of the product; real numbers update as ClutchD rolls out."
+    }
+  ]
+}

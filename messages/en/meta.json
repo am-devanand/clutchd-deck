@@ -1,0 +1,50 @@
+{
+  "site": {
+    "title": "ClutchD — Connected Automotive Care",
+    "description": "On-demand verified mechanics, roadside help, parts marketplace, real-time tracking and digital service history: one connected automotive ecosystem, live in Coimbatore."
+  },
+  "features": {
+    "title": "Features — ClutchD",
+    "description": "Verified mechanics, transparent estimates, secure payments, parts marketplace and digital service history — one connected ecosystem."
+  },
+  "howItWorks": {
+    "title": "How it works — ClutchD",
+    "description": "From breakdown to back on the road: request, match, accept, en route, in progress, done — six real job states with live tracking."
+  },
+  "forYou": {
+    "title": "For providers — ClutchD",
+    "description": "Built for everyone who keeps vehicles moving: drivers, mechanics, garages and fleets — one verified network."
+  },
+  "impact": {
+    "title": "Proof — ClutchD",
+    "description": "People on the road, in their own words: drivers, mechanics and garages on the ClutchD network."
+  },
+  "roadmap": {
+    "title": "Roadmap — ClutchD",
+    "description": "Where ClutchD is headed: deeper diagnostics, fleet contracts, and statewide expansion from Coimbatore across Tamil Nadu."
+  },
+  "download": {
+    "title": "Early access — ClutchD",
+    "description": "ClutchD is rolling out in Coimbatore — be among the first to try one connected ecosystem for automotive care."
+  },
+  "faq": {
+    "title": "FAQ — ClutchD",
+    "description": "Straight answers about how ClutchD works, what it costs, and how your data is handled."
+  },
+  "app": {
+    "title": "App showcase — ClutchD",
+    "description": "A guided tour of the ClutchD app: authentication, dashboard, parts marketplace, service history, settings and vehicles — one system end to end."
+  },
+  "classic": {
+    "title": "Classic deck — ClutchD",
+    "description": "The full ClutchD story in one scroll: dispatch, matching, tracking, roles, proof, roadmap and early access."
+  },
+  "privacy": {
+    "title": "Privacy policy — ClutchD",
+    "description": "How ClutchD handles information when you visit the site or sign up for early access."
+  },
+  "terms": {
+    "title": "Terms of use — ClutchD",
+    "description": "The terms that apply when you use the ClutchD site or sign up for early access."
+  }
+}

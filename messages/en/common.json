@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "features": "Features",
+    "howItWorks": "How it Works",
+    "forYou": "For You",
+    "impact": "Impact",
+    "app": "App",
+    "roadmap": "Roadmap",
+    "faq": "FAQ",
+    "download": "Get the App"
+  },
+  "footer": {
+    "blurb": "ClutchD connects drivers, mechanics, garages, fleets, parts, payments and service history into one automotive ecosystem.",
+    "liveBadge": "Live in Coimbatore",
+    "platform": "Platform",
+    "company": "Company",
+    "legal": "Legal",
+    "platformLinks": {
+      "features": "Features",
+      "howItWorks": "How it Works",
+      "forYou": "For You",
+      "app": "App Showcase"
+    },
+    "companyLinks": {
+      "impact": "Impact",
+      "roadmap": "Roadmap",
+      "download": "Get the App"
+    },
+    "legalLinks": {
+      "faq": "FAQ",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Use"
+    },
+    "rights": "ClutchD. All rights reserved."
+  },
+  "back": "Back to ClutchD"
+}
