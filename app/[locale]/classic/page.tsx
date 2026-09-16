@@ -1,14 +1,31 @@
-import S1 from "../components/s1-cold-open";
-import S2 from "../components/s2-reveal";
-import S3 from "../components/s3-steps";
-import S4 from "../components/s4-roles";
-import S5 from "../components/s5-proof";
-import S6 from "../components/s6-guide";
-import S7 from "../components/s7-roadmap";
-import S8 from "../components/s8-final";
-import SplashScreen from "../components/splash-screen";
-import Logo from "../components/logo";
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+import { pageMeta } from "../../../i18n/seo";
+import S1 from "../../components/s1-cold-open";
+import S2 from "../../components/s2-reveal";
+import S3 from "../../components/s3-steps";
+import S4 from "../../components/s4-roles";
+import S5 from "../../components/s5-proof";
+import S6 from "../../components/s6-guide";
+import S7 from "../../components/s7-roadmap";
+import S8 from "../../components/s8-final";
+import SplashScreen from "../../components/splash-screen";
+import Logo from "../../components/logo";
 import Image from "next/image";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "meta.classic" });
+  return pageMeta({
+    locale,
+    path: "/classic",
+    meta: { title: t("title"), description: t("description") },
+  });
+}
 
 export default function ClassicHome() {
   return (
