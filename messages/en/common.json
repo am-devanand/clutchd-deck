@@ -34,6 +34,20 @@
     "rights": "ClutchD. All rights reserved."
   },
   "back": "Back to ClutchD",
+  "classic": {
+    "navFeatures": "Features",
+    "navHow": "How it Works",
+    "navImpact": "Proof",
+    "navRoadmap": "Roadmap",
+    "cta": "Get the App",
+    "tagline": "24/7 roadside assistance and rapid dispatch platform.",
+    "colServices": "Services",
+    "colAbout": "About",
+    "colContact": "Contact",
+    "colPrivacy": "Privacy Policy",
+    "colTerms": "Terms of Service",
+    "rights": "ClutchD. All rights reserved."
+  },
   "notFound": {
     "title": "This road doesn't exist.",
     "body": "The page you're looking for has moved or never existed. Let's get you back on the route.",
