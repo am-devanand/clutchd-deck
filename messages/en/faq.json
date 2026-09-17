@@ -2,6 +2,45 @@
   "eyebrow": "Support",
   "title": "Questions, <gradient>answered.</gradient>",
   "lede": "Everything you need to know about how ClutchD works before you book.",
+  "categories": [
+    {
+      "t": "Using ClutchD",
+      "items": [
+        0,
+        5,
+        11
+      ]
+    },
+    {
+      "t": "Pricing & payments",
+      "items": [
+        1,
+        4,
+        6
+      ]
+    },
+    {
+      "t": "Service area & data",
+      "items": [
+        3,
+        7,
+        8
+      ]
+    },
+    {
+      "t": "Trust & safety",
+      "items": [
+        2,
+        9
+      ]
+    },
+    {
+      "t": "For mechanics",
+      "items": [
+        10
+      ]
+    }
+  ],
   "items": [
     {
       "question": "How does ClutchD matching work?",
@@ -26,6 +65,30 @@
     {
       "question": "What does \"Preview\" mean?",
       "answer": "Some screens and figures on this page are illustrative previews of the product; real numbers update as ClutchD rolls out."
+    },
+    {
+      "question": "How much does a job cost?",
+      "answer": "Every job shows a full estimate — labour and parts — before work starts. You approve before the wrench lifts, then pay securely in-platform via Stripe or Razorpay."
+    },
+    {
+      "question": "Which areas are serviced?",
+      "answer": "ClutchD runs in Coimbatore today and opens in more Tamil Nadu cities as the pilot proves each stage. Join early access and we'll tell you when your city opens."
+    },
+    {
+      "question": "What happens to my data?",
+      "answer": "Early-access emails are used only for launch announcements, and site analytics run cookie-free with no personal data. See the Privacy Policy for the full detail."
+    },
+    {
+      "question": "Can I trust a mechanic I've never met?",
+      "answer": "Every provider passes identity and skill verification (KYC) before joining. You see the estimate before they arrive, track them live on the map, and pay in-platform with a receipt."
+    },
+    {
+      "question": "I'm a mechanic. How do I join?",
+      "answer": "Sign up for early access and complete KYC identity and skill verification. Once verified, jobs come to you directly — manage your availability and build ratings that bring more customers."
+    },
+    {
+      "question": "Can I cancel a request?",
+      "answer": "Yes. Cancel before a mechanic accepts and there's no charge. Every request, including cancelled ones, shows up in your service history."
     }
   ]
 }
