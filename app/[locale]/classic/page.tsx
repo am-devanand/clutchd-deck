@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { pageMeta } from "../../../i18n/seo";
 import S1 from "../../components/s1-cold-open";
 import S2 from "../../components/s2-reveal";
@@ -27,12 +27,21 @@ export async function generateMetadata({
   });
 }
 
-export default function ClassicHome() {
+export default async function ClassicHome({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  // Copy-i18n fix: header/footer copy comes from common.classic so /ta
+  // renders Tamil here instead of hardcoded English. No visual change.
+  const t = await getTranslations({ locale, namespace: "common.classic" });
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans">
+    <div className="min-h-screen bg-paper text-ink font-sans">
       <SplashScreen />
       {/* Top Navigation */}
-      <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/90 backdrop-blur-md transition-colors">
+      <header className="sticky top-0 z-50 w-full border-b border-line bg-paper/90 backdrop-blur-md transition-colors">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-12 lg:px-16">
           <div className="flex items-center">
             <Image
@@ -44,15 +53,15 @@ export default function ClassicHome() {
               className="h-14 w-auto object-contain"
             />
           </div>
-          <nav className="hidden items-center gap-8 md:flex font-medium text-slate-600">
-            <a href="#features" className="hover:text-[#1A5CFF] transition-colors">Features</a>
-            <a href="#how-it-works" className="hover:text-[#1A5CFF] transition-colors">How it Works</a>
-            <a href="#impact" className="hover:text-[#1A5CFF] transition-colors">Impact</a>
-            <a href="#roadmap" className="hover:text-[#1A5CFF] transition-colors">Roadmap</a>
+          <nav className="hidden items-center gap-8 md:flex font-medium text-muted">
+            <a href="#features" className="hover:text-beacon transition-colors">{t("navFeatures")}</a>
+            <a href="#how-it-works" className="hover:text-beacon transition-colors">{t("navHow")}</a>
+            <a href="#impact" className="hover:text-beacon transition-colors">{t("navImpact")}</a>
+            <a href="#roadmap" className="hover:text-beacon transition-colors">{t("navRoadmap")}</a>
           </nav>
           <div className="flex items-center">
-            <button className="rounded-full bg-[image:var(--gradient-primary)] px-6 py-2.5 font-bold tracking-wide text-white shadow-[var(--shadow-elegant)] transition-all hover:opacity-90 hover:scale-105 active:scale-95">
-              Get the App
+            <button className="rounded-full bg-[#1A5CFF] px-6 py-2.5 font-bold tracking-wide text-white shadow-[var(--shadow-elegant)] transition-all hover:bg-[#0044FF] hover:scale-105 active:scale-95">
+              {t("cta")}
             </button>
           </div>
         </div>
@@ -63,54 +72,54 @@ export default function ClassicHome() {
         <div id="hero">
           <S1 />
         </div>
-        <div id="features" className="border-t border-slate-100 bg-slate-50/50">
+        <div id="features" className="rn-section border-t border-line">
           <S2 />
         </div>
-        <div id="how-it-works" className="border-t border-slate-100">
+        <div id="how-it-works" className="rn-section border-t border-line">
           <S3 />
         </div>
-        <div id="roles" className="border-t border-slate-100 bg-slate-50/50">
+        <div id="roles" className="rn-section border-t border-line">
           <S4 />
         </div>
-        <div id="impact" className="border-t border-slate-100">
+        <div id="impact" className="rn-section border-t border-line">
           <S5 />
         </div>
-        <div id="showcase" className="border-t border-slate-100 bg-slate-50/50">
+        <div id="showcase" className="rn-section border-t border-line">
           <S6 />
         </div>
-        <div id="roadmap" className="border-t border-slate-100">
+        <div id="roadmap" className="rn-section border-t border-line">
           <S7 />
         </div>
-        <div id="cta" className="border-t border-slate-100 bg-slate-50/50">
+        <div id="cta" className="rn-section border-t border-line">
           <S8 />
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="w-full border-t border-slate-200 bg-white px-6 py-12 md:px-12 lg:px-16">
+      <footer className="w-full border-t border-line bg-[#F8FAFC] px-6 py-12 md:px-12 lg:px-16">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-center">
           <div className="flex flex-col gap-4">
             <div className="flex items-center">
               <Logo className="h-10 w-auto opacity-90 hover:opacity-100 transition-opacity" />
             </div>
-            <p className="max-w-xs text-sm text-slate-500">
-              24/7 Roadside Assistance and Rapid Dispatch Platform.
+            <p className="max-w-xs text-sm text-muted">
+              {t("tagline")}
             </p>
           </div>
-          <div className="flex gap-12 font-medium text-slate-600">
+          <div className="flex gap-12 font-medium text-muted">
             <div className="flex flex-col gap-3">
-              <a href="#" className="hover:text-[#1A5CFF]">Services</a>
-              <a href="#" className="hover:text-[#1A5CFF]">About Us</a>
-              <a href="#" className="hover:text-[#1A5CFF]">Contact</a>
+              <a href="#" className="hover:text-beacon">{t("colServices")}</a>
+              <a href="#" className="hover:text-beacon">{t("colAbout")}</a>
+              <a href="#" className="hover:text-beacon">{t("colContact")}</a>
             </div>
             <div className="flex flex-col gap-3">
-              <a href="#" className="hover:text-[#1A5CFF]">Privacy Policy</a>
-              <a href="#" className="hover:text-[#1A5CFF]">Terms of Service</a>
+              <a href="#" className="hover:text-beacon">{t("colPrivacy")}</a>
+              <a href="#" className="hover:text-beacon">{t("colTerms")}</a>
             </div>
           </div>
         </div>
-        <div className="mx-auto mt-12 max-w-7xl border-t border-slate-100 pt-8 text-sm text-slate-400">
-          &copy; {new Date().getFullYear()} ClutchD. All rights reserved.
+        <div className="mx-auto mt-12 max-w-7xl border-t border-line pt-8 text-sm text-muted">
+          &copy; {new Date().getFullYear()} {t("rights")}
         </div>
       </footer>
     </div>

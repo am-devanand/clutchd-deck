@@ -18,11 +18,16 @@ export default function FaqAccordion({
         return (
           <div
             key={item.question}
-            className={`overflow-hidden rounded-2xl border transition-all duration-300 ${
+            className="rn-card overflow-hidden"
+            style={
               isOpen
-                ? "border-blue-200 bg-white shadow-[0_10px_30px_-15px_rgba(37,99,235,0.25)]"
-                : "border-slate-200 bg-slate-50/60 hover:border-slate-300"
-            }`}
+                ? {
+                    borderColor: "var(--beacon)",
+                    boxShadow:
+                      "0 0 0 2px rgba(26,92,255,0.45), 0 10px 30px -15px rgba(26,92,255,0.35)",
+                  }
+                : undefined
+            }
           >
             <button
               type="button"
@@ -32,13 +37,13 @@ export default function FaqAccordion({
               onClick={() => setOpen(isOpen ? null : i)}
               className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
             >
-              <span className="text-base font-bold text-slate-900">{item.question}</span>
+              <span className="text-base font-bold text-ink">{item.question}</span>
               <span
                 aria-hidden="true"
                 className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-lg font-black leading-none transition-all duration-300 ${
                   isOpen
-                    ? "rotate-45 border-blue-200 bg-blue-50 text-blue-600"
-                    : "border-slate-200 bg-white text-slate-400"
+                    ? "rotate-45 border-transparent bg-beacon text-white"
+                    : "border-line bg-white text-muted"
                 }`}
               >
                 +
@@ -53,7 +58,7 @@ export default function FaqAccordion({
               }`}
             >
               <div className="overflow-hidden">
-                <p className="px-6 pb-6 text-sm leading-relaxed text-slate-600">{item.answer}</p>
+                <p className="px-6 pb-6 text-sm leading-relaxed text-muted">{item.answer}</p>
               </div>
             </div>
           </div>

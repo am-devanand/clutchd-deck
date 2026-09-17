@@ -11,7 +11,7 @@ import Footer from "../components/Footer";
 const sans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const display = Plus_Jakarta_Sans({
@@ -60,7 +60,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${display.variable} ${sans.variable} ${tamil.variable} antialiased bg-white text-slate-900 min-h-screen flex flex-col`}
+        className={`${display.variable} ${sans.variable} ${tamil.variable} antialiased bg-paper text-ink min-h-screen flex flex-col`}
         suppressHydrationWarning
       >
         <NextIntlClientProvider messages={messages}>
