@@ -21,6 +21,24 @@
     "packet": "PACKET ID #884-CQ",
     "proceed": "PROCEED WITH SEQUENCE",
     "rail": "01/08",
+    "promise": "Breakdowns do not check the clock. ClutchD pairs one-tap SOS dispatch with live tracking, upfront estimates, and digital service history, so a dead battery or a flat tyre becomes a handled job, not a long night.",
+    "trustTitle": "Why drivers trust ClutchD",
+    "trust": [
+      {
+        "t": "Verified before they arrive",
+        "body": "Every provider passes identity and skill checks. You see their rating before they reach you."
+      },
+      {
+        "t": "Priced before work starts",
+        "body": "The estimate lands first. You approve it, then the wrench lifts. No surprises on the invoice."
+      },
+      {
+        "t": "Tracked to the finish",
+        "body": "Watch arrival live on the map, chat in-app, and keep the finished job in your vehicle's history."
+      }
+    ],
+    "sosTitle": "What the SOS button does",
+    "sosBody": "One tap broadcasts your location to verified nearby mechanics. Watch the match happen live, track arrival on the map, and message your mechanic in-app. No call centers, no hold music.",
     "ctaPrimary": "Explore Platform",
     "ctaSecondary": "Emergency SOS",
     "stats": [
@@ -98,9 +116,60 @@
     ],
     "footer": "FRAME // 02 — THE REVEAL",
     "footerSub": "COIMBATORE RAPID DISPATCH INFRASTRUCTURE",
+    "pillarsTitle": "Three pillars, one promise",
+    "pillarsSub": "Everything ClutchD does stands on three ideas from day one.",
+    "pillars": [
+      {
+        "t": "Verified providers",
+        "body": "Every mechanic and garage passes identity and skill checks (KYC) before joining the network. No anonymous strangers at your breakdown."
+      },
+      {
+        "t": "Transparent estimates",
+        "body": "See the price before the work starts. You approve the estimate, then the wrench lifts. Labour and parts are shown separately."
+      },
+      {
+        "t": "Secure payments",
+        "body": "Pay through the platform with Stripe and Razorpay. Every payment is protected and receipt-backed."
+      }
+    ],
+    "commitmentsTitle": "TRUST — know exactly who you are dealing with",
+    "commitmentsSub": "Five commitments that make automotive care something you can rely on.",
+    "commitments": [
+      {
+        "code": "KYC",
+        "t": "Verified mechanics and garages",
+        "body": "Identity and skill verification before anyone joins the network."
+      },
+      {
+        "code": "ESTIMATE",
+        "t": "Transparent estimates",
+        "body": "See the price before work starts. Approve it, then work begins."
+      },
+      {
+        "code": "RATINGS",
+        "t": "Ratings and reviews",
+        "body": "Real feedback from real jobs keeps the network honest."
+      },
+      {
+        "code": "PAYMENTS",
+        "t": "Secure payments",
+        "body": "Stripe and Razorpay. Protected and receipt-backed, every time."
+      },
+      {
+        "code": "RECORDS",
+        "t": "Digital service records",
+        "body": "History lives on the vehicle, not in a drawer of paper invoices."
+      }
+    ],
+    "marketplace": {
+      "fitmentTitle": "Only parts that fit your vehicle",
+      "fitmentBody": "Pick your make, model, and year, and only see parts that actually fit your vehicle. No guessing, no wrong-order roulette.",
+      "compareTitle": "Compare prices before you order",
+      "compareBody": "Compare prices across verified suppliers before you order. No more phoning around for quotes."
+    },
     "image": {
       "src": "/stitch/media_1789468692674.jpg",
-      "alt": "ClutchD Mobile App Live Interface",
+      "alt": "ClutchD customer profile screen with ACTIVE badge, order stats, and account shortcuts",
       "width": 800,
       "height": 1700
     }
@@ -185,7 +254,21 @@
         "value": "COIMBATORE"
       }
     ],
-    "rail": "03/08"
+    "rail": "03/08",
+    "plainTitle": "In plain words",
+    "plainBody": "Your vehicle stops. You tell us where you are and what happened. We find a verified mechanic nearby. You watch them arrive, approve the price before work starts, then pay and rate. The job joins your vehicle's history on its own.",
+    "targetsTitle": "How fast? Our design targets",
+    "targetsNote": "These are engineering targets we calibrate during the Coimbatore pilot, not promised arrival times. Traffic, distance, and part availability change every job.",
+    "stepTargets": [
+      "Design target: raise a request in about a minute, location included.",
+      "Design target: match with a verified nearby provider in minutes.",
+      "Design target: a live ETA you can watch on the map.",
+      "Design target: an estimate you approve before work begins.",
+      "Design target: pay, rate, and save the record in one tap."
+    ],
+    "cancelTitle": "Changed your mind?",
+    "cancelBody": "You can cancel a request before a mechanic accepts, and every cancelled dispatch stays visible in your history. If a match fails, request again and the system re-searches nearby providers.",
+    "faqCta": "More questions? See the FAQ."
   },
   "s4": {
     "eyebrow": "Tailored Experience",
@@ -320,6 +403,13 @@
     "coords": "LAT: 11.0283° N // LON: 76.8961° E",
     "advanceLabel": "ADVANCE TO DISPATCH ARCHITECTURE",
     "rail": "04/08",
+    "closerTitle": "Ready when you are",
+    "closers": {
+      "Car owners": "Drive in or around Coimbatore? Get early access and raise your first SOS with a verified mechanic.",
+      "Mechanics": "Mechanic with ID and trade skills? Pass KYC verification and start receiving verified leads.",
+      "Garages": "Run a garage in Coimbatore? Bring your team onto one verified profile and one dispatch queue.",
+      "Fleets": "Manage vehicles commercially? Register your fleet for bookings, reminders, and maintenance tracking."
+    },
     "image": {
       "src": "/stitch/media_1789467779145.jpg",
       "alt": "ClutchD App Live Service Request",
@@ -332,6 +422,7 @@
     "sysref": "SYS_REF: CLU-8809-D5",
     "active": "ACTIVE STREAM",
     "badge": "Launch figures pending: illustrative",
+    "homeTitle": "Drivers, mechanics, garages — in their own words.",
     "giant": "~18 min",
     "proof": "Average response time across the network. Illustrative launch figures — real numbers update as ClutchD rolls out.",
     "poolLabel": "EARLY NETWORK:",
@@ -375,7 +466,14 @@
         "role": "Garage operator · Kochi"
       }
     ],
-    "rail": "05/08"
+    "rail": "05/08",
+    "methodTitle": "How we will measure this",
+    "methodBody": [
+      "When the pilot produces real numbers, response times will come from dispatch logs, network size from verified KYC records, and service history from completed jobs. One source per figure, no blending.",
+      "Until then, every figure on this screen stays labeled illustrative. Launch illustrations show the shape of the network we are building, not results we have measured."
+    ],
+    "scopeTitle": "Pilot scope, honestly",
+    "scopeBody": "ClutchD runs today in one city: Coimbatore. The mechanics, garages, and response figures above are launch illustrations, not measured results. Real numbers replace them as the rollout progresses."
   },
   "s6": {
     "sysref": "SYS_REF: ARCH_GALLERY_V6",
@@ -401,13 +499,13 @@
         }
       },
       {
-        "code": "02 — DASHBOARD",
-        "meta": "02 — Dashboard",
-        "title": "Command Center",
+        "code": "02 — PROFILE",
+        "meta": "02 — Profile",
+        "title": "Account & Profile",
         "body": "Central hub for your active orders, referrals, account details, and active subscriptions.",
         "img": {
           "src": "/stitch/media_1789468692674.jpg",
-          "alt": "Dashboard Screen",
+          "alt": "Customer profile screen",
           "width": 700,
           "height": 1500
         }
@@ -485,7 +583,14 @@
     ],
     "proceed": "PROCEED TO SLIDE 07",
     "proceedSub": "FLEET TELEMETRY & SOS",
-    "rail": "06 / 08"
+    "rail": "06 / 08",
+    "closerTitle": "One system, end to end",
+    "closerBody": "Authentication, dashboard, marketplace, history, settings, and vehicles: six screens that carry one job from SOS to service record. Install the PWA or the Android APK (com.clutchd.app) and walk the whole flow yourself.",
+    "installSteps": [
+      "Open the web app link and add it to your home screen.",
+      "Sign in and register your first vehicle.",
+      "Raise a request, or browse parts that fit your vehicle."
+    ]
   },
   "s7": {
     "phase": "PHASE PROTOCOL // 07.ROADMAP",
@@ -527,7 +632,15 @@
     "pilotValue": "Coimbatore",
     "velocity": "EST_VELOCITY: 99.4%",
     "page": "PAGE 07 // DEPLOYMENT HORIZONS",
-    "rail": "07/08"
+    "rail": "07/08",
+    "expansionTitle": "Coimbatore first, Tamil Nadu next",
+    "expansionBody": "ClutchD is live in Coimbatore, our proving ground. Every dispatch, estimate, and review here teaches the system before it opens in the next city. Statewide coverage across Tamil Nadu is the horizon; interstate corridors come after.",
+    "details": [
+      "Phase one, already live: roadside dispatch with live GPS tracking, upfront estimates, Stripe and Razorpay payments, the parts marketplace, and digital service history.",
+      "In development now: warranty claims on marketplace parts, deeper vehicle diagnostics, and fleet contracts for commercial operations.",
+      "On the horizon: Tamil Nadu statewide expansion, driver subscription perks, and multi-language roadside triage. No dates promised; each phase opens when the pilot proves it."
+    ],
+    "honesty": "We do not announce dates we cannot keep. Each phase opens when the current one proves itself in Coimbatore."
   },
   "s8": {
     "sys": "SYS.V3.42 // RECOVERY PROTOCOL DECK",
@@ -577,6 +690,21 @@
     "end": "END OF SEQUENCE",
     "endNum": "08 // 08",
     "rail": "POS 08/08",
-    "railTerm": "TERM"
+    "railTerm": "TERM",
+    "stepsTitle": "Get set up in minutes",
+    "steps": [
+      "Open the web app in your browser and add it to your home screen. It installs as a PWA and works like a native app.",
+      "Android users can also install the ClutchD APK directly (package com.clutchd.app) once the public download is published.",
+      "Sign in, add your vehicle, and you are ready to raise an SOS or browse parts."
+    ],
+    "reqTitle": "What you need",
+    "reqBody": "A modern Android phone or any phone with a web browser. The PWA needs no store download; the Android APK installs directly. An internet connection is required for live dispatch and tracking.",
+    "includesTitle": "Early access includes",
+    "includes": [
+      "SOS roadside dispatch in Coimbatore",
+      "Live GPS tracking and in-app chat",
+      "Parts marketplace with fitment check",
+      "Digital service history for your vehicle"
+    ]
   }
 }

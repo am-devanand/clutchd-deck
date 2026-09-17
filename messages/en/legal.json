@@ -39,6 +39,31 @@
         "body": [
           "Questions about this policy or your data? Email clutchd04dsvs@gmail.com."
         ]
+      },
+      {
+        "h": "6. Your rights and erasure",
+        "body": [
+          "You can ask what data we hold about you, correct it, or have it deleted. Email clutchd04dsvs@gmail.com with the subject Erasure Request and we will confirm removal.",
+          "This page's Tamil translation is informational; the English version governs in any dispute."
+        ]
+      },
+      {
+        "h": "7. How long we keep data",
+        "body": [
+          "Early-access emails are kept until the launch rollout completes or until you ask for removal, whichever comes first. Analytics contain no personal data and need no retention schedule."
+        ]
+      },
+      {
+        "h": "8. India's DPDP Act",
+        "body": [
+          "ClutchD is built for India's Digital Personal Data Protection Act: consent before collection, purpose-limited use, and reasonable safeguards. Full compliance documentation ships with the public launch; until then this page describes current practice."
+        ]
+      },
+      {
+        "h": "9. Processors",
+        "body": [
+          "Payments are processed by Stripe and Razorpay; push notifications use Firebase Cloud Messaging (FCM); crash monitoring uses Sentry. Each processes only the data its job needs, under its own published policy."
+        ]
       }
     ]
   },
@@ -77,6 +102,32 @@
         "h": "5. Contact",
         "body": [
           "Questions about these terms? Email clutchd04dsvs@gmail.com."
+        ]
+      },
+      {
+        "h": "6. Your obligations",
+        "body": [
+          "Provide accurate location and vehicle details when requesting help.",
+          "Treat providers respectfully; abuse or threats end the job and may end your access.",
+          "Pay for approved work through the platform; off-platform settlements lose receipt protection."
+        ]
+      },
+      {
+        "h": "7. Limitation of liability",
+        "body": [
+          "ClutchD connects you with independent verified providers; roadside work carries real-world risk. To the extent permitted by law, ClutchD is not liable for indirect or consequential losses from a job. TODO(swap): jurisdiction-specific caps to be set by counsel before public launch."
+        ]
+      },
+      {
+        "h": "8. Termination",
+        "body": [
+          "We may suspend or end access for misuse, fraud, or safety concerns. You may stop using the service at any time and request data erasure under the Privacy Policy."
+        ]
+      },
+      {
+        "h": "9. Intellectual property",
+        "body": [
+          "ClutchD names, marks, visuals, and copy belong to ClutchD. Do not reuse them without written permission. TODO(swap): registered-office and governing-law details to be added by counsel before public launch."
         ]
       }
     ]

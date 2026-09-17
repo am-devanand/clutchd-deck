@@ -92,7 +92,7 @@ export const s2 = {
   footerSub: "COIMBATORE RAPID DISPATCH INFRASTRUCTURE",
   image: {
     src: "/stitch/media_1789468692674.jpg",
-    alt: "ClutchD Mobile App Live Interface",
+    alt: "ClutchD customer profile screen with ACTIVE badge, order stats, and account shortcuts",
     width: 800,
     height: 1700,
   },
@@ -416,13 +416,13 @@ export const s6 = {
       },
     },
     {
-      code: "02 — DASHBOARD",
-      meta: "02 — Dashboard",
-      title: "Command Center",
+      code: "02 — PROFILE",
+      meta: "02 — Profile",
+      title: "Account & Profile",
       body: "Central hub for your active orders, referrals, account details, and active subscriptions.",
       img: {
         src: "/stitch/media_1789468692674.jpg",
-        alt: "Dashboard Screen",
+        alt: "Customer profile screen",
         width: 700,
         height: 1500,
       },
