@@ -12,27 +12,27 @@ export default function S5() {
   const t = useTranslations("screens.s5");
   const stats = t.raw("stats") as { v: string; u: string; label: string; bar: string }[];
   const testimonials = t.raw("testimonials") as { quote: string; name: string; role: string }[];
+  const methodBody = t.raw("methodBody") as string[];
   const ref = useRef(null);
 
   return (
     <section
       ref={ref}
       aria-label="Impact"
-      className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-white px-6 md:px-12 lg:px-16"
+      className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-paper px-6 md:px-12 lg:px-16"
     >
       {/* Gradient mesh wall */}
       <div className="u-mesh" />
 
       <div className="z-10 mx-auto flex w-full max-w-5xl flex-col items-center text-center">
-        {/* Badge */}
+        {/* Badge pill */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-amber-200/70 bg-amber-50/80 px-4 py-2 backdrop-blur"
+          className="rn-eyebrow mb-6"
         >
-          <span className="h-2 w-2 rounded-full bg-amber-500" />
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-amber-700">{t("badge")}</span>
+          <span>{t("badge")}</span>
         </motion.div>
 
         {/* Giant number */}
@@ -43,9 +43,9 @@ export default function S5() {
           transition={{ duration: 1, type: "spring", bounce: 0.2 }}
           className="relative"
         >
-          <h2 className="font-black uppercase leading-none tracking-tighter text-slate-900 text-[90px] sm:text-[130px] lg:text-[160px]">
+          <h2 className="font-black leading-[1.02] tracking-tight text-balance text-ink text-[90px] sm:text-[130px] lg:text-[160px]">
             {t("giant").split(" ")[0]}{" "}
-            <span className="u-grad-text drop-shadow-sm">
+            <span className="text-beacon">
               {t("giant").split(" ")[1]}
             </span>
           </h2>
@@ -56,7 +56,7 @@ export default function S5() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="mt-6 max-w-xl text-base leading-relaxed text-slate-600"
+          className="mt-6 max-w-xl text-base leading-relaxed text-muted"
         >
           {t("proof")}
         </motion.p>
@@ -70,15 +70,15 @@ export default function S5() {
           className="u-glass mt-5 flex items-center gap-3 rounded-full px-6 py-3"
         >
           <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.5)]" />
-          <span className="text-xs font-medium text-slate-500">{t("poolLabel")}</span>
+          <span className="text-xs font-medium text-muted">{t("poolLabel")}</span>
           {/* raw(): poolStart is a number — t() would throw on non-strings */}
-          <span className="font-mono text-base font-black text-slate-900">{t.raw("poolStart")}</span>
-          <span className="text-xs font-medium text-slate-500">{t("poolSuffix")}</span>
+          <span className="font-mono text-base font-black text-ink">{t.raw("poolStart")}</span>
+          <span className="text-xs font-medium text-muted">{t("poolSuffix")}</span>
         </motion.div>
       </div>
 
-      {/* Stat cards */}
-      <div className="z-10 mt-12 grid w-full max-w-5xl grid-cols-1 gap-5 sm:grid-cols-3">
+      {/* Stat trio with dividers */}
+      <div className="rn-stat-row z-10 mt-12 w-full max-w-5xl rounded-2xl border border-line bg-white/80 py-6 backdrop-blur">
         {stats.map((st, i) => (
           <motion.div
             key={st.label}
@@ -86,23 +86,21 @@ export default function S5() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.6 + i * 0.15 }}
-            className="group u-glass u-lift relative overflow-hidden rounded-2xl p-6 transition-shadow hover:shadow-lg"
+            className="flex flex-1 flex-col items-center gap-1 px-6 py-2 text-center"
           >
-            <div className="relative z-10">
-              <div className="mb-3 flex items-baseline gap-1.5">
-                <span className="u-grad-text text-4xl font-black">{st.v}</span>
-                <span className="u-grad-text text-xl font-bold">{st.u}</span>
-              </div>
-              <p className="mb-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">{st.label}</p>
-              <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: st.bar }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.5, delay: 0.8 + i * 0.1, ease: "easeOut" }}
-                  className="h-full rounded-full bg-gradient-to-r from-indigo-600 to-cyan-500"
-                />
-              </div>
+            <div className="flex items-baseline gap-1.5">
+              <span className="text-4xl font-black tabular-nums text-ink">{st.v}</span>
+              <span className="text-xl font-bold text-beacon">{st.u}</span>
+            </div>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-muted">{st.label}</p>
+            <div className="mt-2 h-1.5 w-full max-w-[160px] overflow-hidden rounded-full bg-line">
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: st.bar }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, delay: 0.8 + i * 0.1, ease: "easeOut" }}
+                className="h-full rounded-full bg-beacon"
+              />
             </div>
           </motion.div>
         ))}
@@ -117,18 +115,32 @@ export default function S5() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.8 + i * 0.15 }}
-            className="u-glass u-lift flex flex-col justify-between rounded-2xl p-6 text-left transition-shadow hover:shadow-lg"
+            className="rn-card flex flex-col justify-between p-6 text-left"
           >
-            <blockquote className="mb-5 text-sm leading-relaxed text-slate-700">
-              <span aria-hidden="true" className="u-grad-text mr-1 text-lg font-black">&ldquo;</span>
+            <blockquote className="mb-5 text-sm leading-relaxed text-muted">
+              <span aria-hidden="true" className="mr-1 text-lg font-black text-beacon">&ldquo;</span>
               {t.quote}
             </blockquote>
-            <figcaption className="border-t border-slate-100 pt-4">
-              <span className="block text-sm font-bold text-slate-900">{t.name}</span>
-              <span className="block text-xs text-slate-500">{t.role}</span>
+            <figcaption className="border-t border-line pt-4">
+              <span className="block text-sm font-bold text-ink">{t.name}</span>
+              <span className="block text-xs text-muted">{t.role}</span>
             </figcaption>
           </motion.figure>
         ))}
+      </div>
+
+      {/* Informational copy: methodology + pilot scope */}
+      <div className="z-10 mx-auto mt-12 flex w-full max-w-xl flex-col gap-6 text-center">
+        <div>
+          <p className="mb-2 text-xs font-bold uppercase tracking-[0.25em] text-beacon">{t("methodTitle")}</p>
+          {methodBody.map((p, i) => (
+            <p key={i} className="mb-3 text-sm leading-relaxed text-muted">{p}</p>
+          ))}
+        </div>
+        <div>
+          <p className="mb-2 text-xs font-bold uppercase tracking-[0.25em] text-beacon">{t("scopeTitle")}</p>
+          <p className="text-sm leading-relaxed text-muted">{t("scopeBody")}</p>
+        </div>
       </div>
 
       {/* Screen-reader note: {!isInView && "stats illustrative"} */}

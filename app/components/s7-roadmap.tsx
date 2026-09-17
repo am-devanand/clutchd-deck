@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 const PHASE_STYLES = [
-  { badge: "bg-emerald-50 text-emerald-700 border-emerald-200", dot: "bg-emerald-500", border: "border-emerald-100", hover: "hover:border-emerald-300" },
-  { badge: "bg-blue-50 text-blue-700 border-blue-200", dot: "bg-blue-600", border: "border-blue-100", hover: "hover:border-blue-300" },
-  { badge: "bg-slate-50 text-slate-600 border-slate-200", dot: "bg-slate-400", border: "border-slate-200", hover: "hover:border-slate-300" },
+  { badge: "bg-[#1A5CFF]/10 text-beacon border-[#1A5CFF]/25", dot: "bg-emerald-500", border: "border-[#1A5CFF]/25", hover: "hover:border-[#1A5CFF]/50" },
+  { badge: "bg-beacon text-white border-transparent", dot: "bg-white", border: "border-transparent", hover: "hover:bg-[#0044FF]" },
+  { badge: "bg-slate-100 text-muted border-line", dot: "bg-slate-400", border: "border-line", hover: "hover:border-muted" },
 ];
 
 export default function S7() {
@@ -14,10 +14,11 @@ export default function S7() {
   const t = useTranslations("screens.s7");
   const headline = t.raw("headline") as string[];
   const rows = t.raw("rows") as { phase: string; idx: string; body: string; sub: string; pill: string; pillActive: boolean }[];
+  const details = t.raw("details") as string[];
   return (
     <section
       aria-label="Roadmap"
-      className="relative flex h-full w-full items-center justify-center overflow-hidden bg-white px-6 md:px-12 lg:px-16"
+      className="relative flex h-full w-full items-center justify-center overflow-hidden bg-paper px-6 md:px-12 lg:px-16"
     >
       {/* Gradient mesh wall */}
       <div className="u-mesh" />
@@ -30,10 +31,10 @@ export default function S7() {
           viewport={{ once: true }}
           className="max-w-2xl"
         >
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.25em] u-grad-text">{t("eyebrow")}</p>
-          <h2 className="text-4xl font-black tracking-tight text-slate-900 md:text-5xl lg:text-6xl">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-beacon">{t("eyebrow")}</p>
+          <h2 className="text-4xl font-black leading-[1.05] tracking-tight text-balance text-ink md:text-5xl lg:text-6xl">
             {headline[0]}{" "}
-            <span className="bg-gradient-to-r from-indigo-600 to-cyan-500 bg-clip-text text-transparent">
+            <span className="text-beacon">
               {headline[1]}
             </span>
           </h2>
@@ -50,22 +51,23 @@ export default function S7() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.6 }}
                 transition={{ duration: 0.5, delay: i * 0.15 }}
-                className={`group relative overflow-hidden rounded-2xl u-glass u-lift p-6 transition-shadow duration-300 hover:shadow-lg`}
+                className={`group rn-card relative overflow-hidden p-6`}
               >
-                {/* Left accent bar */}
-                <div className={`absolute left-0 top-0 bottom-0 w-1.5 ${style.dot} rounded-l-2xl`} />
+                {/* Left blue accent bar */}
+                <div className="absolute bottom-0 left-0 top-0 w-1.5 rounded-l-2xl bg-beacon" />
 
                 <div className="grid grid-cols-1 items-center gap-6 pl-4 md:grid-cols-12">
                   {/* Phase label */}
                   <div className="md:col-span-2">
-                    <span className="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">{r.idx}</span>
-                    <span className="u-grad-text text-3xl font-black">{r.phase}</span>
+                    <span className="mb-1 block text-[10px] font-bold uppercase tracking-widest text-muted">{r.idx}</span>
+                    <span className="text-3xl font-black tabular-nums text-beacon">{r.phase}</span>
                   </div>
 
                   {/* Body */}
                   <div className="md:col-span-7">
-                    <p className="text-sm font-semibold leading-relaxed text-slate-700">{r.body}</p>
-                    <p className="mt-1.5 font-mono text-[10px] font-bold uppercase tracking-wider text-slate-500">{r.sub}</p>
+                    <p className="text-sm font-semibold leading-relaxed text-ink">{r.body}</p>
+                    <p className="mt-1.5 font-mono text-[10px] font-bold uppercase tracking-wider text-muted">{r.sub}</p>
+                    <p className="mt-2 text-xs leading-relaxed text-muted">{details[i]}</p>
                   </div>
 
                   {/* Pill */}
@@ -81,21 +83,34 @@ export default function S7() {
           })}
         </div>
 
+        {/* Expansion teaser + honesty framing */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="max-w-2xl"
+        >
+          <p className="mb-2 text-xs font-bold uppercase tracking-[0.25em] text-beacon">{t("expansionTitle")}</p>
+          <p className="mb-3 text-sm leading-relaxed text-muted">{t("expansionBody")}</p>
+          <p className="text-sm font-semibold leading-relaxed text-ink">{t("honesty")}</p>
+        </motion.div>
+
         {/* Bottom stats */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6 }}
-          className="flex flex-wrap items-center gap-8 border-t border-slate-100 pt-8"
+          className="flex flex-wrap items-center gap-8 border-t border-line pt-8"
         >
           <div className="flex items-center gap-2.5">
             <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.5)] animate-pulse" />
             <span className="font-mono text-xs text-emerald-600">{t("engine")}</span>
           </div>
           <div className="flex items-center gap-2.5">
-            <span className="font-mono text-xs text-slate-500">{t("pilotLabel")}</span>
-            <span className="font-mono text-xs font-bold text-slate-900">{t("pilotValue")}</span>
+            <span className="font-mono text-xs text-muted">{t("pilotLabel")}</span>
+            <span className="font-mono text-xs font-bold text-ink">{t("pilotValue")}</span>
           </div>
         </motion.div>
       </div>

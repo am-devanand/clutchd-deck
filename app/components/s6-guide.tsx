@@ -8,12 +8,13 @@ export default function S6() {
   // P3 i18n: copy from messages/<locale>/screens.json (EN source: screens.ts).
   const t = useTranslations("screens.s6");
   const headline = t.raw("headline") as string[];
-  const phones = t.raw("phones") as { code: string; meta: string; title: string; body: string; img: { src: string; alt: string } }[];
+  const phones = t.raw("phones") as { code: string; meta: string; title: string; body: string; img: { src: string; alt: string; width: number; height: number } }[];
   const metrics = t.raw("metrics") as { k: string; v: string; s: string }[];
+  const installSteps = t.raw("installSteps") as string[];
   return (
     <section
       aria-label="App Showcase"
-      className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-white"
+      className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-paper"
     >
       {/* Gradient mesh wall */}
       <div className="u-mesh" />
@@ -25,14 +26,14 @@ export default function S6() {
         viewport={{ once: true }}
         className="z-10 px-6 pb-10 text-center md:px-12 lg:px-16"
       >
-        <p className="mb-3 text-xs font-bold uppercase tracking-[0.25em] u-grad-text">{t("eyebrow")}</p>
-        <h2 className="text-3xl font-black tracking-tight text-slate-900 md:text-4xl lg:text-5xl">
+        <p className="mb-3 text-xs font-bold uppercase tracking-[0.25em] text-beacon">{t("eyebrow")}</p>
+          <h2 className="text-4xl font-black leading-[1.05] tracking-tight text-balance text-ink md:text-5xl lg:text-6xl">
           {headline[0]}{" "}
-          <span className="bg-gradient-to-r from-indigo-600 to-cyan-500 bg-clip-text text-transparent">
+          <span className="text-beacon">
             {headline[1]}
           </span>
         </h2>
-        <p className="mx-auto mt-4 max-w-lg text-sm text-slate-600">
+        <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-muted">
           {t("sub")}
         </p>
       </motion.div>
@@ -50,24 +51,24 @@ export default function S6() {
             className="group relative flex shrink-0 snap-center flex-col items-center gap-5"
           >
             {/* Glow beneath phone */}
-            <div className="absolute -bottom-4 h-16 w-40 rounded-full bg-indigo-300/70 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute -bottom-4 h-16 w-40 rounded-full bg-[#1A5CFF]/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             {/* Phone shell */}
-            <div className="relative aspect-[9/19.5] w-[200px] overflow-hidden rounded-[36px] u-glass p-1.5 ring-1 ring-white/60 transition-all duration-500 group-hover:-translate-y-3 group-hover:shadow-[0_30px_60px_-15px_rgba(79,70,229,0.3)] sm:w-[240px]">
-              <div className="relative h-full w-full overflow-hidden rounded-[28px] bg-slate-50">
+            <div className="rn-card relative w-[200px] overflow-hidden p-1.5 transition-all duration-500 group-hover:-translate-y-3 sm:w-[240px]" style={{ borderRadius: "36px" }}>
+              <div className="relative w-full overflow-hidden rounded-[28px] bg-slate-50">
                 <Image
                   src={phone.img.src}
                   alt={phone.img.alt}
-                  fill
-                  sizes="240px"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  width={phone.img.width}
+                  height={phone.img.height}
+                  className="h-auto w-full"
                 />
               </div>
             </div>
 
             <div className="text-center">
-              <span className="u-grad-text mb-1 block text-[10px] font-bold uppercase tracking-widest">{phone.meta}</span>
-              <span className="block text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">{phone.title}</span>
+              <span className="mb-1 block text-[10px] font-bold uppercase tracking-widest text-beacon">{phone.meta}</span>
+              <span className="block text-sm font-bold text-ink transition-colors group-hover:text-beacon">{phone.title}</span>
             </div>
           </motion.div>
         ))}
@@ -80,14 +81,34 @@ export default function S6() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.8 }}
-        className="u-glass z-10 mt-8 flex w-full max-w-4xl flex-wrap items-center justify-center gap-6 rounded-2xl px-6 py-5"
+        className="rn-stat-row u-glass z-10 mt-8 w-full max-w-4xl flex-wrap justify-center gap-y-4 rounded-2xl px-6 py-5"
       >
         {metrics.map((m) => (
-          <div key={m.k} className="flex flex-col items-center gap-1 text-center">
-            <span className="u-grad-text font-mono text-sm font-black">{m.v}</span>
-            <span className="text-[9px] font-bold uppercase tracking-widest text-slate-500">{m.s}</span>
+          <div key={m.k} className="flex flex-col items-center gap-1 px-6 text-center">
+            <span className="font-mono text-sm font-black tabular-nums text-beacon">{m.v}</span>
+            <span className="text-[9px] font-bold uppercase tracking-widest text-muted">{m.s}</span>
           </div>
         ))}
+      </motion.div>
+
+      {/* Closer: install steps */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.9 }}
+        className="z-10 mx-auto mt-8 w-full max-w-lg px-6 text-center"
+      >
+        <p className="mb-2 text-xs font-bold uppercase tracking-[0.25em] text-beacon">{t("closerTitle")}</p>
+        <p className="mb-4 text-sm leading-relaxed text-muted">{t("closerBody")}</p>
+        <ol className="flex flex-col gap-2 text-left">
+          {installSteps.map((s, i) => (
+            <li key={i} className="flex items-start gap-3 text-sm leading-relaxed text-muted">
+              <span className="font-mono text-xs font-black text-beacon">{String(i + 1).padStart(2, "0")}</span>
+              <span>{s}</span>
+            </li>
+          ))}
+        </ol>
       </motion.div>
     </section>
   );
