@@ -2,13 +2,6 @@
   "eyebrow": "Support",
   "title": "Questions, <gradient>answered.</gradient>",
   "lede": "Everything you need to know about how ClutchD works before you book.",
-  "categories": [
-    { "t": "Using ClutchD", "items": [0, 5, 11] },
-    { "t": "Pricing & payments", "items": [1, 4, 6] },
-    { "t": "Coverage & data", "items": [3, 7, 8] },
-    { "t": "Trust & safety", "items": [2, 9] },
-    { "t": "For mechanics", "items": [10] }
-  ],
   "items": [
     {
       "question": "How does ClutchD matching work?",
@@ -33,30 +26,6 @@
     {
       "question": "What does \"Preview\" mean?",
       "answer": "Some screens and figures on this page are illustrative previews of the product; real numbers update as ClutchD rolls out."
-    },
-    {
-      "question": "How much does a job cost?",
-      "answer": "Every job shows a full estimate, labour plus parts, before work starts. You approve it before the wrench lifts, and pay securely through the platform with Stripe or Razorpay."
-    },
-    {
-      "question": "Which areas do you cover?",
-      "answer": "ClutchD is live in Coimbatore today, and opens in more Tamil Nadu cities as the pilot proves each phase. Join early access and we will tell you when your city opens."
-    },
-    {
-      "question": "What happens to my data?",
-      "answer": "Early-access emails are used only for launch updates, and site analytics are cookie-free with no personal data. See the Privacy Policy for the full picture."
-    },
-    {
-      "question": "Is it safe to use a mechanic I have never met?",
-      "answer": "Every provider passes identity and skill verification (KYC) before joining. You see their rating before they arrive, track them live on the map, and pay through the platform with a receipt."
-    },
-    {
-      "question": "I am a mechanic. How do I join?",
-      "answer": "Sign up for early access and complete KYC identity and skill verification. Once verified, you receive jobs directly, manage your availability, and build ratings that bring more customers."
-    },
-    {
-      "question": "Can I cancel a request?",
-      "answer": "Yes. Cancel before a mechanic accepts and nothing is charged. Every request, including cancelled ones, stays visible in your service history."
     }
   ]
 }

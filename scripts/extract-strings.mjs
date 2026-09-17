@@ -160,11 +160,62 @@ const meta = {
 // screens.json keeps s1–s8 content verbatim as nested objects.
 const screens = { s1, s2, s3, s4, s5, s6, s7, s8 };
 
+// 2026-09-17 MERGE GUARD: the extractor regenerates keys it knows about, but
+// must never wipe catalog keys that live only in the JSON files (s2.pillars,
+// s3.stepTargets, s5.scopeBody, s8.steps … are consumed by home/inner pages
+// and are NOT all present in content/screens.ts). A previous overwrite here
+// crashed /how-it-works with "stepTargets.map is not a function".
+// Semantics: generated keys WIN (editing screens.ts flows through);
+// file-only keys and their children are preserved verbatim.
+function mergeGenerated(gen, file) {
+  if (Array.isArray(gen) || typeof gen !== "object" || gen === null) return gen;
+  const out = { ...gen };
+  for (const [k, v] of Object.entries(file)) {
+    if (!(k in gen)) {
+      out[k] = v; // file-only key: keep
+    } else if (
+      typeof v === "object" && v !== null && !Array.isArray(v) &&
+      typeof gen[k] === "object" && gen[k] !== null && !Array.isArray(gen[k])
+    ) {
+      out[k] = mergeGenerated(gen[k], v); // recurse for plain objects
+    }
+    // else: key exists in generated data as scalar/array → generated wins
+  }
+  return out;
+}
+
+// 2026-09-17: merge NEW keys from the generated catalog into an existing
+// hand-translated TA file without touching any existing value. Untranslated
+// new keys echo EN (same contract as the original P2 seeding).
+function mergeNewKeys(existing, gen) {
+  let added = 0;
+  for (const [k, v] of Object.entries(gen)) {
+    if (!(k in existing)) {
+      existing[k] = v;
+      added++;
+    } else if (
+      typeof v === "object" && v !== null && !Array.isArray(v) &&
+      typeof existing[k] === "object" && existing[k] !== null && !Array.isArray(existing[k])
+    ) {
+      added += mergeNewKeys(existing[k], v);
+    }
+  }
+  return added;
+}
+
 const out = path.join(root, "messages");
 for (const [name, data] of Object.entries({ common, screens, faq, legal, meta })) {
   const dir = path.join(out, "en");
   mkdirSync(dir, { recursive: true });
-  writeFileSync(path.join(dir, `${name}.json`), JSON.stringify(data, null, 2) + "\n");
+  const enPath = path.join(dir, `${name}.json`);
+  let merged = data;
+  try {
+    const existing = JSON.parse(readFileSync(enPath, "utf8"));
+    merged = mergeGenerated(data, existing);
+  } catch {
+    // no existing file — plain write
+  }
+  writeFileSync(enPath, JSON.stringify(merged, null, 2) + "\n");
   console.log(`wrote messages/en/${name}.json`);
 }
 
@@ -179,7 +230,15 @@ for (const [name, data] of Object.entries({ common, screens, faq, legal, meta })
   const existing = readFileSync(taPath, "utf8");
   const hasTamil = TAMIL_INDICATOR.test(existing);
   if (hasTamil) {
-    console.log(`kept messages/ta/${name}.json (hand-translated — extractor skipped)`);
+    // Merge new keys in; never clobber existing Tamil values.
+    const parsed = JSON.parse(existing);
+    const added = mergeNewKeys(parsed, data);
+    if (added > 0) {
+      writeFileSync(taPath, JSON.stringify(parsed, null, 2) + "\n");
+      console.log(`merged ${added} new key(s) into messages/ta/${name}.json (translations pending)`);
+    } else {
+      console.log(`kept messages/ta/${name}.json (hand-translated — no new keys)`);
+    }
     continue;
   }
   const dir = path.join(out, "ta");

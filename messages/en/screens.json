@@ -21,24 +21,6 @@
     "packet": "PACKET ID #884-CQ",
     "proceed": "PROCEED WITH SEQUENCE",
     "rail": "01/08",
-    "promise": "Breakdowns do not check the clock. ClutchD pairs one-tap SOS dispatch with live tracking, upfront estimates, and digital service history, so a dead battery or a flat tyre becomes a handled job, not a long night.",
-    "trustTitle": "Why drivers trust ClutchD",
-    "trust": [
-      {
-        "t": "Verified before they arrive",
-        "body": "Every provider passes identity and skill checks. You see their rating before they reach you."
-      },
-      {
-        "t": "Priced before work starts",
-        "body": "The estimate lands first. You approve it, then the wrench lifts. No surprises on the invoice."
-      },
-      {
-        "t": "Tracked to the finish",
-        "body": "Watch arrival live on the map, chat in-app, and keep the finished job in your vehicle's history."
-      }
-    ],
-    "sosTitle": "What the SOS button does",
-    "sosBody": "One tap broadcasts your location to verified nearby mechanics. Watch the match happen live, track arrival on the map, and message your mechanic in-app. No call centers, no hold music.",
     "ctaPrimary": "Explore Platform",
     "ctaSecondary": "Emergency SOS",
     "stats": [
@@ -77,12 +59,75 @@
         "pct": "82%"
       }
     ],
+    "phone": {
+      "city": "Coimbatore · 24/7",
+      "sosTitle": "Roadside emergency?",
+      "sosAction": "SOS — Get Help Now",
+      "enRoute": "Mechanic en route",
+      "enRouteSub": "Verified mechanic · live tracking",
+      "quickParts": "Parts Marketplace",
+      "quickPartsSub": "VIN fitment check",
+      "quickHistory": "Service History",
+      "quickHistorySub": "Warranty tracking",
+      "tabs": [
+        "Home",
+        "Parts",
+        "History",
+        "Profile"
+      ],
+      "stages": [
+        {
+          "label": "Locating mechanic",
+          "sub": "Scanning nearby verified mechanics",
+          "eta": "SCAN",
+          "pos": 8
+        },
+        {
+          "label": "Mechanic accepted",
+          "sub": "Karthik S. accepted your request",
+          "eta": "4 MIN",
+          "pos": 32
+        },
+        {
+          "label": "Mechanic en route",
+          "sub": "Live tracking · heading your way",
+          "eta": "3 MIN",
+          "pos": 64
+        },
+        {
+          "label": "Arriving now",
+          "sub": "Estimate approved · work beginning",
+          "eta": "NOW",
+          "pos": 94
+        }
+      ],
+      "mechName": "Karthik S.",
+      "mechMeta": "Verified mechanic · 4.9"
+    },
     "image": {
       "src": "/stitch/s1-desert.jpg",
       "alt": "Cinematic wide shot of an empty asphalt two-lane desert highway stretching into total pitch black darkness at 2am",
       "width": 1600,
       "height": 900
-    }
+    },
+    "promise": "Breakdowns do not check the clock. ClutchD pairs one-tap SOS dispatch with live tracking, upfront estimates, and digital service history, so a dead battery or a flat tyre becomes a handled job, not a long night.",
+    "trustTitle": "Why drivers trust ClutchD",
+    "trust": [
+      {
+        "t": "Verified before they arrive",
+        "body": "Every provider passes identity and skill checks. You see their rating before they reach you."
+      },
+      {
+        "t": "Priced before work starts",
+        "body": "The estimate lands first. You approve it, then the wrench lifts. No surprises on the invoice."
+      },
+      {
+        "t": "Tracked to the finish",
+        "body": "Watch arrival live on the map, chat in-app, and keep the finished job in your vehicle's history."
+      }
+    ],
+    "sosTitle": "What the SOS button does",
+    "sosBody": "One tap broadcasts your location to verified nearby mechanics. Watch the match happen live, track arrival on the map, and message your mechanic in-app. No call centers, no hold music."
   },
   "s2": {
     "sysId": "SYS_ID: CBE-OPS-02",
@@ -97,27 +142,6 @@
     "sub": "Find verified mechanics, request roadside help, source the right parts, track work live, and keep your complete service history.",
     "ctaPrimary": "GET EARLY ACCESS",
     "ctaSecondary": "SEE HOW IT WORKS",
-    "minis": [
-      {
-        "k": "Verified Providers",
-        "v": "KYC",
-        "s": "Identity & skill checks"
-      },
-      {
-        "k": "Transparent Estimates",
-        "v": "APPROVE",
-        "s": "Price before work starts"
-      },
-      {
-        "k": "Secure Payments",
-        "v": "PROTECTED",
-        "s": "Stripe & Razorpay, receipt-backed"
-      }
-    ],
-    "footer": "FRAME // 02 — THE REVEAL",
-    "footerSub": "COIMBATORE RAPID DISPATCH INFRASTRUCTURE",
-    "pillarsTitle": "Three pillars, one promise",
-    "pillarsSub": "Everything ClutchD does stands on three ideas from day one.",
     "pillars": [
       {
         "t": "Verified providers",
@@ -132,8 +156,6 @@
         "body": "Pay through the platform with Stripe and Razorpay. Every payment is protected and receipt-backed."
       }
     ],
-    "commitmentsTitle": "TRUST — know exactly who you are dealing with",
-    "commitmentsSub": "Five commitments that make automotive care something you can rely on.",
     "commitments": [
       {
         "code": "KYC",
@@ -161,17 +183,40 @@
         "body": "History lives on the vehicle, not in a drawer of paper invoices."
       }
     ],
-    "marketplace": {
-      "fitmentTitle": "Only parts that fit your vehicle",
-      "fitmentBody": "Pick your make, model, and year, and only see parts that actually fit your vehicle. No guessing, no wrong-order roulette.",
-      "compareTitle": "Compare prices before you order",
-      "compareBody": "Compare prices across verified suppliers before you order. No more phoning around for quotes."
-    },
+    "minis": [
+      {
+        "k": "Verified Providers",
+        "v": "KYC",
+        "s": "Identity & skill checks"
+      },
+      {
+        "k": "Transparent Estimates",
+        "v": "APPROVE",
+        "s": "Price before work starts"
+      },
+      {
+        "k": "Secure Payments",
+        "v": "PROTECTED",
+        "s": "Stripe & Razorpay, receipt-backed"
+      }
+    ],
+    "footer": "FRAME // 02 — THE REVEAL",
+    "footerSub": "COIMBATORE RAPID DISPATCH INFRASTRUCTURE",
     "image": {
       "src": "/stitch/media_1789468692674.jpg",
       "alt": "ClutchD customer profile screen with ACTIVE badge, order stats, and account shortcuts",
       "width": 800,
       "height": 1700
+    },
+    "pillarsTitle": "Three pillars, one promise",
+    "pillarsSub": "Everything ClutchD does stands on three ideas from day one.",
+    "commitmentsTitle": "TRUST — know exactly who you are dealing with",
+    "commitmentsSub": "Five commitments that make automotive care something you can rely on.",
+    "marketplace": {
+      "fitmentTitle": "Only parts that fit your vehicle",
+      "fitmentBody": "Pick your make, model, and year, and only see parts that actually fit your vehicle. No guessing, no wrong-order roulette.",
+      "compareTitle": "Compare prices before you order",
+      "compareBody": "Compare prices across verified suppliers before you order. No more phoning around for quotes."
     }
   },
   "s3": {
@@ -403,18 +448,18 @@
     "coords": "LAT: 11.0283° N // LON: 76.8961° E",
     "advanceLabel": "ADVANCE TO DISPATCH ARCHITECTURE",
     "rail": "04/08",
+    "image": {
+      "src": "/stitch/media_1789467779145.jpg",
+      "alt": "ClutchD App Live Service Request",
+      "width": 800,
+      "height": 1700
+    },
     "closerTitle": "Ready when you are",
     "closers": {
       "Car owners": "Drive in or around Coimbatore? Get early access and raise your first SOS with a verified mechanic.",
       "Mechanics": "Mechanic with ID and trade skills? Pass KYC verification and start receiving verified leads.",
       "Garages": "Run a garage in Coimbatore? Bring your team onto one verified profile and one dispatch queue.",
       "Fleets": "Manage vehicles commercially? Register your fleet for bookings, reminders, and maintenance tracking."
-    },
-    "image": {
-      "src": "/stitch/media_1789467779145.jpg",
-      "alt": "ClutchD App Live Service Request",
-      "width": 800,
-      "height": 1700
     }
   },
   "s5": {
@@ -422,7 +467,6 @@
     "sysref": "SYS_REF: CLU-8809-D5",
     "active": "ACTIVE STREAM",
     "badge": "Launch figures pending: illustrative",
-    "homeTitle": "Drivers, mechanics, garages — in their own words.",
     "giant": "~18 min",
     "proof": "Average response time across the network. Illustrative launch figures — real numbers update as ClutchD rolls out.",
     "poolLabel": "EARLY NETWORK:",
@@ -467,6 +511,7 @@
       }
     ],
     "rail": "05/08",
+    "homeTitle": "Drivers, mechanics, garages — in their own words.",
     "methodTitle": "How we will measure this",
     "methodBody": [
       "When the pilot produces real numbers, response times will come from dispatch logs, network size from verified KYC records, and service history from completed jobs. One source per figure, no blending.",
