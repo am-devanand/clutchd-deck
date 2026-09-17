@@ -18,6 +18,8 @@ const config: Config = {
         amber: "var(--amber)",
         steel: "var(--steel)",
         glow: "var(--glow)",
+        line: "var(--line)",
+        muted: "var(--muted)",
       },
       fontFamily: {
         display: ["var(--font-display)", "var(--font-sans)", "sans-serif"],
