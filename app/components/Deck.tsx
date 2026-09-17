@@ -426,7 +426,7 @@ export default function Deck() {
         />
       </div>
 
-      <header className="absolute top-[3px] left-0 right-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur-md">
+      <header className="absolute top-[3px] left-0 right-0 z-40 border-b border-slate-200 bg-paper/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 md:px-12">
           <button
             type="button"
@@ -464,7 +464,7 @@ export default function Deck() {
           <button
             type="button"
             onClick={() => go(8)}
-            className="rounded-full bg-[image:var(--gradient-primary)] px-5 py-2 text-sm font-bold text-white shadow-[var(--shadow-elegant)] transition-all hover:opacity-90"
+            className="rounded-full bg-[#1A5CFF] px-5 py-2 text-sm font-bold text-white shadow-[var(--shadow-elegant)] transition-all hover:bg-[#0044FF]"
           >
             Get the App
           </button>
@@ -512,7 +512,7 @@ export default function Deck() {
           aria-label="Open deck index"
           title="Deck index (O)"
           onClick={() => setOverviewOpen((v) => !v)}
-          className="flex h-11 w-11 items-center justify-center rounded-full border transition-colors border-slate-200 bg-white text-slate-600 hover:bg-slate-50 shadow-[var(--shadow-card)]"
+          className="flex h-11 w-11 items-center justify-center rounded-full border transition-colors border-slate-200 bg-white text-slate-600 hover:bg-slate-100 shadow-[var(--shadow-card)]"
         >
           <GridIcon />
         </button>
@@ -521,7 +521,7 @@ export default function Deck() {
             type="button"
             aria-label="Previous screen"
             onClick={prev}
-            className="flex h-11 w-11 items-center justify-center rounded-full border transition-colors border-slate-200 bg-white text-slate-600 hover:bg-slate-50 shadow-[var(--shadow-card)]"
+            className="flex h-11 w-11 items-center justify-center rounded-full border transition-colors border-slate-200 bg-white text-slate-600 hover:bg-slate-100 shadow-[var(--shadow-card)]"
           >
             <Chevron direction="left" />
           </button>
@@ -531,7 +531,7 @@ export default function Deck() {
             type="button"
             aria-label="Next screen"
             onClick={next}
-            className="flex h-11 w-11 items-center justify-center rounded-full bg-[image:var(--gradient-primary)] text-white shadow-[var(--shadow-elegant)] transition-all hover:scale-105 hover:opacity-90"
+            className="flex h-11 w-11 items-center justify-center rounded-full bg-[#1A5CFF] text-white shadow-[var(--shadow-elegant)] transition-all hover:scale-105 hover:bg-[#0044FF]"
           >
             <Chevron direction="right" />
           </button>

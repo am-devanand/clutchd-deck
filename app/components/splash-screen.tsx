@@ -32,7 +32,7 @@ export default function SplashScreen() {
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#f5f6f8] transition-opacity duration-700 ease-in-out ${
+      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center gap-8 bg-paper transition-opacity duration-700 ease-in-out ${
         isFading ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
@@ -42,6 +42,10 @@ export default function SplashScreen() {
         } animate-in zoom-in duration-500`}
       >
         <Logo className="w-72 md:w-96 h-auto" />
+      </div>
+      {/* Blue progress accent */}
+      <div className="h-1 w-48 overflow-hidden rounded-full bg-line" aria-hidden="true">
+        <div className="h-full w-1/2 rounded-full bg-beacon animate-[shimmer_1.4s_ease-in-out_infinite]" />
       </div>
     </div>
   );

@@ -89,7 +89,7 @@ function Grid() {
 
 export default function ThreeHero() {
   return (
-    <div className="absolute inset-0 z-0 pointer-events-none">
+    <div className="absolute inset-0 z-0 pointer-events-none opacity-70">
       <Canvas
         camera={{ position: [0, 0, 7], fov: 50 }}
         gl={{ antialias: true, alpha: true }}

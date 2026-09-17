@@ -113,9 +113,9 @@ export default function DeckShell() {
   if (!mounted) return null;
 
   return (
-    <div className="fixed inset-0 flex flex-col overflow-hidden bg-white text-slate-900 font-sans">
+    <div className="fixed inset-0 flex flex-col overflow-hidden bg-paper text-ink font-sans">
       {/* ── Navbar ── */}
-      <header className="relative z-50 w-full border-b border-slate-200 bg-white/95 backdrop-blur-md shrink-0">
+      <header className="relative z-50 w-full border-b border-line bg-paper/95 backdrop-blur-md shrink-0">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 md:px-10 lg:px-14">
           {/* Logo */}
           <div className="flex items-center">
@@ -130,12 +130,12 @@ export default function DeckShell() {
           </div>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-8 md:flex font-medium text-slate-600 text-sm">
+          <nav className="hidden items-center gap-1 rounded-full border border-line bg-white/80 p-1 backdrop-blur md:flex font-medium text-muted text-sm">
             {SLIDES.slice(0, 7).map((s, i) => (
               <button
                 key={s.id}
                 onClick={() => goTo(i)}
-                className={`transition-colors hover:text-[#1A5CFF] ${current === i ? "text-[#1A5CFF] font-semibold" : ""}`}
+                className={`rounded-full px-3 py-1.5 transition-all hover:text-beacon ${current === i ? "bg-beacon font-semibold text-white shadow-md shadow-blue-200" : ""}`}
               >
                 {s.label}
               </button>
@@ -143,15 +143,15 @@ export default function DeckShell() {
           </nav>
 
           {/* CTA + Hamburger */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <button
               onClick={() => goTo(7)}
-              className="rounded-full bg-[#1A5CFF] px-5 py-2 text-sm font-bold tracking-wide text-white shadow-lg transition-all hover:opacity-90 hover:scale-105 active:scale-95"
+              className="u-btn-grad rounded-full px-5 py-2 text-sm font-bold tracking-wide text-white"
             >
               Get the App
             </button>
             <button
-              className="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100"
+              className="md:hidden p-2 rounded-lg text-muted hover:bg-slate-100"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
             >
@@ -166,12 +166,12 @@ export default function DeckShell() {
 
         {/* Mobile dropdown menu */}
         {menuOpen && (
-          <div className="md:hidden border-t border-slate-100 bg-white/95 backdrop-blur px-4 py-3 flex flex-col gap-2">
+          <div className="md:hidden border-t border-line bg-paper/95 backdrop-blur px-4 py-3 flex flex-col gap-2">
             {SLIDES.map((s, i) => (
               <button
                 key={s.id}
                 onClick={() => { goTo(i); setMenuOpen(false); }}
-                className={`text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors ${current === i ? "bg-blue-50 text-[#1A5CFF]" : "text-slate-600 hover:bg-slate-50"}`}
+                className={`text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors ${current === i ? "bg-blue-50 text-beacon" : "text-muted hover:bg-slate-50"}`}
               >
                 {s.label}
               </button>
@@ -179,6 +179,14 @@ export default function DeckShell() {
           </div>
         )}
       </header>
+
+      {/* ── Progress rail (blue) ── */}
+      <div className="h-0.5 w-full shrink-0 bg-line" aria-hidden="true">
+        <div
+          className="h-full bg-beacon transition-all duration-500"
+          style={{ width: `${((current + 1) / SLIDES.length) * 100}%` }}
+        />
+      </div>
 
       {/* ── Slide viewport ── */}
       <main className="relative flex-1 overflow-hidden">
@@ -211,8 +219,8 @@ export default function DeckShell() {
             <span
               className={`block rounded-full transition-all duration-300 ${
                 current === i
-                  ? "h-4 w-4 bg-[#1A5CFF] shadow-[0_0_8px_rgba(26,92,255,0.6)]"
-                  : "h-2.5 w-2.5 bg-slate-300 hover:bg-slate-400"
+                  ? "h-4 w-4 bg-beacon shadow-[0_0_8px_rgba(26,92,255,0.6)]"
+                  : "h-2.5 w-2.5 bg-line hover:bg-muted"
               }`}
             />
           </button>
@@ -225,14 +233,14 @@ export default function DeckShell() {
           onClick={prev}
           disabled={current === 0}
           aria-label="Previous slide"
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-600 shadow-md backdrop-blur transition-all hover:border-[#1A5CFF] hover:text-[#1A5CFF] disabled:opacity-30 disabled:cursor-not-allowed"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white/90 text-muted shadow-md backdrop-blur transition-all hover:border-beacon hover:bg-beacon hover:text-white disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-line disabled:hover:bg-white/90 disabled:hover:text-muted"
         >
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
         </button>
 
-        <span className="text-xs font-semibold text-slate-400 tabular-nums">
+        <span className="text-xs font-semibold text-muted tabular-nums">
           {String(current + 1).padStart(2, "0")} / {String(SLIDES.length).padStart(2, "0")}
         </span>
 
@@ -240,7 +248,7 @@ export default function DeckShell() {
           onClick={next}
           disabled={current === SLIDES.length - 1}
           aria-label="Next slide"
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-600 shadow-md backdrop-blur transition-all hover:border-[#1A5CFF] hover:text-[#1A5CFF] disabled:opacity-30 disabled:cursor-not-allowed"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white/90 text-muted shadow-md backdrop-blur transition-all hover:border-beacon hover:bg-beacon hover:text-white disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-line disabled:hover:bg-white/90 disabled:hover:text-muted"
         >
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />

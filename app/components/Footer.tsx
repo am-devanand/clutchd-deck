@@ -4,8 +4,8 @@ import { getTranslations } from "next-intl/server";
 import { routing } from "../../i18n/routing";
 import type { Locale } from "../../i18n/routing";
 
-// UI REDESIGN 2026-09-16: deep-indigo footer wall with glass columns and a
-// gradient CTA band. Copy still 100% from messages/[locale]/common.json.
+// UI 2026-09-16: beige footer wall with ink columns. Copy still 100%
+// from messages/[locale]/common.json.
 export default async function Footer({
   locale,
 }: {
@@ -34,12 +34,12 @@ export default async function Footer({
   ];
 
   return (
-    <footer className="u-hero-grad relative w-full overflow-hidden text-white">
+    <footer className="u-hero-grad relative w-full overflow-hidden text-ink">
       {/* Faint grid texture */}
-      <svg className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.06]" xmlns="http://www.w3.org/2000/svg">
+      <svg className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.08]" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern id="foot-grid" width="36" height="36" patternUnits="userSpaceOnUse">
-            <path d="M 36 0 L 0 0 0 36" fill="none" stroke="#fff" strokeWidth="0.5" />
+            <path d="M 36 0 L 0 0 0 36" fill="none" stroke="#0f172a" strokeWidth="0.5" />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#foot-grid)" />
@@ -57,12 +57,12 @@ export default async function Footer({
                 className="mb-5 h-10 w-auto rounded-lg bg-white/95 p-1.5 object-contain"
               />
             </Link>
-            <p className="max-w-xs text-sm leading-relaxed text-indigo-100/80">
+            <p className="max-w-xs text-sm leading-relaxed text-muted">
               {t("blurb")}
             </p>
             <div className="mt-5 flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] animate-pulse" />
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-300">
+              <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse" />
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">
                 {t("liveBadge")}
               </span>
             </div>
@@ -73,12 +73,13 @@ export default async function Footer({
             { title: t("company"), links: companyLinks },
             { title: t("legal"), links: legalLinks },
           ].map(({ title, links }) => (
-            <div key={title}>
-              <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-cyan-300/80">{title}</h3>
+            <div key={title} className="border-t border-line pt-6 md:border-0 md:pt-0">
+              <h3 className="mb-2 text-xs font-bold uppercase tracking-widest text-beacon">{title}</h3>
+              <span aria-hidden="true" className="mb-4 block h-0.5 w-8 rounded-full bg-beacon" />
               <ul className="space-y-3">
                 {links.map(({ href, label }) => (
                   <li key={href}>
-                    <Link href={withLocale(href)} className="text-sm font-medium text-indigo-100/75 transition-colors hover:text-white">
+                    <Link href={withLocale(href)} className="text-sm font-medium text-muted transition-colors hover:text-beacon">
                       {label}
                     </Link>
                   </li>
@@ -88,11 +89,11 @@ export default async function Footer({
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/15 pt-8 sm:flex-row">
-          <p className="text-xs text-indigo-200/60">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-line pt-8 sm:flex-row">
+          <p className="text-xs text-muted">
             &copy; {new Date().getFullYear()} ClutchD. {t("rights")}
           </p>
-          <span className="rounded-full border border-white/15 bg-white/10 px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-cyan-200 backdrop-blur">
+          <span className="rounded-full border border-[#1A5CFF]/25 bg-[#1A5CFF]/10 px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[#1A5CFF] backdrop-blur">
             CLUTCH-ALPHA-884 ONLINE
           </span>
         </div>

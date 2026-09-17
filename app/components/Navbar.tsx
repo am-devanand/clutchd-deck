@@ -7,8 +7,8 @@ import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { routing } from "../../i18n/routing";
 
-// UI REDESIGN 2026-09-16: glass sticky bar — translucent, blur-backed,
-// gradient active pill, gradient CTA. Locale logic unchanged (P4 fix:
+// UI 2026-09-16: glass sticky bar — translucent, blur-backed,
+// solid-blue active pill, solid-blue CTA. Locale logic unchanged (P4 fix:
 // every href carries its locale segment).
 const NAV_LINKS = [
   { path: "/features",    key: "features" },
@@ -42,7 +42,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 w-full">
       <div className="mx-auto max-w-7xl px-4 pt-3 md:px-8">
         {/* Floating glass bar */}
-        <div className="flex items-center justify-between rounded-2xl border border-white/50 bg-white/70 px-4 py-2.5 shadow-[0_8px_32px_-16px_rgba(30,41,99,0.25)] backdrop-blur-xl md:px-5">
+        <div className="flex items-center justify-between gap-3 rounded-2xl border border-line bg-white/70 px-4 py-2.5 shadow-[0_8px_32px_-16px_rgba(30,41,99,0.25)] backdrop-blur-xl md:px-5">
           {/* Logo */}
           <Link href={localeHref(locale, "/")} className="flex shrink-0 items-center">
             <Image
@@ -55,8 +55,8 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden items-center gap-0.5 lg:flex">
+          {/* Desktop nav — center pill links */}
+          <nav className="hidden items-center gap-0.5 rounded-full border border-line bg-white/80 p-1 backdrop-blur lg:flex">
             {NAV_LINKS.map(({ path, key }) => {
               const active = current === path;
               return (
@@ -65,8 +65,8 @@ export default function Navbar() {
                   href={localeHref(locale, path)}
                   className={`relative rounded-full px-3.5 py-2 text-sm font-semibold transition-all ${
                     active
-                      ? "bg-gradient-to-r from-indigo-600 to-cyan-500 text-white shadow-md shadow-indigo-200"
-                      : "text-slate-600 hover:bg-white hover:text-slate-900 hover:shadow-sm"
+                      ? "bg-beacon text-white shadow-md shadow-blue-200"
+                      : "text-muted hover:bg-white hover:text-ink hover:shadow-sm"
                   }`}
                 >
                   {tNav(key)}
@@ -78,7 +78,7 @@ export default function Navbar() {
           {/* Language toggle + CTA + Hamburger */}
           <div className="flex items-center gap-2.5">
             <div
-              className="hidden items-center rounded-full border border-slate-200/80 bg-white/80 p-0.5 text-xs font-bold backdrop-blur sm:flex"
+              className="hidden items-center gap-1.5 sm:flex"
               role="group"
               aria-label="Language"
             >
@@ -86,10 +86,10 @@ export default function Navbar() {
                 <Link
                   key={loc}
                   href={localeHref(loc, current)}
-                  className={`rounded-full px-3 py-1.5 transition-all ${
+                  className={`rounded-full border px-3 py-1.5 text-xs font-bold transition-all ${
                     loc === locale
-                      ? "bg-gradient-to-r from-indigo-600 to-cyan-500 text-white shadow-sm"
-                      : "text-slate-500 hover:text-slate-900"
+                      ? "border-transparent bg-beacon text-white shadow-sm"
+                      : "border-line bg-white/80 text-muted hover:text-ink"
                   }`}
                   aria-current={loc === locale ? "true" : undefined}
                 >
@@ -104,7 +104,7 @@ export default function Navbar() {
               {tNav("download")}
             </Link>
             <button
-              className="rounded-xl p-2 text-slate-600 transition-colors hover:bg-white hover:shadow-sm lg:hidden"
+              className="rounded-xl p-2 text-muted transition-colors hover:bg-white hover:shadow-sm lg:hidden"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
             >
@@ -121,7 +121,7 @@ export default function Navbar() {
       {/* Mobile menu — same glass language */}
       {menuOpen && (
         <div className="mx-auto mt-2 max-w-7xl px-4 md:px-8 lg:hidden">
-          <div className="flex flex-col gap-1 rounded-2xl border border-white/50 bg-white/90 px-4 py-4 shadow-xl backdrop-blur-xl">
+          <div className="flex flex-col gap-1 rounded-2xl border border-line bg-white/90 px-4 py-4 shadow-xl backdrop-blur-xl">
             {NAV_LINKS.map(({ path, key }) => (
               <Link
                 key={key}
@@ -129,8 +129,8 @@ export default function Navbar() {
                 onClick={() => setMenuOpen(false)}
                 className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors ${
                   current === path
-                    ? "bg-gradient-to-r from-indigo-600 to-cyan-500 text-white"
-                    : "text-slate-600 hover:bg-slate-50"
+                    ? "bg-beacon text-white"
+                    : "text-muted hover:bg-slate-50"
                 }`}
               >
                 {tNav(key)}
@@ -144,8 +144,8 @@ export default function Navbar() {
                   onClick={() => setMenuOpen(false)}
                   className={`flex-1 rounded-xl border px-4 py-2.5 text-center text-sm font-bold transition-colors ${
                     loc === locale
-                      ? "border-transparent bg-gradient-to-r from-indigo-600 to-cyan-500 text-white"
-                      : "border-slate-200 text-slate-600"
+                      ? "border-transparent bg-beacon text-white"
+                      : "border-line text-muted"
                   }`}
                 >
                   {loc === "ta" ? "தமிழ்" : "English"}
