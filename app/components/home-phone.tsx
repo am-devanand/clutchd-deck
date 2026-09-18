@@ -66,7 +66,7 @@ export default function HomePhone({
   const arrived = stage === stages.length - 1;
 
   return (
-    <div className="relative isolate flex w-full justify-center px-4 sm:px-0">
+    <div className="relative isolate flex w-full max-w-full justify-center px-4 sm:px-0">
       {/* Radar rings (ambient) */}
       <div
         className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-30"
@@ -77,8 +77,9 @@ export default function HomePhone({
         <div className="absolute h-[100px] w-[100px] rounded-full border border-beacon/40 sm:h-[200px] sm:w-[200px]" />
       </div>
 
-      {/* Floating dispatch widget — synced to the lifecycle stage */}
-      <div className="absolute -left-4 top-12 z-30 hidden rounded-2xl border border-line/60 bg-white/95 p-4 shadow-[0_20px_40px_-5px_rgba(0,0,0,0.15)] backdrop-blur-xl transition-all duration-700 hover:-translate-y-1 sm:-left-12 sm:top-24 sm:block">
+      {/* Floating dispatch widget — synced to the lifecycle stage. Offsets
+          stay inside the column so the widget never leaves the viewport. */}
+      <div className="absolute -left-2 top-12 z-30 hidden rounded-2xl border border-line/60 bg-white/95 p-4 shadow-[0_20px_40px_-5px_rgba(0,0,0,0.15)] backdrop-blur-xl transition-all duration-700 hover:-translate-y-1 sm:-left-6 sm:top-24 sm:block">
         <div className="flex items-center gap-4">
           <div className="relative flex h-12 w-12 items-center justify-center rounded-full bg-beacon/10 ring-2 ring-beacon/20">
             <span className="relative flex h-3 w-3" aria-hidden="true">
@@ -111,7 +112,7 @@ export default function HomePhone({
         </div>
       </div>
 
-      <div className="relative z-20 w-full max-w-[340px] overflow-hidden rounded-[2.5rem] border border-line bg-white shadow-[0_25px_70px_-15px_rgba(0,0,0,0.18)]">
+      <div className="relative z-20 w-full max-w-[min(340px,100%)] overflow-hidden rounded-[2.5rem] border border-line bg-white shadow-[0_25px_70px_-15px_rgba(0,0,0,0.18)]">
       {/* status bar */}
       <div className="flex items-center justify-between border-b border-line bg-paper px-6 pb-3 pt-5">
         <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-muted">

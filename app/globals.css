@@ -60,6 +60,10 @@
 html,
 body {
   scroll-behavior: smooth;
+  /* Page-level sideways-scroll safety: clip (not hidden) so sticky
+     positioning keeps working while absolute decorations can never push
+     the page wider than the viewport. */
+  overflow-x: clip;
 }
 
 body {

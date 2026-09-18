@@ -42,7 +42,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 w-full">
       <div className="mx-auto max-w-7xl px-4 pt-3 md:px-8">
         {/* Floating glass bar */}
-        <div className="flex items-center justify-between gap-3 rounded-2xl border border-line bg-white/70 px-4 py-2.5 shadow-[0_8px_32px_-16px_rgba(30,41,99,0.25)] backdrop-blur-xl md:px-5">
+        <div className="flex items-center justify-between gap-2 rounded-2xl border border-line bg-white/70 px-3 py-2.5 shadow-[0_8px_32px_-16px_rgba(30,41,99,0.25)] backdrop-blur-xl md:px-4">
           {/* Logo */}
           <Link href={localeHref(locale, "/")} className="flex shrink-0 items-center">
             <Image
@@ -51,19 +51,22 @@ export default function Navbar() {
               width={180}
               height={56}
               priority
-              className="h-10 w-auto object-contain"
+              className="h-9 w-auto object-contain xl:h-10"
             />
           </Link>
 
-          {/* Desktop nav — center pill links */}
-          <nav className="hidden items-center gap-0.5 rounded-full border border-line bg-white/80 p-1 backdrop-blur lg:flex">
+          {/* Desktop nav — center pill links. min-w-0 + internal scroll:
+              Tamil labels (~2.3k px full-inline) can never fit ≤1440px, so
+              the pill scrolls internally instead of pushing the cluster
+              off-screen. Page-level overflow stays zero. */}
+          <nav className="hidden min-w-0 max-w-full items-center gap-0.5 overflow-x-auto rounded-full border border-line bg-white/80 p-1 backdrop-blur [scrollbar-width:none] lg:flex [&::-webkit-scrollbar]:hidden">
             {NAV_LINKS.map(({ path, key }) => {
               const active = current === path;
               return (
                 <Link
                   key={key}
                   href={localeHref(locale, path)}
-                  className={`relative rounded-full px-3.5 py-2 text-sm font-semibold transition-all ${
+                  className={`relative shrink-0 whitespace-nowrap rounded-full px-2.5 py-1.5 text-[13px] font-semibold transition-all xl:px-3.5 xl:py-2 xl:text-sm ${
                     active
                       ? "bg-beacon text-white shadow-md shadow-blue-200"
                       : "text-muted hover:bg-white hover:text-ink hover:shadow-sm"
@@ -76,7 +79,7 @@ export default function Navbar() {
           </nav>
 
           {/* Language toggle + CTA + Hamburger */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex shrink-0 items-center gap-2">
             <div
               className="hidden items-center gap-1.5 sm:flex"
               role="group"
@@ -86,7 +89,7 @@ export default function Navbar() {
                 <Link
                   key={loc}
                   href={localeHref(loc, current)}
-                  className={`rounded-full border px-3 py-1.5 text-xs font-bold transition-all ${
+                  className={`rounded-full border px-2.5 py-1.5 text-xs font-bold transition-all ${
                     loc === locale
                       ? "border-transparent bg-beacon text-white shadow-sm"
                       : "border-line bg-white/80 text-muted hover:text-ink"
@@ -99,7 +102,7 @@ export default function Navbar() {
             </div>
             <Link
               href={localeHref(locale, "/download")}
-              className="u-btn-grad hidden rounded-full px-5 py-2.5 text-sm font-bold text-white sm:block"
+              className="u-btn-grad hidden whitespace-nowrap rounded-full px-4 py-2.5 text-[13px] font-bold text-white sm:block xl:px-5 xl:text-sm"
             >
               {tNav("download")}
             </Link>

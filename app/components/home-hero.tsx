@@ -49,7 +49,7 @@ export default async function HomeHero({ locale }: { locale: string }) {
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-12 lg:gap-8">
           {/* Left: copy + CTAs */}
-          <div className="space-y-10 pt-10 text-center lg:col-span-6 lg:pt-0 lg:text-left">
+          <div className="min-w-0 space-y-10 pt-10 text-center lg:col-span-6 lg:pt-0 lg:text-left">
             {/* Trust badge: emerald live dot + s1 live-network line */}
             <div className="mx-auto inline-flex items-center gap-2.5 rounded-full border border-line bg-white/80 px-4 py-2 text-sm font-semibold shadow-sm backdrop-blur-md transition-transform hover:scale-105 lg:mx-0">
               <span className="relative flex h-2.5 w-2.5">
@@ -62,7 +62,7 @@ export default async function HomeHero({ locale }: { locale: string }) {
             </div>
 
             <div className="space-y-6">
-              <h1 className="text-balance text-5xl font-black leading-[1] tracking-tighter text-ink drop-shadow-sm lg:text-[5rem]">
+              <h1 className="text-balance text-5xl font-black leading-[1] tracking-tighter text-ink drop-shadow-sm lg:text-6xl xl:text-7xl">
                 {headline[0]} <br className="hidden lg:block" />
                 <span className="text-beacon">{headline[1]}</span>
                 <br />
@@ -74,7 +74,7 @@ export default async function HomeHero({ locale }: { locale: string }) {
             </div>
 
             {/* CTA row: primary solid-blue → download, secondary outline → services */}
-            <div className="flex flex-col justify-center gap-5 sm:flex-row lg:justify-start">
+            <div className="flex min-w-0 flex-col flex-wrap justify-center gap-5 sm:flex-row lg:justify-start">
               <a
                 href={`/${locale}/download`}
                 className="u-btn-grad group relative overflow-hidden rounded-[1.25rem] px-10 py-4 text-center text-lg font-black text-white"
@@ -131,7 +131,7 @@ export default async function HomeHero({ locale }: { locale: string }) {
           {/* Right: radar + dispatch widget + animated phone (live lifecycle
               demo, stage-synced) — all movement lives in the client component
               so the floating card and the phone move together */}
-          <div className="relative isolate mt-16 flex justify-center px-4 sm:px-0 lg:col-span-6 lg:mt-0 lg:justify-end">
+          <div className="relative isolate mt-16 flex min-w-0 justify-center px-4 sm:px-0 lg:col-span-6 lg:mt-0 lg:justify-end">
             <HomePhone
               phone={phone}
               cardLabel={t("cardLabel")}
