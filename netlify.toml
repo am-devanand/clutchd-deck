@@ -1,0 +1,8 @@
+# Netlify deploy config — added 2026-09-18 after the faq prerender failure.
+# The Next runtime plugin adapts app-router output (SSG + middleware) to Netlify.
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

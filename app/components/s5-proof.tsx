@@ -44,10 +44,7 @@ export default function S5() {
           className="relative"
         >
           <h2 className="font-black leading-[1.02] tracking-tight text-balance text-ink text-[90px] sm:text-[130px] lg:text-[160px]">
-            {t("giant").split(" ")[0]}{" "}
-            <span className="text-beacon">
-              {t("giant").split(" ")[1]}
-            </span>
+            <span className="text-amber">{t("giant")}</span>
           </h2>
         </motion.div>
 

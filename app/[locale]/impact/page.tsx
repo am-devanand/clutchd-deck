@@ -45,17 +45,16 @@ export default async function Page({
         aria-label="Impact hero"
         className="relative overflow-hidden border-b border-line pb-24 pt-16 lg:pb-28 lg:pt-24"
       >
-        <div className="pointer-events-none absolute right-[-15%] top-[-20%] h-[800px] w-[800px] rounded-full bg-beacon/10 blur-[100px]" />
-        <div className="pointer-events-none absolute left-[-20%] top-[30%] h-[600px] w-[600px] rounded-full bg-slate-200/70 blur-[100px]" />
+        {/* Soft gradient wash: white → cool blue → warm beige + one glow */}
         <div
-          className="pointer-events-none absolute inset-0 opacity-[0.05]"
+          className="pointer-events-none absolute inset-0"
           aria-hidden="true"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(15,23,42,0.6) 1px, transparent 1px), linear-gradient(to bottom, rgba(15,23,42,0.6) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
+              "linear-gradient(180deg, #ffffff 0%, #eef3ff 48%, #fbf6ec 100%)",
           }}
         />
+        <div className="pointer-events-none absolute right-[-15%] top-[-20%] h-[800px] w-[800px] rounded-full bg-beacon/10 blur-[100px]" />
         <div className="relative mx-auto flex max-w-6xl flex-col items-center px-6 text-center lg:px-8">
           <div className="mb-10 inline-flex items-center gap-3 rounded-full border border-line bg-white/80 px-5 py-2.5 text-xs font-black uppercase tracking-[0.25em] text-ink shadow-sm backdrop-blur-xl">
             <span className="h-4 w-4 font-black text-beacon" aria-hidden="true">
@@ -66,7 +65,7 @@ export default async function Page({
           <h1 className="mb-8 text-balance text-5xl font-black leading-[1.02] tracking-tight text-ink lg:text-8xl">
             {t("giant")}
             <br />
-            <span className="text-beacon">{t("badge")}</span>
+            <span className="text-amber">{t("badge")}</span>
           </h1>
           <p className="max-w-4xl text-xl font-medium leading-relaxed text-muted lg:text-2xl">
             {t("proof")}

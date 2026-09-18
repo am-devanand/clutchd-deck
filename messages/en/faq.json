@@ -27,5 +27,44 @@
       "question": "What does \"Preview\" mean?",
       "answer": "Some screens and figures on this page are illustrative previews of the product; real numbers update as ClutchD rolls out."
     }
+  ],
+  "categories": [
+    {
+      "t": "Using ClutchD",
+      "items": [
+        0,
+        5,
+        11
+      ]
+    },
+    {
+      "t": "Pricing & payments",
+      "items": [
+        1,
+        4,
+        6
+      ]
+    },
+    {
+      "t": "Coverage & data",
+      "items": [
+        3,
+        7,
+        8
+      ]
+    },
+    {
+      "t": "Trust & safety",
+      "items": [
+        2,
+        9
+      ]
+    },
+    {
+      "t": "For mechanics",
+      "items": [
+        10
+      ]
+    }
   ]
 }

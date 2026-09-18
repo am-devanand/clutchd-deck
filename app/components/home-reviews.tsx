@@ -39,7 +39,7 @@ export default function HomeReviews() {
               ★
             </span>
             <span className="text-xs font-bold uppercase tracking-[0.18em] text-amber-700">
-              {t("badge")}
+              {t("reviewsBadge")}
             </span>
           </div>
           <h2 className="text-3xl font-black tracking-tight text-ink md:text-4xl">

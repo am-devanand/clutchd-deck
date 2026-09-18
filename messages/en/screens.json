@@ -463,12 +463,12 @@
     }
   },
   "s5": {
-    "metric": "Metric Telemetry // Illustrative Proof",
+    "metric": "Real numbers, honestly labeled",
     "sysref": "SYS_REF: CLU-8809-D5",
     "active": "ACTIVE STREAM",
-    "badge": "Launch figures pending: illustrative",
+    "badge": "Average response time",
     "giant": "~18 min",
-    "proof": "Average response time across the network. Illustrative launch figures — real numbers update as ClutchD rolls out.",
+    "proof": "A launch target from our early Coimbatore network — not a measured SLA. As real jobs come in, this number updates with live data.",
     "poolLabel": "EARLY NETWORK:",
     "poolStart": 120,
     "poolSuffix": "VERIFIED MECHANICS",
@@ -518,7 +518,8 @@
       "Until then, every figure on this screen stays labeled illustrative. Launch illustrations show the shape of the network we are building, not results we have measured."
     ],
     "scopeTitle": "Pilot scope, honestly",
-    "scopeBody": "ClutchD runs today in one city: Coimbatore. The mechanics, garages, and response figures above are launch illustrations, not measured results. Real numbers replace them as the rollout progresses."
+    "scopeBody": "ClutchD runs today in one city: Coimbatore. The mechanics, garages, and response figures above are launch illustrations, not measured results. Real numbers replace them as the rollout progresses.",
+    "reviewsBadge": "Early riders, honest words"
   },
   "s6": {
     "sysref": "SYS_REF: ARCH_GALLERY_V6",
