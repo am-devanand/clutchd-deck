@@ -50,10 +50,10 @@ export default async function Page({
 
   return (
     <div className="w-full bg-paper">
-      {/* Hero band (marketplace-hero rhythm — beacon, local texture only) */}
+      {/* Hero band (marketplace-hero rhythm — deep ink navy, local texture only) */}
       <section
         aria-label="App hero"
-        className="relative overflow-hidden bg-beacon py-20 text-white"
+        className="relative overflow-hidden bg-ink py-20 text-white"
       >
         <div
           className="pointer-events-none absolute inset-0 opacity-10"
