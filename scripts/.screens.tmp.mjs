@@ -49,6 +49,55 @@ export const s1 = {
         { label: "Network Coverage", value: "100%", pct: "100%" },
         { label: "Dispatch Speed", value: "3 min", pct: "82%" },
     ],
+    // 2026-09-17: hero phone now shows the ClutchD app home screen itself
+    // (ResQNow-style). All strings grounded in docs/CLUTCHD-FACTS.md: SOS
+    // button, live mechanic tracking, VIN-fitment marketplace, service
+    // history + warranty tracking. City is the verified live seed.
+    phone: {
+        city: "Coimbatore · 24/7",
+        sosTitle: "Roadside emergency?",
+        sosAction: "SOS — Get Help Now",
+        enRoute: "Mechanic en route",
+        enRouteSub: "Verified mechanic · live tracking",
+        quickParts: "Parts Marketplace",
+        quickPartsSub: "VIN fitment check",
+        quickHistory: "Service History",
+        quickHistorySub: "Warranty tracking",
+        tabs: ["Home", "Parts", "History", "Profile"],
+        // Stage-driven live demo cycling the real app lifecycle (searching →
+        // accepted → en_route → in_progress, docs/CLUTCHD-FACTS.md). `pos` =
+        // route-marker %, `eta` = chip chrome. The demo persona (Karthik S.) is
+        // illustrative UI chrome in the same class as s1 flavor text — not a
+        // product claim.
+        stages: [
+            {
+                label: "Locating mechanic",
+                sub: "Scanning nearby verified mechanics",
+                eta: "SCAN",
+                pos: 8,
+            },
+            {
+                label: "Mechanic accepted",
+                sub: "Karthik S. accepted your request",
+                eta: "4 MIN",
+                pos: 32,
+            },
+            {
+                label: "Mechanic en route",
+                sub: "Live tracking · heading your way",
+                eta: "3 MIN",
+                pos: 64,
+            },
+            {
+                label: "Arriving now",
+                sub: "Estimate approved · work beginning",
+                eta: "NOW",
+                pos: 94,
+            },
+        ],
+        mechName: "Karthik S.",
+        mechMeta: "Verified mechanic · 4.9",
+    },
     image: {
         src: "/stitch/s1-desert.jpg",
         alt: "Cinematic wide shot of an empty asphalt two-lane desert highway stretching into total pitch black darkness at 2am",
@@ -70,6 +119,50 @@ export const s2 = {
     sub: "Find verified mechanics, request roadside help, source the right parts, track work live, and keep your complete service history.",
     ctaPrimary: "GET EARLY ACCESS",
     ctaSecondary: "SEE HOW IT WORKS",
+    // 2026-09-17: home bento-grid data — 3 pillars + 5 commitments from the
+    // old-site trust copy (verbatim, see docs/REFERENCE-old-site.md). Consumed
+    // by app/components/home-services.tsx; extracted into messages/*/screens.json.
+    pillars: [
+        {
+            t: "Verified providers",
+            body: "Every mechanic and garage passes identity and skill checks (KYC) before joining the network. No anonymous strangers at your breakdown.",
+        },
+        {
+            t: "Transparent estimates",
+            body: "See the price before the work starts. You approve the estimate, then the wrench lifts. Labour and parts are shown separately.",
+        },
+        {
+            t: "Secure payments",
+            body: "Pay through the platform with Stripe and Razorpay. Every payment is protected and receipt-backed.",
+        },
+    ],
+    commitments: [
+        {
+            code: "KYC",
+            t: "Verified mechanics and garages",
+            body: "Identity and skill verification before anyone joins the network.",
+        },
+        {
+            code: "ESTIMATE",
+            t: "Transparent estimates",
+            body: "See the price before work starts. Approve it, then work begins.",
+        },
+        {
+            code: "RATINGS",
+            t: "Ratings and reviews",
+            body: "Real feedback from real jobs keeps the network honest.",
+        },
+        {
+            code: "PAYMENTS",
+            t: "Secure payments",
+            body: "Stripe and Razorpay. Protected and receipt-backed, every time.",
+        },
+        {
+            code: "RECORDS",
+            t: "Digital service records",
+            body: "History lives on the vehicle, not in a drawer of paper invoices.",
+        },
+    ],
     // 2026-09-16: minis imported from old-site home pillars (verbatim).
     minis: [
         { k: "Verified Providers", v: "KYC", s: "Identity & skill checks" },
@@ -80,7 +173,7 @@ export const s2 = {
     footerSub: "COIMBATORE RAPID DISPATCH INFRASTRUCTURE",
     image: {
         src: "/stitch/media_1789468692674.jpg",
-        alt: "ClutchD Mobile App Live Interface",
+        alt: "ClutchD customer profile screen with ACTIVE badge, order stats, and account shortcuts",
         width: 800,
         height: 1700,
     },
@@ -364,13 +457,13 @@ export const s6 = {
             },
         },
         {
-            code: "02 — DASHBOARD",
-            meta: "02 — Dashboard",
-            title: "Command Center",
+            code: "02 — PROFILE",
+            meta: "02 — Profile",
+            title: "Account & Profile",
             body: "Central hub for your active orders, referrals, account details, and active subscriptions.",
             img: {
                 src: "/stitch/media_1789468692674.jpg",
-                alt: "Dashboard Screen",
+                alt: "Customer profile screen",
                 width: 700,
                 height: 1500,
             },
