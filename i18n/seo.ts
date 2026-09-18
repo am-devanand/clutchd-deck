@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 
 // P4 i18n SEO (docs/TAMIL-PLAN.md): canonical URLs + hreflang alternates for
-// every locale variant of a page. The production domain is still pending —
-// TODO(swap): set NEXT_PUBLIC_SITE_URL (or clutchd.com) when the domain is
-// live; the old Netlify URL is the stable default until then.
+// every locale variant of a page. Canonical home is https://clutchd.in (live
+// since 2026-09-18); NEXT_PUBLIC_SITE_URL still overrides per environment.
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://clutchd-193.netlify.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://clutchd.in";
 
 /** All supported locales — keep in sync with i18n/routing.ts. */
 export const LOCALES = ["en", "ta"] as const;
@@ -52,6 +51,22 @@ export function pageMeta({
       siteName: "ClutchD",
       locale: locale === "ta" ? "ta_IN" : "en_IN",
       type: "website",
+      // Share-card image (2026-09-18 audit gap: WhatsApp/X showed no preview).
+      // 1024x558 ≈ the 1.91:1 OG ideal, so crops stay minimal.
+      images: [
+        {
+          url: `${SITE_URL}/stitch/logo.png`,
+          width: 1024,
+          height: 558,
+          alt: "ClutchD — verified mechanics, 24/7 roadside assistance",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: meta.title,
+      description: meta.description,
+      images: [`${SITE_URL}/stitch/logo.png`],
     },
   };
 }
