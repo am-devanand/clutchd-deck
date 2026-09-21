@@ -60,7 +60,7 @@ export default async function ClassicHome({
             <a href="#roadmap" className="hover:text-beacon transition-colors">{t("navRoadmap")}</a>
           </nav>
           <div className="flex items-center">
-            <button className="rounded-full bg-[#1A5CFF] px-6 py-2.5 font-bold tracking-wide text-white shadow-[var(--shadow-elegant)] transition-all hover:bg-[#0044FF] hover:scale-105 active:scale-95">
+            <button className="rounded-full bg-[#232DA1] px-6 py-2.5 font-bold tracking-wide text-white shadow-[var(--shadow-elegant)] transition-all hover:bg-[#1B237E] hover:scale-105 active:scale-95">
               {t("cta")}
             </button>
           </div>

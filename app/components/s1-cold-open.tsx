@@ -41,7 +41,7 @@ export default function S1() {
     >
       {/* Soft amber blooms on the beige wall */}
       <div className="pointer-events-none absolute left-0 top-0 h-[560px] w-[560px] -translate-x-1/4 -translate-y-1/4 rounded-full bg-slate-200/70 blur-[130px]" />
-      <div className="pointer-events-none absolute bottom-0 right-0 h-[480px] w-[480px] translate-x-1/4 translate-y-1/4 rounded-full bg-[#1A5CFF]/10 blur-[120px]" />
+      <div className="pointer-events-none absolute bottom-0 right-0 h-[480px] w-[480px] translate-x-1/4 translate-y-1/4 rounded-full bg-[#232DA1]/10 blur-[120px]" />
       {/* 3D dispatch core (above glows, behind content) */}
       {!reducedMotion && <ThreeHero />}
       {/* Light dot-grid texture */}
@@ -155,7 +155,7 @@ export default function S1() {
           className="relative hidden w-full max-w-[360px] flex-col lg:flex"
         >
           {/* Card glow */}
-          <div className="absolute -inset-6 rounded-3xl bg-[#1A5CFF]/10 blur-2xl" />
+          <div className="absolute -inset-6 rounded-3xl bg-[#232DA1]/10 blur-2xl" />
 
           {/* Main card — phone mockup */}
           <div className="relative overflow-hidden rounded-[2rem] border border-line bg-white/90 p-5 shadow-[0_24px_48px_-24px_rgba(15,23,42,0.22)] backdrop-blur-xl">
@@ -167,7 +167,7 @@ export default function S1() {
                 <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] animate-pulse" />
                 <span className="text-xs font-bold uppercase tracking-widest text-muted">{t("cardLabel")}</span>
               </div>
-              <span className="rounded-full bg-[#1A5CFF]/10 px-2.5 py-1 font-mono text-[9px] text-[#1A5CFF]">SYS_ONLINE</span>
+              <span className="rounded-full bg-[#232DA1]/10 px-2.5 py-1 font-mono text-[9px] text-[#232DA1]">SYS_ONLINE</span>
             </div>
 
             {/* Map */}
@@ -175,23 +175,23 @@ export default function S1() {
               <svg className="absolute inset-0 h-full w-full opacity-25" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <pattern id="map-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1A5CFF" strokeWidth="0.5" />
+                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#232DA1" strokeWidth="0.5" />
                   </pattern>
                 </defs>
                 <rect width="100%" height="100%" fill="url(#map-grid)" />
               </svg>
               {/* Central ping */}
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                <div className="absolute h-24 w-24 animate-ping rounded-full bg-[#1A5CFF]/20 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" />
-                <div className="absolute h-12 w-12 animate-ping rounded-full bg-[#1A5CFF]/30 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 [animation-delay:0.3s]" />
-                <div className="relative z-10 flex h-9 w-9 items-center justify-center rounded-full bg-[#1A5CFF] shadow-lg shadow-blue-500/30">
+                <div className="absolute h-24 w-24 animate-ping rounded-full bg-[#232DA1]/20 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" />
+                <div className="absolute h-12 w-12 animate-ping rounded-full bg-[#232DA1]/30 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 [animation-delay:0.3s]" />
+                <div className="relative z-10 flex h-9 w-9 items-center justify-center rounded-full bg-[#232DA1] shadow-lg shadow-blue-500/30">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
                 </div>
               </div>
               {/* Mechanic */}
               <div className="absolute top-[28%] left-[28%]">
                 <div className="h-3 w-3 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.8)]" />
-                <div className="mt-1 rounded-md border border-[#1A5CFF]/20 bg-[#1A5CFF] px-1.5 py-0.5 backdrop-blur">
+                <div className="mt-1 rounded-md border border-[#232DA1]/20 bg-[#232DA1] px-1.5 py-0.5 backdrop-blur">
                   <span className="font-mono text-[9px] font-bold text-white">ETA 11m</span>
                 </div>
               </div>
@@ -214,7 +214,7 @@ export default function S1() {
               {/* Footer row */}
               <div className="mt-4 flex items-center justify-between border-t border-line pt-3">
                 <span className="font-mono text-[9px] text-muted">{t("coords")}</span>
-                <span className="rounded-full border border-[#1A5CFF]/25 bg-[#1A5CFF]/10 px-2 py-0.5 font-mono text-[9px] text-[#1A5CFF]">#884-CQ</span>
+                <span className="rounded-full border border-[#232DA1]/25 bg-[#232DA1]/10 px-2 py-0.5 font-mono text-[9px] text-[#232DA1]">#884-CQ</span>
               </div>
             </div>
           </div>

@@ -102,7 +102,7 @@ export default async function Page({
                       <path
                         d="M 20 0 L 0 0 0 20"
                         fill="none"
-                        stroke="#1A5CFF"
+                        stroke="#232DA1"
                         strokeWidth="0.5"
                       />
                     </pattern>

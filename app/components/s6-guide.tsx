@@ -51,7 +51,7 @@ export default function S6() {
             className="group relative flex shrink-0 snap-center flex-col items-center gap-5"
           >
             {/* Glow beneath phone */}
-            <div className="absolute -bottom-4 h-16 w-40 rounded-full bg-[#1A5CFF]/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute -bottom-4 h-16 w-40 rounded-full bg-[#232DA1]/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             {/* Phone shell */}
             <div className="rn-card relative w-[200px] overflow-hidden p-1.5 transition-all duration-500 group-hover:-translate-y-3 sm:w-[240px]" style={{ borderRadius: "36px" }}>

@@ -60,7 +60,7 @@ export default async function Page({
           aria-hidden="true"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(26,92,255,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(26,92,255,0.12) 1px, transparent 1px)",
+              "linear-gradient(to right, rgba(35,45,161,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(35,45,161,0.12) 1px, transparent 1px)",
             backgroundSize: "40px 40px",
           }}
         />

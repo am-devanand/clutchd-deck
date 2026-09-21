@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 const STEP_COLORS: Record<string, string> = {
-  "01": "#1A5CFF",
+  "01": "#232DA1",
   "02": "#3B82F6",
   "03": "#60A5FA",
   "04": "#94A3B8",
@@ -93,7 +93,7 @@ export default function S3() {
                 <div
                   className={`relative flex flex-col gap-2 overflow-hidden rounded-2xl p-5 transition-all duration-300 group-hover:-translate-y-1 ${
                     st.active
-                      ? "u-glass shadow-[0_15px_30px_-10px_rgba(26,92,255,0.25)]"
+                      ? "u-glass shadow-[0_15px_30px_-10px_rgba(35,45,161,0.25)]"
                       : "border border-line bg-white/60 backdrop-blur-sm hover:shadow-md"
                   }`}
                 >

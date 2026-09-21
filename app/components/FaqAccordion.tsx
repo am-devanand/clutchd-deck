@@ -24,7 +24,7 @@ export default function FaqAccordion({
                 ? {
                     borderColor: "var(--beacon)",
                     boxShadow:
-                      "0 0 0 2px rgba(26,92,255,0.45), 0 10px 30px -15px rgba(26,92,255,0.35)",
+                      "0 0 0 2px rgba(35,45,161,0.45), 0 10px 30px -15px rgba(35,45,161,0.35)",
                   }
                 : undefined
             }

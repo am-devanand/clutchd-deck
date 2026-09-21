@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 const PHASE_STYLES = [
-  { badge: "bg-[#1A5CFF]/10 text-beacon border-[#1A5CFF]/25", dot: "bg-emerald-500", border: "border-[#1A5CFF]/25", hover: "hover:border-[#1A5CFF]/50" },
-  { badge: "bg-beacon text-white border-transparent", dot: "bg-white", border: "border-transparent", hover: "hover:bg-[#0044FF]" },
+  { badge: "bg-[#232DA1]/10 text-beacon border-[#232DA1]/25", dot: "bg-emerald-500", border: "border-[#232DA1]/25", hover: "hover:border-[#232DA1]/50" },
+  { badge: "bg-beacon text-white border-transparent", dot: "bg-white", border: "border-transparent", hover: "hover:bg-[#1B237E]" },
   { badge: "bg-slate-100 text-muted border-line", dot: "bg-slate-400", border: "border-line", hover: "hover:border-muted" },
 ];
 

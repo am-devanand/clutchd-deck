@@ -129,7 +129,7 @@ export default async function Page({
           <nav aria-label="Feature sections" className="flex flex-wrap justify-center gap-2">
             <a
               href="#pillars"
-              className="rounded-full bg-beacon px-5 py-2 text-sm font-bold text-white shadow-md shadow-blue-200 transition-all hover:bg-[#0044FF]"
+              className="rounded-full bg-beacon px-5 py-2 text-sm font-bold text-white shadow-md shadow-blue-200 transition-all hover:bg-[#1B237E]"
             >
               {t("pillarsTitle")}
             </a>

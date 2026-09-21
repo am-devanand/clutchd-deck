@@ -18,7 +18,7 @@ export default function S8() {
     >
       {/* Soft amber blooms on the beige wall */}
       <div className="pointer-events-none absolute bottom-0 left-1/2 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-slate-200/70 blur-[120px]" />
-      <div className="pointer-events-none absolute right-0 top-0 h-[400px] w-[500px] translate-x-1/4 -translate-y-1/4 rounded-full bg-[#1A5CFF]/10 blur-[110px]" />
+      <div className="pointer-events-none absolute right-0 top-0 h-[400px] w-[500px] translate-x-1/4 -translate-y-1/4 rounded-full bg-[#232DA1]/10 blur-[110px]" />
 
       {/* Grid */}
       <svg className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.08]" xmlns="http://www.w3.org/2000/svg">
@@ -122,7 +122,7 @@ export default function S8() {
                 <span className="text-[0.55rem] font-bold uppercase leading-none tracking-wider">{t("apkTop")}</span>
                 <span className="flex items-center gap-2 text-sm font-bold leading-tight">
                   {t("apkLabel")}
-                  <span className="rounded-full bg-[#1A5CFF]/10 px-2 py-0.5 text-[0.55rem] font-bold uppercase tracking-wider text-[#1A5CFF]">{t("apkSoon")}</span>
+                  <span className="rounded-full bg-[#232DA1]/10 px-2 py-0.5 text-[0.55rem] font-bold uppercase tracking-wider text-[#232DA1]">{t("apkSoon")}</span>
                 </span>
               </span>
             </button>

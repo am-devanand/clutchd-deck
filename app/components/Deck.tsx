@@ -453,8 +453,8 @@ export default function Deck() {
                 type="button"
                 onClick={() => go(l.n)}
                 aria-current={index === l.n ? "true" : undefined}
-                className={`transition-colors hover:text-[#1A5CFF] ${
-                  index === l.n ? "text-[#1A5CFF]" : ""
+                className={`transition-colors hover:text-[#232DA1] ${
+                  index === l.n ? "text-[#232DA1]" : ""
                 }`}
               >
                 {l.label}
@@ -464,7 +464,7 @@ export default function Deck() {
           <button
             type="button"
             onClick={() => go(8)}
-            className="rounded-full bg-[#1A5CFF] px-5 py-2 text-sm font-bold text-white shadow-[var(--shadow-elegant)] transition-all hover:bg-[#0044FF]"
+            className="rounded-full bg-[#232DA1] px-5 py-2 text-sm font-bold text-white shadow-[var(--shadow-elegant)] transition-all hover:bg-[#1B237E]"
           >
             Get the App
           </button>
@@ -531,7 +531,7 @@ export default function Deck() {
             type="button"
             aria-label="Next screen"
             onClick={next}
-            className="flex h-11 w-11 items-center justify-center rounded-full bg-[#1A5CFF] text-white shadow-[var(--shadow-elegant)] transition-all hover:scale-105 hover:bg-[#0044FF]"
+            className="flex h-11 w-11 items-center justify-center rounded-full bg-[#232DA1] text-white shadow-[var(--shadow-elegant)] transition-all hover:scale-105 hover:bg-[#1B237E]"
           >
             <Chevron direction="right" />
           </button>

@@ -219,7 +219,7 @@ export default function DeckShell() {
             <span
               className={`block rounded-full transition-all duration-300 ${
                 current === i
-                  ? "h-4 w-4 bg-beacon shadow-[0_0_8px_rgba(26,92,255,0.6)]"
+                  ? "h-4 w-4 bg-beacon shadow-[0_0_8px_rgba(35,45,161,0.6)]"
                   : "h-2.5 w-2.5 bg-line hover:bg-muted"
               }`}
             />

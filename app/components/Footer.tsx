@@ -93,7 +93,7 @@ export default async function Footer({
           <p className="text-xs text-muted">
             &copy; {new Date().getFullYear()} ClutchD. {t("rights")}
           </p>
-          <span className="rounded-full border border-[#1A5CFF]/25 bg-[#1A5CFF]/10 px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[#1A5CFF] backdrop-blur">
+          <span className="rounded-full border border-[#232DA1]/25 bg-[#232DA1]/10 px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[#232DA1] backdrop-blur">
             CLUTCH-ALPHA-884 ONLINE
           </span>
         </div>

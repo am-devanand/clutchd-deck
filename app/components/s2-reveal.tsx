@@ -152,7 +152,7 @@ export default function S2() {
         >
           {/* Glow behind phone */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="h-[500px] w-[300px] rounded-full bg-[#1A5CFF]/10 blur-[80px]" />
+            <div className="h-[500px] w-[300px] rounded-full bg-[#232DA1]/10 blur-[80px]" />
           </div>
           <div className="group relative w-[260px] overflow-hidden rounded-[44px] border border-line bg-white p-1.5 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] ring-1 ring-slate-200/50">
             <div className="relative w-full overflow-hidden rounded-[36px] bg-slate-50">

@@ -83,7 +83,7 @@ export default function S4() {
                   className="group rn-card relative overflow-hidden p-5"
                 >
                   <div className="relative z-10">
-                    <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-beacon text-xl text-white shadow-md shadow-blue-200 transition-all group-hover:bg-[#0044FF]">
+                    <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-beacon text-xl text-white shadow-md shadow-blue-200 transition-all group-hover:bg-[#1B237E]">
                       {p.icon}
                     </div>
                     <h3 className="mb-2 text-sm font-bold text-ink">{p.title}</h3>
@@ -110,7 +110,7 @@ export default function S4() {
           className="relative hidden justify-center lg:flex"
         >
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="h-[500px] w-[300px] rounded-full bg-[#1A5CFF]/10 blur-[80px]" />
+            <div className="h-[500px] w-[300px] rounded-full bg-[#232DA1]/10 blur-[80px]" />
           </div>
           <div className="group relative w-[260px] overflow-hidden rounded-[44px] border border-line bg-white p-1.5 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] ring-1 ring-slate-200/50">
             <div className="relative w-full overflow-hidden rounded-[36px] bg-slate-50">
