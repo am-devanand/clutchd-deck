@@ -55,15 +55,6 @@ export default async function Page({
         aria-label="App hero"
         className="relative overflow-hidden bg-[#EAF1FE] py-20 text-ink"
       >
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.35]"
-          aria-hidden="true"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, rgba(35,45,161,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(35,45,161,0.12) 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-          }}
-        />
         <div className="pointer-events-none absolute right-[-10%] top-[-30%] h-[400px] w-[400px] rounded-full bg-beacon/10 blur-[100px]" />
         <div className="relative z-10 mx-auto px-6 text-center">
           <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-line bg-white/80 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-ink">
