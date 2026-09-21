@@ -50,12 +50,12 @@ export default async function Page({
 
   return (
     <div className="w-full bg-paper">
-      {/* Hero band (marketplace-hero rhythm — soft brand mist, local texture only) */}
+      {/* Hero band (marketplace-hero rhythm — warm beige, glow only) */}
       <section
         aria-label="App hero"
-        className="relative overflow-hidden bg-[#EAF1FE] py-12 text-ink md:py-20"
+        className="relative overflow-hidden bg-[#F5EFE3] py-20 text-ink"
       >
-        <div className="pointer-events-none absolute right-[-10%] top-[-30%] h-[400px] w-[400px] rounded-full bg-beacon/10 blur-[100px]" />
+        <div className="pointer-events-none absolute right-[-10%] top-[-30%] h-[400px] w-[400px] rounded-full bg-amber-200/40 blur-[100px]" />
         <div className="relative z-10 mx-auto px-6 text-center">
           <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-line bg-white/80 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-ink">
             <span className="relative flex h-2 w-2" aria-hidden="true">
