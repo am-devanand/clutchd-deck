@@ -640,15 +640,17 @@ export const s8 = {
   cta: "GET THE APP",
   // 2026-09-16: CTA reworked to APK/PWA per docs/CLUTCHD-FACTS.md — ClutchD
   // ships as a Capacitor Android APK + installable PWA (no store listings yet).
-  // TODO(swap): apkLabel badge is non-linking until a public APK URL exists;
   // TODO(swap): swap pwaHref to the production domain (clutchd.com) when live.
   // TODO(swap): callHref "tel:911" below is a stand-in for the real dispatch line.
   pwaHref: "https://clutchd.tail14cfb9.ts.net",
   pwaTop: "INSTALLABLE PWA",
   pwaLabel: "Open Web App",
+  // 2026-09-21: real release APK ships from /app (v3.1.21) — badge links it.
+  apkHref: "/app/ClutchD-v3.1.21-release.apk",
+  apkVersion: "v3.1.21",
   apkTop: "DIRECT INSTALL",    apkLabel: "Android APK",
-    apkSoon: "SOON",
-    apkAria: "Android APK coming soon",
+    apkSoon: "v3.1.21",
+    apkAria: "Download Android APK v3.1.21",
   urgent: "Need urgent assistance right now?",
   call: "Call 24/7 Emergency Dispatch",
   callHref: "tel:911",

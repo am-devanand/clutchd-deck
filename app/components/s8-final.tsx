@@ -108,10 +108,11 @@ export default function S8() {
                 <span className="text-sm font-bold leading-tight">{t("pwaLabel")}</span>
               </span>
             </a>
-            <button
-              type="button"
+            <a
+              href={s8.apkHref}
+              download="ClutchD-v3.1.21-release.apk"
               aria-label={t("apkAria")}
-              className="group flex cursor-not-allowed items-center gap-3 rounded-xl border border-line bg-white/50 px-5 py-3 text-muted backdrop-blur"
+              className="group flex items-center gap-3 rounded-xl border border-line bg-white px-5 py-3 text-ink shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
             >
               <span className="transition-colors">
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -125,7 +126,7 @@ export default function S8() {
                   <span className="rounded-full bg-[#232DA1]/10 px-2 py-0.5 text-[0.55rem] font-bold uppercase tracking-wider text-[#232DA1]">{t("apkSoon")}</span>
                 </span>
               </span>
-            </button>
+            </a>
           </div>
         </motion.div>
 

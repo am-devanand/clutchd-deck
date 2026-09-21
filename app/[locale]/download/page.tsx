@@ -134,12 +134,12 @@ export default async function Page({
                   <span className="text-sm font-bold leading-tight">{t("pwaLabel")}</span>
                 </span>
               </a>
-              {/* APK stays non-linking with SOON chip until a public APK URL exists */}
-              <button
-                type="button"
+              {/* APK links the real release build with version chip */}
+              <a
+                href={s8.apkHref}
+                download="ClutchD-v3.1.21-release.apk"
                 aria-label={t("apkAria")}
-                disabled
-                className="flex cursor-not-allowed items-center gap-3 rounded-xl border border-line bg-white/50 px-5 py-3 text-muted backdrop-blur"
+                className="flex items-center gap-3 rounded-xl border border-line bg-white px-5 py-3 text-ink shadow-sm backdrop-blur transition-all hover:-translate-y-0.5 hover:shadow-md"
               >
                 <span className="text-xl font-black" aria-hidden="true">
                   ▣
@@ -155,7 +155,7 @@ export default async function Page({
                     </span>
                   </span>
                 </span>
-              </button>
+              </a>
             </div>
           </div>
         </div>
