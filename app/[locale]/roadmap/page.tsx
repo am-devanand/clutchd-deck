@@ -45,7 +45,7 @@ export default async function Page({
       {/* Hero — launch-city copy + pilot-grid visual (CitiesPage hero rhythm) */}
       <section
         aria-label="Roadmap hero"
-        className="relative overflow-hidden pb-24 pt-16 lg:pt-24"
+        className="relative overflow-hidden pb-12 pt-10 lg:pt-24"
       >
         <div className="pointer-events-none absolute right-[-10%] top-[-20%] h-[600px] w-[600px] rounded-full bg-beacon/10 blur-[100px]" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-2 lg:px-8">
@@ -144,7 +144,7 @@ export default async function Page({
           {rows.map((row) => (
             <article
               key={row.phase}
-              className="rn-card group relative overflow-hidden p-8 lg:p-10"
+              className="rn-card group relative overflow-hidden p-6 sm:p-8 lg:p-10"
             >
               <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-10">
                 <div className="flex shrink-0 items-baseline gap-2">
@@ -183,7 +183,7 @@ export default async function Page({
       {/* Expansion teaser (CitiesPage expansion-card rhythm) */}
       <section aria-label="Expansion" className="rn-section bg-paper">
         <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
-          <div className="relative mx-auto flex max-w-5xl flex-col items-center overflow-hidden rounded-[3rem] border border-line bg-white p-12 text-center shadow-sm lg:p-20">
+          <div className="relative mx-auto flex max-w-5xl flex-col items-center overflow-hidden rounded-[3rem] border border-line bg-white p-6 text-center shadow-sm sm:p-8 lg:p-20">
             <div
               className="absolute inset-x-0 top-0 h-px bg-beacon/50"
               aria-hidden="true"
@@ -212,7 +212,7 @@ export default async function Page({
               <p className="mb-8 max-w-2xl border-t border-line pt-8 text-base font-bold text-ink">
                 {t("honesty")}
               </p>
-              <div className="inline-flex items-center gap-2 rounded-full bg-beacon px-6 py-3 text-sm font-bold text-white shadow-lg">
+              <div className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-beacon px-6 py-3 text-sm font-bold text-white shadow-lg">
                 <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
                   <span className="absolute inline-flex h-full w-full rounded-full bg-white opacity-75 motion-safe:animate-ping" />
                   <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-white" />

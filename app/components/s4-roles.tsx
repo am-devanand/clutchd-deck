@@ -58,7 +58,7 @@ export default function S4() {
                   key={r}
                   type="button"
                   onClick={() => setRole(r)}
-                  className={`rounded-full px-5 py-2 text-sm font-bold transition-all duration-300 ${
+                  className={`inline-flex min-h-[44px] items-center rounded-full px-5 py-2 text-sm font-bold transition-all duration-300 ${
                     active
                       ? "bg-beacon text-white shadow-md shadow-blue-200"
                       : "border border-line bg-white/70 text-muted backdrop-blur hover:border-beacon hover:text-ink shadow-sm"

@@ -89,7 +89,7 @@ export default function Navbar() {
                 <Link
                   key={loc}
                   href={localeHref(loc, current)}
-                  className={`rounded-full border px-2.5 py-1.5 text-xs font-bold transition-all ${
+                  className={`inline-flex min-h-[44px] items-center rounded-full border px-2.5 py-1.5 text-xs font-bold transition-all ${
                     loc === locale
                       ? "border-transparent bg-beacon text-white shadow-sm"
                       : "border-line bg-white/80 text-muted hover:text-ink"
@@ -102,12 +102,12 @@ export default function Navbar() {
             </div>
             <Link
               href={localeHref(locale, "/download")}
-              className="u-btn-grad hidden whitespace-nowrap rounded-full px-4 py-2.5 text-[13px] font-bold text-white sm:block xl:px-5 xl:text-sm"
+              className="u-btn-grad hidden min-h-[44px] items-center whitespace-nowrap rounded-full px-4 py-2.5 text-[13px] font-bold text-white sm:inline-flex xl:px-5 xl:text-sm"
             >
               {tNav("download")}
             </Link>
             <button
-              className="rounded-xl p-2 text-muted transition-colors hover:bg-white hover:shadow-sm lg:hidden"
+              className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl p-2 text-muted transition-colors hover:bg-white hover:shadow-sm lg:hidden"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
             >
@@ -130,7 +130,7 @@ export default function Navbar() {
                 key={key}
                 href={localeHref(locale, path)}
                 onClick={() => setMenuOpen(false)}
-                className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors ${
+                className={`rounded-xl px-4 py-3 text-sm font-semibold transition-colors ${
                   current === path
                     ? "bg-beacon text-white"
                     : "text-muted hover:bg-slate-50"
@@ -145,7 +145,7 @@ export default function Navbar() {
                   key={loc}
                   href={localeHref(loc, current)}
                   onClick={() => setMenuOpen(false)}
-                  className={`flex-1 rounded-xl border px-4 py-2.5 text-center text-sm font-bold transition-colors ${
+                  className={`flex-1 rounded-xl border px-4 py-3 text-center text-sm font-bold transition-colors ${
                     loc === locale
                       ? "border-transparent bg-beacon text-white"
                       : "border-line text-muted"
@@ -158,7 +158,7 @@ export default function Navbar() {
             <Link
               href={localeHref(locale, "/download")}
               onClick={() => setMenuOpen(false)}
-              className="u-btn-grad mt-2 rounded-full px-5 py-2.5 text-center text-sm font-bold text-white"
+              className="u-btn-grad mt-2 rounded-full px-5 py-3 text-center text-sm font-bold text-white"
             >
               {tNav("download")}
             </Link>

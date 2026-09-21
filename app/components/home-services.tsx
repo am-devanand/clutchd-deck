@@ -47,7 +47,7 @@ export default async function HomeServices({ locale }: { locale: string }) {
       className="rn-section bg-gradient-to-b from-paper to-slate-50"
     >
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
-        <div className="mb-16 mt-8 text-left">
+        <div className="mb-10 mt-4 text-left md:mb-16 md:mt-8">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div className="max-w-2xl">
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-beacon/20 bg-beacon/10 px-3 py-1.5">
@@ -73,11 +73,11 @@ export default async function HomeServices({ locale }: { locale: string }) {
           </div>
         </div>
 
-        <div className="mb-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 md:mb-12 lg:grid-cols-4">
           {cards.map((card) => (
             <article
               key={card.title}
-              className="rn-card group relative isolate overflow-hidden p-8"
+              className="rn-card group relative isolate overflow-hidden p-5 sm:p-8"
             >
               <div
                 className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-beacon opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-10"
@@ -101,7 +101,7 @@ export default async function HomeServices({ locale }: { locale: string }) {
         </div>
 
         {/* Early-access band (solid beacon, s2 CTA copy) */}
-        <div className="relative mx-auto mt-12 max-w-2xl overflow-hidden rounded-3xl bg-beacon p-8 text-center text-white shadow-2xl">
+        <div className="relative mx-auto mt-8 max-w-2xl overflow-hidden rounded-3xl bg-beacon p-6 text-center text-white shadow-2xl sm:p-8 md:mt-12">
           <div
             className="absolute inset-0 opacity-10"
             aria-hidden="true"

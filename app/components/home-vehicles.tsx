@@ -19,7 +19,7 @@ export default async function HomeVehicles({ locale }: { locale: string }) {
   return (
     <section id="vehicles" aria-label="Vehicles" className="rn-section bg-paper">
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto mb-16 max-w-2xl text-center">
+        <div className="mx-auto mb-10 max-w-2xl text-center md:mb-16">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-beacon/20 bg-beacon/10 px-3 py-1.5">
             <span className="relative flex h-2 w-2" aria-hidden="true">
               <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 motion-safe:animate-ping" />
@@ -41,7 +41,7 @@ export default async function HomeVehicles({ locale }: { locale: string }) {
           {phones.map((p) => (
             <article
               key={p.code}
-              className="rn-card group relative overflow-hidden p-8 text-center transition-all duration-300 hover:-translate-y-1"
+              className="rn-card group relative overflow-hidden p-5 text-center transition-all duration-300 hover:-translate-y-1 sm:p-8"
             >
               {/* CSS phone shell with text rows (no screenshot) */}
               <div className="mx-auto mb-6 w-fit rounded-[1.75rem] border border-line bg-white p-1.5 shadow-sm transition-transform duration-500 group-hover:scale-105">
@@ -75,7 +75,7 @@ export default async function HomeVehicles({ locale }: { locale: string }) {
         </div>
 
         {/* Price-comparison panel (marketplace second half) */}
-        <div className="rn-card mx-auto mt-8 flex max-w-3xl flex-col gap-4 p-8 sm:flex-row sm:items-center">
+        <div className="rn-card mx-auto mt-6 flex max-w-3xl flex-col gap-4 p-6 sm:mt-8 sm:flex-row sm:items-center sm:p-8">
           <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-beacon/10">
             <span className="text-xl font-black text-beacon" aria-hidden="true">
               ◈

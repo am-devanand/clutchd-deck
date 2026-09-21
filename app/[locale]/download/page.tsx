@@ -46,7 +46,7 @@ export default async function Page({
     <div className="w-full bg-paper">
       {/* Urgent CTA band (Emergency header rhythm — beacon, never red) */}
       <section aria-label="Urgent assistance" className="rn-section bg-paper">
-        <div className="mx-auto w-full max-w-md">
+        <div className="mx-auto w-full max-w-md px-4">
           <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-lg">
             <div className="bg-beacon p-6 text-white">
               <h1 className="mb-2 text-2xl font-bold">{t("urgent")}</h1>
@@ -122,7 +122,7 @@ export default async function Page({
                 href={s8.pwaHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rn-card group flex items-center gap-3 px-5 py-3 text-ink"
+                className="rn-card group flex min-h-[44px] items-center gap-3 px-5 py-3 text-ink"
               >
                 <span className="text-xl font-black text-beacon" aria-hidden="true">
                   ▦

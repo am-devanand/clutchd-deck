@@ -28,7 +28,7 @@ export default async function HomeHero({ locale }: { locale: string }) {
   return (
     <section
       aria-label="Hero"
-      className="relative overflow-hidden border-b border-line bg-paper pb-24 pt-16"
+      className="relative overflow-hidden border-b border-line bg-paper pb-12 pt-10 md:pb-24 md:pt-16"
     >
       {/* Soft glows (beacon, never red) + dot texture */}
       <div className="pointer-events-none absolute right-[10%] top-0 h-[600px] w-[600px] rounded-full bg-beacon/10 blur-[100px]" />

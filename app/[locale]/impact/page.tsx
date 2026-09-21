@@ -43,7 +43,7 @@ export default async function Page({
       {/* Hero — centered pill, giant metric, proof sub (About hero rhythm) */}
       <section
         aria-label="Impact hero"
-        className="relative overflow-hidden border-b border-line pb-24 pt-16 lg:pb-28 lg:pt-24"
+        className="relative overflow-hidden border-b border-line pb-12 pt-10 lg:pb-28 lg:pt-24"
       >
         {/* Soft gradient wash: white → cool blue → warm beige + one glow */}
         <div
@@ -78,7 +78,7 @@ export default async function Page({
 
       <div className="mx-auto w-full max-w-7xl px-6 py-24 lg:px-8">
         {/* Method card (certification-card rhythm: badge, title, body) */}
-        <div className="group relative mb-24 flex flex-col items-center gap-10 overflow-hidden rounded-[3rem] border border-line bg-white/60 p-10 shadow-sm backdrop-blur-3xl lg:flex-row lg:gap-16 lg:p-14">
+        <div className="group relative mb-12 flex flex-col items-center gap-8 overflow-hidden rounded-[3rem] border border-line bg-white/60 p-6 shadow-sm backdrop-blur-3xl sm:p-10 md:mb-24 lg:flex-row lg:gap-16 lg:p-14">
           <div className="pointer-events-none absolute inset-0 bg-beacon/[0.03] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
           <div className="relative z-10 flex h-40 w-40 shrink-0 items-center justify-center rounded-3xl border border-line bg-white p-6 shadow-sm transition-transform duration-700 group-hover:scale-105 lg:h-48 lg:w-48">
             <span className="font-mono text-2xl font-black text-beacon" aria-hidden="true">
@@ -108,8 +108,8 @@ export default async function Page({
         </div>
 
         {/* Scope / proof pillars (mission-light + vision-dark rhythm) */}
-        <div className="mb-24 grid gap-10 lg:grid-cols-2">
-          <div className="group relative h-full overflow-hidden rounded-[3rem] border border-line bg-white/80 p-12 shadow-sm backdrop-blur-xl transition-all duration-700 hover:bg-white lg:p-16">
+        <div className="mb-12 grid gap-6 md:mb-24 md:gap-10 lg:grid-cols-2">
+          <div className="group relative h-full overflow-hidden rounded-[3rem] border border-line bg-white/80 p-6 shadow-sm backdrop-blur-xl transition-all duration-700 hover:bg-white sm:p-8 lg:p-16">
             <div className="pointer-events-none absolute right-[-20%] top-[-20%] h-[400px] w-[400px] rounded-full bg-beacon/10 blur-[80px] transition-colors duration-700 group-hover:bg-beacon/20" />
             <div className="relative z-10">
               <div className="mb-10 flex h-20 w-20 items-center justify-center rounded-[1.5rem] bg-beacon text-4xl font-black text-white shadow-lg shadow-blue-500/30 transition-transform duration-500 group-hover:scale-110">
@@ -121,7 +121,7 @@ export default async function Page({
               <p className="text-xl font-medium leading-relaxed text-muted">{t("scopeBody")}</p>
             </div>
           </div>
-          <div className="group relative h-full overflow-hidden rounded-[3rem] border border-ink bg-ink p-12 shadow-xl lg:p-16">
+          <div className="group relative h-full overflow-hidden rounded-[3rem] border border-ink bg-ink p-6 shadow-xl sm:p-8 lg:p-16">
             <div className="pointer-events-none absolute right-[-20%] top-[-20%] h-[400px] w-[400px] rounded-full bg-beacon/30 blur-[80px] transition-colors duration-700 group-hover:bg-beacon/40" />
             <div className="relative z-10 text-white">
               <div className="mb-10 flex h-20 w-20 items-center justify-center rounded-[1.5rem] bg-white text-ink shadow-lg transition-transform duration-500 group-hover:scale-110">
@@ -155,7 +155,7 @@ export default async function Page({
             {stats.map((s) => (
               <div
                 key={s.label}
-                className="rn-card group relative flex h-full flex-col items-start overflow-hidden p-10"
+                className="rn-card group relative flex h-full flex-col items-start overflow-hidden p-6 sm:p-10"
               >
                 <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl border border-line bg-slate-50 shadow-sm transition-colors duration-500 group-hover:bg-beacon group-hover:text-white">
                   <span

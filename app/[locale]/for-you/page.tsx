@@ -77,7 +77,7 @@ export default async function Page({
       {/* Hero — mission pill, ink H1, CTA row, dispatch visual */}
       <section
         aria-label="For you hero"
-        className="relative overflow-hidden border-b border-line pb-24 pt-16 lg:pt-24"
+        className="relative overflow-hidden border-b border-line pb-12 pt-10 lg:pt-24"
       >
         <div className="pointer-events-none absolute right-[-10%] top-[-20%] h-[600px] w-[600px] rounded-full bg-beacon/10 blur-[100px]" />
         <div className="pointer-events-none absolute bottom-[-30%] left-[-10%] h-[500px] w-[500px] rounded-full bg-slate-200/70 blur-[100px]" />
@@ -159,7 +159,7 @@ export default async function Page({
       {/* Problem → answer (split header + 3 trust cards) */}
       <section aria-label="The problem" className="rn-section bg-paper">
         <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
-          <div className="mb-16 grid grid-cols-12 gap-12 lg:gap-20">
+          <div className="mb-10 grid grid-cols-12 gap-8 md:mb-16 lg:gap-20">
             <div className="col-span-12 lg:col-span-5">
               <p className="mb-6 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.2em] text-beacon">
                 <span className="h-px w-8 bg-beacon" aria-hidden="true" />
@@ -177,7 +177,7 @@ export default async function Page({
           </div>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {trust.map((item) => (
-              <article key={item.t} className="rn-card group p-10">
+              <article key={item.t} className="rn-card group p-6 sm:p-10">
                 <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl border border-line bg-slate-50 shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:border-beacon/30 group-hover:bg-beacon/10">
                   <span
                     className="text-2xl font-black text-muted transition-colors duration-300 group-hover:text-beacon"
@@ -203,7 +203,7 @@ export default async function Page({
       >
         <div className="mx-auto grid w-full max-w-7xl grid-cols-12 items-center gap-16 px-6 lg:gap-24 lg:px-8">
           <div className="order-2 col-span-12 lg:order-1 lg:col-span-6">
-            <div className="relative overflow-hidden rounded-[2rem] border border-line bg-white p-10 shadow-xl lg:p-12">
+            <div className="relative overflow-hidden rounded-[2rem] border border-line bg-white p-6 shadow-xl sm:p-10 lg:p-12">
               <div className="pointer-events-none absolute right-[-30%] top-[-30%] h-[300px] w-[300px] rounded-full bg-beacon/10 blur-[80px]" />
               <div className="relative z-10 flex flex-col gap-10">
                 {metrics.slice(0, 3).map((m) => (
@@ -249,7 +249,7 @@ export default async function Page({
       {/* Audience grid (s4 roles/pods/closers, partner-card rhythm) */}
       <section aria-label="Who it is for" className="rn-section bg-paper">
         <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto mb-16 max-w-3xl text-center">
+          <div className="mx-auto mb-10 max-w-3xl text-center lg:mb-16">
             <p className="mb-6 text-[11px] font-bold uppercase tracking-[0.2em] text-beacon">
               {t4("eyebrow")}
             </p>
@@ -263,7 +263,7 @@ export default async function Page({
               return (
                 <article
                   key={role}
-                  className="rn-card group relative flex h-full flex-col overflow-hidden p-8"
+                  className="rn-card group relative flex h-full flex-col overflow-hidden p-6 sm:p-8"
                 >
                   <div className="relative z-10 flex h-full flex-col">
                     <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl border border-line bg-slate-50 text-xl font-black text-muted shadow-sm transition-all duration-500 group-hover:bg-beacon group-hover:text-white">
@@ -294,7 +294,7 @@ export default async function Page({
       {/* Capability strip (service-name grid rhythm, s2 titles only) */}
       <section aria-label="Capabilities" className="rn-section bg-paper">
         <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
-          <div className="mb-12 text-center">
+          <div className="mb-8 text-center md:mb-12">
             <p className="mb-6 text-[11px] font-bold uppercase tracking-[0.2em] text-beacon">
               {t2("pillarsTitle")}
             </p>
@@ -306,7 +306,7 @@ export default async function Page({
             {[...pillars.map((p) => p.t), ...commitments.map((c) => c.t)].slice(0, 8).map((name) => (
               <div
                 key={name}
-                className="group flex cursor-default flex-col items-center justify-center bg-slate-50 p-10 text-center transition-colors hover:bg-white"
+                className="group flex cursor-default flex-col items-center justify-center bg-slate-50 p-6 text-center transition-colors hover:bg-white sm:p-10"
               >
                 <span className="text-xl font-bold text-muted transition-all group-hover:scale-105 group-hover:text-ink">
                   {name}

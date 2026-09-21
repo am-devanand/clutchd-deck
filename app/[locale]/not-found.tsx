@@ -8,7 +8,7 @@ export default async function LocaleNotFound() {
   const t = await getTranslations("common");
   return (
     <section className="rn-section bg-paper text-center">
-      <div className="mx-auto max-w-xl">
+      <div className="mx-auto max-w-xl px-6">
         <p className="font-data text-xs font-bold tracking-widest text-beacon">
           404
         </p>
@@ -21,13 +21,13 @@ export default async function LocaleNotFound() {
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
             href="/"
-            className="u-btn-grad rounded-2xl px-8 py-3 font-bold text-white"
+            className="u-btn-grad inline-flex min-h-[44px] w-full items-center justify-center rounded-2xl px-8 py-3 font-bold text-white sm:w-auto"
           >
             {t("notFound.home")}
           </Link>
           <Link
             href="/faq"
-            className="rounded-2xl border-2 border-beacon/30 bg-white px-8 py-3 font-bold text-beacon transition-colors hover:border-beacon hover:bg-beacon hover:text-white"
+            className="inline-flex min-h-[44px] w-full items-center justify-center rounded-2xl border-2 border-beacon/30 bg-white px-8 py-3 font-bold text-beacon transition-colors hover:border-beacon hover:bg-beacon hover:text-white sm:w-auto"
           >
             {t("notFound.faq")}
           </Link>

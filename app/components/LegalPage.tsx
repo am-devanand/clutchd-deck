@@ -31,7 +31,7 @@ export default function LegalPage({
       <div className="mx-auto w-full max-w-4xl px-6">
         <Link
           href="/"
-          className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-muted transition-colors hover:text-beacon"
+          className="mb-8 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-muted transition-colors hover:text-beacon"
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="m15 18-6-6 6-6" />

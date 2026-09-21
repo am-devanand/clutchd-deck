@@ -24,7 +24,7 @@ export default async function HomeSteps({ locale }: { locale: string }) {
       className="rn-section bg-gradient-to-b from-paper to-slate-50"
     >
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
-        <div className="mb-16 max-w-2xl text-center md:text-left">
+        <div className="mb-10 max-w-2xl text-center md:mb-16 md:text-left">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-beacon/20 bg-beacon/10 px-3 py-1.5">
             <span className="h-2 w-2 rounded-full bg-beacon" aria-hidden="true" />
             <span className="text-xs font-bold uppercase tracking-widest text-beacon">
@@ -69,7 +69,7 @@ export default async function HomeSteps({ locale }: { locale: string }) {
                 </div>
 
                 {/* Content card */}
-                <div className="rn-card w-full p-8 transition-all duration-300 group-hover:-translate-y-2 group-hover:border-beacon/20">
+                <div className="rn-card w-full p-5 transition-all duration-300 group-hover:-translate-y-2 group-hover:border-beacon/20 sm:p-8">
                   <p className="mb-2 font-mono text-[10px] font-bold tracking-widest text-beacon">
                     {step.n}
                   </p>

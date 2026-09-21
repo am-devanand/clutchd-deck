@@ -79,7 +79,7 @@ export default async function Footer({
               <ul className="space-y-3">
                 {links.map(({ href, label }) => (
                   <li key={href}>
-                    <Link href={withLocale(href)} className="text-sm font-medium text-muted transition-colors hover:text-beacon">
+                    <Link href={withLocale(href)} className="inline-block py-1.5 text-sm font-medium text-muted transition-colors hover:text-beacon">
                       {label}
                     </Link>
                   </li>

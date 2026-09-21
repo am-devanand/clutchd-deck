@@ -63,7 +63,7 @@ export default async function FaqPage({
           {t("lede")}
         </p>
 
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-6 sm:gap-10">
           {categories.map((cat, ci) => {
             const grouped = cat.items
               .filter((idx) => idx >= 0 && idx < items.length)

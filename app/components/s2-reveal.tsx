@@ -70,14 +70,14 @@ export default function S2() {
             transition={{ delay: 0.3 }}
             className="flex flex-wrap items-center gap-4"
           >
-            <button className="u-btn-grad group relative overflow-hidden rounded-full px-7 py-3 text-sm font-bold text-white">
+            <button className="u-btn-grad group relative inline-flex min-h-[44px] items-center justify-center overflow-hidden rounded-full px-7 py-3 text-sm font-bold text-white">
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
               <span className="relative flex items-center gap-2">
                 {t("ctaPrimary")}
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1"><path d="m9 18 6-6-6-6" /></svg>
               </span>
             </button>
-            <button className="rounded-full border border-beacon bg-white/70 px-7 py-3 text-sm font-bold text-beacon backdrop-blur transition-all hover:bg-beacon hover:text-white">
+            <button className="inline-flex min-h-[44px] items-center justify-center rounded-full border border-beacon bg-white/70 px-7 py-3 text-sm font-bold text-beacon backdrop-blur transition-all hover:bg-beacon hover:text-white">
               {t("ctaSecondary")}
             </button>
           </motion.div>

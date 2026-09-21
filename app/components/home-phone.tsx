@@ -233,8 +233,8 @@ export default function HomePhone({
                 {phone.mechName.charAt(0)}
               </div>
               <div className="min-w-0 flex-1">
-                <p className="truncate text-xs font-bold text-ink">{phone.mechName}</p>
-                <p className="truncate text-[10px] font-medium text-muted">
+                <p className="text-xs font-bold text-ink">{phone.mechName}</p>
+                <p className="text-[10px] font-medium text-muted">
                   {phone.mechMeta}
                 </p>
               </div>
@@ -254,8 +254,8 @@ export default function HomePhone({
               </span>
             </div>
             <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-bold text-ink">{phone.quickParts}</p>
-              <p className="truncate text-[11px] font-medium text-muted">
+              <p className="text-sm font-bold text-ink">{phone.quickParts}</p>
+              <p className="text-[11px] font-medium text-muted">
                 {phone.quickPartsSub}
               </p>
             </div>
@@ -270,10 +270,10 @@ export default function HomePhone({
               </span>
             </div>
             <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-bold text-ink">
+              <p className="text-sm font-bold text-ink">
                 {phone.quickHistory}
               </p>
-              <p className="truncate text-[11px] font-medium text-muted">
+              <p className="text-[11px] font-medium text-muted">
                 {phone.quickHistorySub}
               </p>
             </div>

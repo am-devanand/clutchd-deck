@@ -53,7 +53,7 @@ export default async function Page({
       {/* Hero band (marketplace-hero rhythm — soft brand mist, local texture only) */}
       <section
         aria-label="App hero"
-        className="relative overflow-hidden bg-[#EAF1FE] py-20 text-ink"
+        className="relative overflow-hidden bg-[#EAF1FE] py-12 text-ink md:py-20"
       >
         <div className="pointer-events-none absolute right-[-10%] top-[-30%] h-[400px] w-[400px] rounded-full bg-beacon/10 blur-[100px]" />
         <div className="relative z-10 mx-auto px-6 text-center">
@@ -151,7 +151,7 @@ export default async function Page({
           </div>
 
           {/* Closer CTA */}
-          <div className="relative mx-auto mt-16 max-w-2xl overflow-hidden rounded-3xl bg-beacon p-8 text-center text-white shadow-2xl">
+          <div className="relative mx-auto mt-10 max-w-2xl overflow-hidden rounded-3xl bg-beacon p-6 text-center text-white shadow-2xl sm:p-8 md:mt-16">
             <div className="absolute inset-0 opacity-10" aria-hidden="true">
               <div className="absolute left-4 top-4 h-20 w-20 rounded-full bg-white blur-xl" />
               <div className="absolute bottom-4 right-4 h-16 w-16 rounded-full bg-white blur-xl" />
@@ -163,7 +163,7 @@ export default async function Page({
               </p>
               <a
                 href={`/${locale}/download`}
-                className="inline-block rounded-2xl bg-white px-8 py-3 font-bold text-beacon shadow-xl transition-all hover:-translate-y-0.5 hover:shadow-2xl"
+                className="inline-flex min-h-[44px] items-center justify-center rounded-2xl bg-white px-8 py-3 font-bold text-beacon shadow-xl transition-all hover:-translate-y-0.5 hover:shadow-2xl"
               >
                 {t("proceed")}
               </a>

@@ -51,7 +51,7 @@ export default function HomeReviews() {
         </div>
 
         <div className="grid items-center gap-10 lg:grid-cols-2">
-        <figure className="relative mx-auto w-full max-w-sm overflow-hidden rounded-[2rem] border border-line bg-white p-8 text-center shadow-md">
+        <figure className="relative mx-auto w-full max-w-sm overflow-hidden rounded-[2rem] border border-line bg-white p-6 text-center shadow-md sm:p-8">
           <div
             className="pointer-events-none absolute right-[-20%] top-[-20%] h-48 w-48 rounded-full bg-beacon/10 blur-[60px]"
             aria-hidden="true"
@@ -124,10 +124,15 @@ export default function HomeReviews() {
                 onClick={() => {
                   setIndex(dotIndex);
                 }}
-                className={`h-2.5 rounded-full transition-all duration-500 ease-in-out ${
-                  isActive ? "w-8 bg-beacon" : "w-2.5 bg-line hover:bg-muted"
-                }`}
-              />
+                className="flex h-11 w-11 items-center justify-center"
+              >
+                <span
+                  aria-hidden="true"
+                  className={`block h-2.5 rounded-full transition-all duration-500 ease-in-out ${
+                    isActive ? "w-8 bg-beacon" : "w-2.5 bg-line hover:bg-muted"
+                  }`}
+                />
+              </button>
             );
           })}
         </div>

@@ -64,7 +64,7 @@ export default async function Page({
       {/* Hero — centered pill, ink H1, sub (ServicesPage hero rhythm) */}
       <section
         aria-label="Features hero"
-        className="relative overflow-hidden border-b border-line pb-20 pt-16 lg:pb-24 lg:pt-24"
+        className="relative overflow-hidden border-b border-line pb-12 pt-10 lg:pb-24 lg:pt-24"
       >
         <div className="pointer-events-none absolute right-[-10%] top-[-20%] h-[600px] w-[600px] rounded-full bg-beacon/10 blur-[100px]" />
         <div className="pointer-events-none absolute bottom-[-30%] left-[-10%] h-[500px] w-[500px] rounded-full bg-slate-200/70 blur-[100px]" />
@@ -124,7 +124,7 @@ export default async function Page({
       </section>
 
       {/* Anchor filter bar (CategoryFilters rhythm — jump links, no fake state) */}
-      <div className="mx-auto mt-12 max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto mt-8 max-w-7xl px-6 md:mt-12 lg:px-8">
         <div className="mx-auto w-fit rounded-3xl border border-line bg-white/70 p-4 shadow-sm backdrop-blur-2xl lg:p-6">
           <nav aria-label="Feature sections" className="flex flex-wrap justify-center gap-2">
             <a
@@ -154,7 +154,7 @@ export default async function Page({
             {pillars.map((p, i) => (
               <article
                 key={p.t}
-                className="rn-card group relative flex h-full flex-col overflow-hidden p-8"
+                className="rn-card group relative flex h-full flex-col overflow-hidden p-6 sm:p-8"
               >
                 <div className="relative z-10 flex h-full flex-col">
                   <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-beacon/10 px-2 shadow-sm transition-all duration-500 group-hover:-rotate-6 group-hover:scale-110">
@@ -188,7 +188,7 @@ export default async function Page({
             {commitments.map((c) => (
               <article
                 key={c.code}
-                className="rn-card group relative flex h-full flex-col overflow-hidden p-8"
+                className="rn-card group relative flex h-full flex-col overflow-hidden p-6 sm:p-8"
               >
                 <div className="relative z-10 flex h-full flex-col">
                   <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-beacon/10 px-2 shadow-sm transition-all duration-500 group-hover:-rotate-6 group-hover:scale-110">
@@ -209,7 +209,7 @@ export default async function Page({
 
       {/* CTA band (solid beacon, s2 CTA copy) */}
       <section aria-label="Get started" className="rn-section bg-paper">
-        <div className="relative mx-auto max-w-2xl overflow-hidden rounded-3xl bg-beacon p-8 text-center text-white shadow-2xl">
+        <div className="relative mx-auto max-w-2xl overflow-hidden rounded-3xl bg-beacon p-6 text-center text-white shadow-2xl sm:p-8">
           <div className="absolute inset-0 opacity-10" aria-hidden="true">
             <div className="absolute left-4 top-4 h-20 w-20 rounded-full bg-white blur-xl" />
             <div className="absolute bottom-4 right-4 h-16 w-16 rounded-full bg-white blur-xl" />
@@ -220,13 +220,13 @@ export default async function Page({
             <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
                 href={`/${locale}/download`}
-                className="rounded-2xl bg-white px-8 py-3 font-bold text-beacon shadow-xl transition-all hover:-translate-y-0.5 hover:shadow-2xl"
+                className="inline-flex min-h-[44px] items-center justify-center rounded-2xl bg-white px-8 py-3 font-bold text-beacon shadow-xl transition-all hover:-translate-y-0.5 hover:shadow-2xl"
               >
                 {t("ctaPrimary")}
               </a>
               <a
                 href={`/${locale}/how-it-works`}
-                className="rounded-2xl border border-white/40 px-8 py-3 font-bold text-white transition-colors hover:bg-white/10"
+                className="inline-flex min-h-[44px] items-center justify-center rounded-2xl border border-white/40 px-8 py-3 font-bold text-white transition-colors hover:bg-white/10"
               >
                 {t("ctaSecondary")}
               </a>

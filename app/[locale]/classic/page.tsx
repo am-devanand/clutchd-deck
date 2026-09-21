@@ -106,7 +106,7 @@ export default async function ClassicHome({
               {t("tagline")}
             </p>
           </div>
-          <div className="flex gap-12 font-medium text-muted">
+          <div className="flex flex-col gap-8 font-medium text-muted sm:flex-row md:gap-12">
             <div className="flex flex-col gap-3">
               <a href="#" className="hover:text-beacon">{t("colServices")}</a>
               <a href="#" className="hover:text-beacon">{t("colAbout")}</a>

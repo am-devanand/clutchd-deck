@@ -35,9 +35,9 @@ export default function FaqAccordion({
               aria-controls={`faq-panel-${i}`}
               id={`faq-button-${i}`}
               onClick={() => setOpen(isOpen ? null : i)}
-              className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+              className="flex min-h-[44px] w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6 sm:py-5"
             >
-              <span className="text-base font-bold text-ink">{item.question}</span>
+              <span className="min-w-0 flex-1 text-base font-bold text-ink">{item.question}</span>
               <span
                 aria-hidden="true"
                 className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-lg font-black leading-none transition-all duration-300 ${

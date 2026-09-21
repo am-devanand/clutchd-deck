@@ -58,7 +58,7 @@ export default async function Page({
       {/* Explainer panels (plain words / design targets / cancellation) */}
       <section aria-label="Details" className="rn-section bg-paper">
         <div className="mx-auto grid w-full max-w-7xl gap-8 px-6 md:grid-cols-3 lg:px-8">
-          <div className="rn-card p-8">
+          <div className="rn-card p-6 sm:p-8">
             <p className="mb-2 font-mono text-[10px] font-bold uppercase tracking-widest text-beacon">
               {t("eyebrow")}
             </p>
@@ -67,7 +67,7 @@ export default async function Page({
             </h2>
             <p className="text-sm font-medium leading-relaxed text-muted">{t("plainBody")}</p>
           </div>
-          <div className="rn-card p-8">
+          <div className="rn-card p-6 sm:p-8">
             <p className="mb-2 font-mono text-[10px] font-bold uppercase tracking-widest text-beacon">
               {t("activeTag")}
             </p>
@@ -86,7 +86,7 @@ export default async function Page({
               ))}
             </ul>
           </div>
-          <div className="rn-card p-8">
+          <div className="rn-card p-6 sm:p-8">
             <p className="mb-2 font-mono text-[10px] font-bold uppercase tracking-widest text-beacon">
               {t("vector")}
             </p>
@@ -96,7 +96,7 @@ export default async function Page({
             <p className="mb-6 text-sm font-medium leading-relaxed text-muted">{t("cancelBody")}</p>
             <a
               href={`/${locale}/faq`}
-              className="inline-flex items-center gap-2 rounded-2xl border border-beacon/30 px-6 py-3 text-sm font-bold text-beacon transition-all hover:border-beacon hover:bg-beacon hover:text-white"
+              className="inline-flex min-h-[44px] items-center gap-2 rounded-2xl border border-beacon/30 px-6 py-3 text-sm font-bold text-beacon transition-all hover:border-beacon hover:bg-beacon hover:text-white"
             >
               {t("faqCta")}
               <span aria-hidden="true">→</span>
