@@ -1,13 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { s8 } from "../../content/screens";
 
 export default function S8() {
-  // P3 i18n: s8 static import kept for hrefs (pwaHref); all rendered copy via
-  // messages/<locale>/screens.json.
+  // P3 i18n: s8 static import kept for hrefs (apkHref); all rendered copy via
+  // messages/<locale>/screens.json. Primary CTA goes to the download page
+  // (same tab); the APK file itself downloads from there.
   const t = useTranslations("screens.s8");
+  const locale = useLocale();
   const cards = t.raw("cards") as { k: string; v: string; u: string; f: string }[];
   const steps = t.raw("steps") as string[];
   const includes = t.raw("includes") as string[];
@@ -77,9 +79,7 @@ export default function S8() {
           className="flex flex-col items-center gap-6"
         >
           <a
-            href={s8.pwaHref}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={`/${locale}/download`}
             className="u-btn-grad group relative overflow-hidden rounded-full px-12 py-4 text-base font-black text-white transition-all duration-300 hover:scale-105 active:scale-95"
           >
             <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
@@ -91,11 +91,10 @@ export default function S8() {
 
           {/* APK / PWA channels — no store listings yet (docs/CLUTCHD-FACTS.md) */}
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <a
-              href={s8.pwaHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rn-card group flex items-center gap-3 px-5 py-3 text-ink"
+            <span
+              aria-label={t("pwaSoon")}
+              title={t("pwaSoon")}
+              className="rn-card group flex min-h-[44px] cursor-default items-center gap-3 px-5 py-3 text-ink opacity-80"
             >
               <span className="text-beacon transition-colors">
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -105,9 +104,11 @@ export default function S8() {
               </span>
               <span className="flex flex-col text-left">
                 <span className="text-[0.55rem] font-bold uppercase leading-none tracking-wider text-muted">{t("pwaTop")}</span>
-                <span className="text-sm font-bold leading-tight">{t("pwaLabel")}</span>
+                <span className="flex items-center gap-2 text-sm font-bold leading-tight">{t("pwaLabel")}
+                  <span className="rounded-full bg-beacon/10 px-2 py-0.5 text-[0.55rem] font-bold uppercase tracking-wider text-beacon">{t("pwaSoon")}</span>
+                </span>
               </span>
-            </a>
+            </span>
             <a
               href={s8.apkHref}
               download="ClutchD-v3.1.21-release.apk"
