@@ -50,29 +50,29 @@ export default async function Page({
 
   return (
     <div className="w-full bg-paper">
-      {/* Hero band (marketplace-hero rhythm — warm beige, glow only) */}
+      {/* Hero band (marketplace-hero rhythm — steel blue, glow only) */}
       <section
         aria-label="App hero"
-        className="relative overflow-hidden bg-[#F5EFE3] py-20 text-ink"
+        className="relative overflow-hidden bg-[#4682B4] py-20 text-white"
       >
-        <div className="pointer-events-none absolute right-[-10%] top-[-30%] h-[400px] w-[400px] rounded-full bg-amber-200/40 blur-[100px]" />
+        <div className="pointer-events-none absolute right-[-10%] top-[-30%] h-[400px] w-[400px] rounded-full bg-white/20 blur-[100px]" />
         <div className="relative z-10 mx-auto px-6 text-center">
-          <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-line bg-white/80 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-ink">
+          <p className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-white">
             <span className="relative flex h-2 w-2" aria-hidden="true">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 motion-safe:animate-ping" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+              <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75 motion-safe:animate-ping" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-300" />
             </span>
             {t("live")} · {t("frame")}
           </p>
-          <h1 className="mx-auto mb-6 max-w-3xl text-balance text-4xl font-bold text-ink md:text-6xl">
+          <h1 className="mx-auto mb-6 max-w-3xl text-balance text-4xl font-bold text-white md:text-6xl">
             {headline[0]} {headline[1]}
           </h1>
-          <p className="mx-auto mb-8 max-w-2xl text-xl text-muted">{t("sub")}</p>
+          <p className="mx-auto mb-8 max-w-2xl text-xl text-white/90">{t("sub")}</p>
           <div className="mb-8 flex flex-wrap justify-center gap-4">
             {metrics.map((m) => (
               <span
                 key={m.k}
-                className="rounded-full border border-line bg-white/80 px-4 py-2 text-sm font-bold text-ink backdrop-blur"
+                className="rounded-full bg-white/15 px-4 py-2 text-sm font-bold text-white backdrop-blur"
               >
                 {m.v} · {m.k}
               </span>
