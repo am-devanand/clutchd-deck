@@ -110,12 +110,13 @@ export default async function HomeHero({ locale }: { locale: string }) {
               </a>
             </div>
 
-            {/* Social-proof mini row with dividers (s1 stats) */}
-            <div className="rn-stat-row mx-auto max-w-md flex-wrap justify-center gap-y-4 border-t border-line pt-4 lg:mx-0 lg:justify-start">
+            {/* Social-proof stats: 2x2 grid on phones (no internal rules),
+                divider row on sm+ (rules only between items in one row) */}
+            <div className="mx-auto grid max-w-md grid-cols-2 gap-x-4 gap-y-6 border-t border-line pt-6 sm:flex sm:flex-wrap sm:gap-x-0 sm:gap-y-4 lg:mx-0 lg:justify-start [&>*:not(:first-child)]:sm:border-l [&>*:not(:first-child)]:sm:border-line">
               {stats.map((s) => (
                 <div
                   key={s.l}
-                  className="flex flex-col gap-0.5 px-5 first:pl-0 last:pr-0"
+                  className="flex flex-col gap-1 px-0 sm:px-5 sm:first:pl-0 sm:last:pr-0"
                 >
                   <span className="text-lg font-black tabular-nums text-ink">
                     {s.v}
